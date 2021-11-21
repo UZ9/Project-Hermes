@@ -3,9 +3,9 @@ import json
 import time
 import yaml
 
-credentials = yaml.load(open('./config.yml'))
+credentials = yaml.safe_load(open('./config.yml'))
 
-authKey = credentials['credentials']['apiKey']
+authKey = credentials['credentials']['api-key']
 
 # Given as "Event Code" on the page's website
 skuId = "RE-VRC-21-5182"
@@ -31,8 +31,9 @@ eventIdResponse = requests.get(
 eventId = eventIdResponse.json()['data'][0]['id']
 
 # Fetch list of teams from event
+# Adding the per_page parameter stops the API from limiting the results to only 15 teams
 teamResponse = requests.get(
-    baseApiUrl + "events/" + str(eventId) + "/teams", headers=baseHeader)
+    baseApiUrl + "events/" + str(eventId) + "/teams?per_page=100", headers=baseHeader)
 
 
 # Parse json to get teamList dict
@@ -44,7 +45,7 @@ teamCount = len(teamList)
 output={}
 
 # Loop through the teams
-for teamIndex in range(1, teamCount):
+for teamIndex in range(1, teamCount + 1):
     team = teamList[teamIndex - 1]
 
     skillsResponse = requests.get(
@@ -64,8 +65,8 @@ for teamIndex in range(1, teamCount):
             if event["score"] > topAutonSkills:
                 topAutonSkills = event["score"]
 
-    output[str(team["team_name"])] = {
-        "number": team["number"],
+    output[str(team["number"])] = {
+        "number": team["team_name"],
         "organization": team["organization"],
         "skills": {
             "driver": topDrivingSkills,
@@ -76,9 +77,9 @@ for teamIndex in range(1, teamCount):
     time.sleep(0.1)
     print("Processing team (" + str(teamIndex) + "/" + str(teamCount) + ")", end="\r")
 
-print("Processing team (15/15)")
 print("\n")
 print("==============================================")
-    
-print(json.dumps(output, indent=4))
-# print(teamResponse.json())
+print("Finished!")
+
+with  open("src/teamdata.json", "w") as outFile:
+    json.dump(output, outFile)
