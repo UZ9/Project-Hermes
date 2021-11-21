@@ -25,7 +25,7 @@ baseHeader = {
 
 # Fetch Event ID using SKU
 eventIdResponse = requests.get(
-    baseApiUrl + "seasons/" + seasonId + "/events?sku=RE-VRC-21-5182", headers=baseHeader)
+    baseApiUrl + "seasons/" + seasonId + "/events?sku=" + skuId, headers=baseHeader)
 
 # Parse eventId from response
 eventId = eventIdResponse.json()['data'][0]['id']
