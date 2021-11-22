@@ -4,7 +4,20 @@
         "organization": "DR KIRK LEWIS CAREER AND TECHNICAL HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 3,
+            "wins": 8,
+            "losses": 1,
+            "ties": 0,
+            "wp": 16,
+            "ap": 100,
+            "sp": 651,
+            "high_score": 191,
+            "average_points": 123,
+            "total_points": 1107
         }
     },
     "231R": {
@@ -12,7 +25,20 @@
         "organization": "DR KIRK LEWIS CAREER AND TECHNICAL HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 14,
+            "wins": 4,
+            "losses": 5,
+            "ties": 0,
+            "wp": 9,
+            "ap": 70,
+            "sp": 527,
+            "high_score": 183,
+            "average_points": 92.11,
+            "total_points": 829
         }
     },
     "231S": {
@@ -20,7 +46,20 @@
         "organization": "DR KIRK LEWIS CAREER AND TECHNICAL HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 13,
+            "wins": 5,
+            "losses": 4,
+            "ties": 0,
+            "wp": 10,
+            "ap": 70,
+            "sp": 613,
+            "high_score": 140,
+            "average_points": 84.67,
+            "total_points": 762
         }
     },
     "231W": {
@@ -28,7 +67,20 @@
         "organization": "DR KIRK LEWIS CAREER AND TECHNICAL HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 5,
+            "wins": 5,
+            "losses": 4,
+            "ties": 0,
+            "wp": 13,
+            "ap": 120,
+            "sp": 541,
+            "high_score": 149,
+            "average_points": 92.67,
+            "total_points": 834
         }
     },
     "400C": {
@@ -36,7 +88,20 @@
         "organization": "BALL HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 22,
+            "wins": 1,
+            "losses": 5,
+            "ties": 0,
+            "wp": 2,
+            "ap": 20,
+            "sp": 355,
+            "high_score": 90,
+            "average_points": 59.83,
+            "total_points": 359
         }
     },
     "400E": {
@@ -44,7 +109,20 @@
         "organization": "BALL HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 20,
+            "wins": 2,
+            "losses": 6,
+            "ties": 1,
+            "wp": 5,
+            "ap": 50,
+            "sp": 498,
+            "high_score": 176,
+            "average_points": 69.67,
+            "total_points": 627
         }
     },
     "400F": {
@@ -52,7 +130,20 @@
         "organization": "BALL HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 8,
+            "wins": 4,
+            "losses": 2,
+            "ties": 0,
+            "wp": 8,
+            "ap": 40,
+            "sp": 367,
+            "high_score": 152,
+            "average_points": 95.83,
+            "total_points": 575
         }
     },
     "400Y": {
@@ -60,7 +151,20 @@
         "organization": "BALL HIGH SCHOOL",
         "skills": {
             "driver": 120,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "814"
+        },
+        "division": {
+            "ranking": 9,
+            "wins": 3,
+            "losses": 2,
+            "ties": 1,
+            "wp": 8,
+            "ap": 40,
+            "sp": 236,
+            "high_score": 133,
+            "average_points": 66.33,
+            "total_points": 398
         }
     },
     "590R": {
@@ -68,7 +172,20 @@
         "organization": "TEXAS CITY HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 21,
+            "wins": 1,
+            "losses": 4,
+            "ties": 1,
+            "wp": 3,
+            "ap": 40,
+            "sp": 368,
+            "high_score": 93,
+            "average_points": 70.33,
+            "total_points": 422
         }
     },
     "590S": {
@@ -76,7 +193,20 @@
         "organization": "TEXAS CITY HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 18,
+            "wins": 2,
+            "losses": 4,
+            "ties": 0,
+            "wp": 4,
+            "ap": 50,
+            "sp": 335,
+            "high_score": 91,
+            "average_points": 70,
+            "total_points": 420
         }
     },
     "1765Z": {
@@ -84,7 +214,8 @@
         "organization": "LA MARQUE HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
         }
     },
     "2335A": {
@@ -92,7 +223,20 @@
         "organization": "CLEAR FALLS HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 23,
+            "wins": 1,
+            "losses": 5,
+            "ties": 0,
+            "wp": 2,
+            "ap": 20,
+            "sp": 277,
+            "high_score": 106,
+            "average_points": 47.67,
+            "total_points": 286
         }
     },
     "2344A": {
@@ -100,7 +244,20 @@
         "organization": "CLEAR SPRINGS HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 1,
+            "wins": 9,
+            "losses": 0,
+            "ties": 0,
+            "wp": 21,
+            "ap": 160,
+            "sp": 543,
+            "high_score": 175,
+            "average_points": 119.22,
+            "total_points": 1073
         }
     },
     "2373A": {
@@ -108,7 +265,20 @@
         "organization": "CLEAR LAKE HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 7,
+            "wins": 6,
+            "losses": 3,
+            "ties": 0,
+            "wp": 12,
+            "ap": 100,
+            "sp": 566,
+            "high_score": 183,
+            "average_points": 89,
+            "total_points": 801
         }
     },
     "2373B": {
@@ -116,7 +286,20 @@
         "organization": "CLEAR LAKE HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 15,
+            "wins": 3,
+            "losses": 5,
+            "ties": 1,
+            "wp": 8,
+            "ap": 90,
+            "sp": 497,
+            "high_score": 137,
+            "average_points": 74.67,
+            "total_points": 672
         }
     },
     "2373C": {
@@ -124,15 +307,41 @@
         "organization": "CLEAR LAKE HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 17,
+            "wins": 3,
+            "losses": 6,
+            "ties": 0,
+            "wp": 6,
+            "ap": 90,
+            "sp": 498,
+            "high_score": 136,
+            "average_points": 68,
+            "total_points": 612
         }
     },
     "2373J": {
         "name": "Lake Robotics",
         "organization": "CLEAR LAKE HIGH SCHOOL",
         "skills": {
-            "driver": 0,
-            "programming": 0
+            "driver": 180,
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 6,
+            "wins": 5,
+            "losses": 4,
+            "ties": 0,
+            "wp": 12,
+            "ap": 120,
+            "sp": 727,
+            "high_score": 177,
+            "average_points": 101.22,
+            "total_points": 911
         }
     },
     "2373R": {
@@ -140,7 +349,20 @@
         "organization": "CLEAR LAKE HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 2,
+            "wins": 7,
+            "losses": 2,
+            "ties": 0,
+            "wp": 16,
+            "ap": 150,
+            "sp": 719,
+            "high_score": 191,
+            "average_points": 138.67,
+            "total_points": 1248
         }
     },
     "3118A": {
@@ -148,7 +370,20 @@
         "organization": "CLEAR BROOK HIGH SCHOOL",
         "skills": {
             "driver": 140,
-            "programming": 80
+            "programming": 80,
+            "world-rank": "246"
+        },
+        "division": {
+            "ranking": 10,
+            "wins": 5,
+            "losses": 4,
+            "ties": 0,
+            "wp": 11,
+            "ap": 110,
+            "sp": 787,
+            "high_score": 147,
+            "average_points": 105.67,
+            "total_points": 951
         }
     },
     "3118B": {
@@ -156,7 +391,20 @@
         "organization": "CLEAR BROOK HIGH SCHOOL",
         "skills": {
             "driver": 180,
-            "programming": 80
+            "programming": 80,
+            "world-rank": "174"
+        },
+        "division": {
+            "ranking": 4,
+            "wins": 6,
+            "losses": 3,
+            "ties": 0,
+            "wp": 14,
+            "ap": 100,
+            "sp": 554,
+            "high_score": 178,
+            "average_points": 100.11,
+            "total_points": 901
         }
     },
     "12313A": {
@@ -164,7 +412,20 @@
         "organization": "PASADENA MEMORIAL HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 19,
+            "wins": 3,
+            "losses": 6,
+            "ties": 0,
+            "wp": 6,
+            "ap": 20,
+            "sp": 655,
+            "high_score": 130,
+            "average_points": 77.56,
+            "total_points": 698
         }
     },
     "12313C": {
@@ -172,15 +433,41 @@
         "organization": "PASADENA MEMORIAL HIGH SCHOOL",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 16,
+            "wins": 4,
+            "losses": 5,
+            "ties": 0,
+            "wp": 8,
+            "ap": 80,
+            "sp": 680,
+            "high_score": 177,
+            "average_points": 100.67,
+            "total_points": 906
         }
     },
     "19197A": {
         "name": "Technical Titans",
         "organization": "Olympian Robotics",
         "skills": {
-            "driver": 0,
-            "programming": 0
+            "driver": 120,
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 12,
+            "wins": 5,
+            "losses": 4,
+            "ties": 0,
+            "wp": 10,
+            "ap": 70,
+            "sp": 703,
+            "high_score": 177,
+            "average_points": 98.44,
+            "total_points": 886
         }
     },
     "43470A": {
@@ -188,7 +475,20 @@
         "organization": "",
         "skills": {
             "driver": 0,
-            "programming": 0
+            "programming": 0,
+            "world-rank": "N/A"
+        },
+        "division": {
+            "ranking": 11,
+            "wins": 4,
+            "losses": 5,
+            "ties": 0,
+            "wp": 10,
+            "ap": 120,
+            "sp": 445,
+            "high_score": 175,
+            "average_points": 79.22,
+            "total_points": 713
         }
     }
 }
