@@ -8,7 +8,7 @@ credentials = yaml.safe_load(open('./config.yml'))
 authKey = credentials['credentials']['api-key']
 
 # Given as "Event Code" on the page's website
-skuId = "RE-VRC-21-5182"
+skuId = "RE-VRC-21-4658"#"RE-VRC-21-5182"
 
 # Season ID
 # 154 - 2021 Tipping Point
@@ -66,7 +66,7 @@ for teamIndex in range(1, teamCount + 1):
                 topAutonSkills = event["score"]
 
     output[str(team["number"])] = {
-        "number": team["team_name"],
+        "name": team["team_name"],
         "organization": team["organization"],
         "skills": {
             "driver": topDrivingSkills,

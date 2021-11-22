@@ -1,0 +1,85 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+td:last-child {
+  border-right: 0;
+}
+
+th {
+  position: sticky;
+  box-shadow: none;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+
+/* Tooltip */
+
+.tooltip {
+  background: rgba(0,0,0,0) !important;
+}
+
+/* End of Tooltip */
+
+
+/* Utility */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Cards */
+
+.card-common {
+  box-shadow: 1px 2px 5px #999;
+  transition: all .3s;
+}
+
+.card-common:hover {
+  box-shadow: 2px 3px 15px #999;
+  transform: translateY(-1px);
+}
+
+/* End of Cards */
+
+* {
+  font-family: 'Montserrat', sans-serif
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #eee;
+}
+
+.sticky-column {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

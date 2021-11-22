@@ -1,0 +1,194 @@
+{
+    "231A": {
+        "name": "Knights Robotics Team",
+        "organization": "DR KIRK LEWIS CAREER AND TECHNICAL HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "231R": {
+        "name": "Knights Robotics Team",
+        "organization": "DR KIRK LEWIS CAREER AND TECHNICAL HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "231S": {
+        "name": "Knights Robotics Team",
+        "organization": "DR KIRK LEWIS CAREER AND TECHNICAL HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "231W": {
+        "name": "Knights Robotics Team",
+        "organization": "DR KIRK LEWIS CAREER AND TECHNICAL HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "400C": {
+        "name": "Galveston C",
+        "organization": "BALL HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "400E": {
+        "name": "Green Lantern",
+        "organization": "BALL HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "400F": {
+        "name": "Glazed",
+        "organization": "BALL HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "400Y": {
+        "name": "Out of sizing",
+        "organization": "BALL HIGH SCHOOL",
+        "skills": {
+            "driver": 120,
+            "programming": 0
+        }
+    },
+    "590R": {
+        "name": "Riotous Ruffians",
+        "organization": "TEXAS CITY HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "590S": {
+        "name": "Space Pants",
+        "organization": "TEXAS CITY HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "1765Z": {
+        "name": "La Marque Machines",
+        "organization": "LA MARQUE HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "2335A": {
+        "name": "Redhead Robotics",
+        "organization": "CLEAR FALLS HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "2344A": {
+        "name": "Bolt Bots",
+        "organization": "CLEAR SPRINGS HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "2373A": {
+        "name": "Lake Robotics",
+        "organization": "CLEAR LAKE HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "2373B": {
+        "name": "Lake Robotics",
+        "organization": "CLEAR LAKE HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "2373C": {
+        "name": "Lake Robotics",
+        "organization": "CLEAR LAKE HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "2373J": {
+        "name": "Lake Robotics",
+        "organization": "CLEAR LAKE HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "2373R": {
+        "name": "Lake Robotics",
+        "organization": "CLEAR LAKE HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "3118A": {
+        "name": "Astrobots",
+        "organization": "CLEAR BROOK HIGH SCHOOL",
+        "skills": {
+            "driver": 140,
+            "programming": 80
+        }
+    },
+    "3118B": {
+        "name": "Astrobots",
+        "organization": "CLEAR BROOK HIGH SCHOOL",
+        "skills": {
+            "driver": 180,
+            "programming": 80
+        }
+    },
+    "12313A": {
+        "name": "Maverick Robotics Team",
+        "organization": "PASADENA MEMORIAL HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "12313C": {
+        "name": "Maverick Robotics Team",
+        "organization": "PASADENA MEMORIAL HIGH SCHOOL",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "19197A": {
+        "name": "Technical Titans",
+        "organization": "Olympian Robotics",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    },
+    "43470A": {
+        "name": "Autobots",
+        "organization": "",
+        "skills": {
+            "driver": 0,
+            "programming": 0
+        }
+    }
+}
