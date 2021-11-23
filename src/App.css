@@ -78,6 +78,8 @@ body {
   background-color: #eee;
 }
 
+.big-checkbox {width: 30px; height: 30px;}
+
 .sticky-column {
   position: -webkit-sticky;
   position: sticky;
