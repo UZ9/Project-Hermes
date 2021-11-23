@@ -53,15 +53,6 @@ class TeamCard extends React.Component {
                     <div className="col-md-10 mx-auto col-sm-3">
                         <div className="card card-common">
                             <div className="card-body">
-                                <h5 className="text-center text-primary">Team Information</h5>
-                                <div className="row text-secondary">
-                                    <h6 className="col">Team Number</h6>
-                                    <h6 className="col text-end">{this.props.number}</h6>
-                                </div>
-                                <div className="row text-secondary">
-                                    <h6 className="col">Team Name</h6>
-                                    <h6 className="col text-end">{this.props.teamName}</h6>
-                                </div>
                                 <h5 className="text-center text-primary">Current Match Standings</h5>
                                 <div className="row text-secondary ">
                                     <h5 className="col text-center">

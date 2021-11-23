@@ -1,105 +1,74 @@
 import './App.css';
-import TeamCard from './cards/TeamCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CardsView from './views/CardsView';
+import { Router, Routes } from 'react-router';
+import { Route } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import ScoutingView from './views/ScoutingView';
+import LoginView from './views/LoginView';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import React, { useEffect, useState } from 'react';
+import { StyledFirebaseAuth } from 'react-firebaseui';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import ScoutFormComponent from './components/ScoutFormComponent';
 
-// The JSON data pulled from the python script
-const data = require("./teamdata.json")
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBK0sVn4otFsByWtRYoNC7Gh_6APhaUg_Q",
+  authDomain: "project-hermes-d8d3e.firebaseapp.com",
+  projectId: "project-hermes-d8d3e",
+  storageBucket: "project-hermes-d8d3e.appspot.com",
+  messagingSenderId: "170842974663",
+  appId: "1:170842974663:web:a95e6f003276abf398d1e2",
+  measurementId: "G-MYERRPE8G5"
+};
 
-/**
- * Attempts to parse a string for an integer
- *  
- * @param {String} val 
- * @returns The integer if parsed correctly, otherwise 0 
- */
-function attemptParseInt(val) {
-  return parseInt(val) || 0;
+firebase.initializeApp(firebaseConfig)
+
+const uiConfig = {
+  signInOptions: [
+    {
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      disableSignUp: { status: true },
+    }],
 }
 
-function calculateScores(skills, division) {
-  // Driving Skills Score
-  let driverScore = attemptParseInt(skills["driver"]) * 0.6;
 
-  // Programming Skills Score
-  let programmingScore = attemptParseInt(skills["programming"]) * 0.6;
-
-  // Record score, calculated using wins and ties
-  let winScore = (attemptParseInt(division["wins"]) + attemptParseInt(division["ties"]) * 0.5) * 35;
-
-  // Win points, skill points, and autonomous points need to be factored into the score
-  let wpScore = attemptParseInt(division["wp"]) * 30;
-  let spScore = attemptParseInt(division["sp"]) * 0.2;
-  let apScore = attemptParseInt(division["ap"]);
-
-  return [driverScore, programmingScore, winScore, apScore, wpScore, spScore];
-}
-
-/**
- * Calculates the Index Score of a team given its various attributes
- * 
- * @param {Object} skills The skills data pulled from the JSON file
- * @param {Object} division The division data pulled from the JSON file
- * @returns the Index Score of the team
- */
-function calculateIndexScore(skills, division) {
-  let output = 0;
-
-  const nums = calculateScores(skills, division);
-
-  // Sum up numbers
-  for (let i = 0; i < nums.length; i++) {
-    output += nums[i];
-  }
-
-  return output.toFixed(1);
-}
 
 function App() {
-  let cards = (Object.keys(data).map((key) => {
-    const teamName = data[key]["name"];
-    const skills = data[key]["skills"];
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
-    // If no division waas found (e.g. if they didn't participate) create a default division schema
-    const division = data[key]["division"] !== undefined ? data[key]["division"] : {
-      "ranking": "N/A",
-      "wins": 0,
-      "losses": 0,
-      "ties": 0,
-      "wp": 0,
-      "ap": 0,
-      "sp": 0,
-      "high_score": 0,
-      "average_points": 0,
-      "total_points": 0
-    };
+  useEffect(() => {
+    const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+      setIsSignedIn(!!user);
+    })
 
-    // Calculate the index score of the team
-    const score = calculateIndexScore(data[key]["skills"], division);
-    console.log(score);
+    return () => unregisterAuthObserver();
+  }, []);
 
-    // Return the information a card will later need
-    return { number: key, name: teamName, skills: skills, division: division, score: score }
-  })).sort((a, b) => { return b.score - a.score; });
-
-  // We use the max score to determine the sorting of the cards
-  const maxScore = cards[0].score;
-
-  return (
-    <div>
-      <section>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="w-100">
-              <div className="row pt-md-5">
-                {cards.sort((a, b) => { return b.score - a.score; }).map((key, index) => (
-                  <TeamCard key={index} maxScore={maxScore} teamName={key.name} number={key.number} score={key.score} skills={key.skills} division={key.division} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  if (!isSignedIn) {
+    return (
+      <div className="mt-5">
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      </div>
+    )
+  } else {
+    return (
+      <>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<CardsView />} />
+            <Route path="/scouting" element={<ScoutingView />}/>
+            <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent/>}/>
+            {/* <Route path="/login" element={<div id="firebaseui-auth-container" />} /> */}
+          </Routes>
+        </BrowserRouter>
+      </>
+    )
+  }
 }
 
 export default App;
