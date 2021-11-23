@@ -1,60 +1,28 @@
 import React from "react";
-import { OverlayTrigger } from "react-bootstrap";
-import { Tooltip } from "react-bootstrap";
-import { Card } from "react-bootstrap";
 import ReactTooltip from "react-tooltip";
 
-import { Popover } from "react-bootstrap";
+function getIndexScoreColor(score, maxScore) {
+    console.log(maxScore)
 
-function attemptParseInt(val) {
-    return parseInt(val) || 0;
-}
+    let ratio = score / maxScore;
 
-function calculateIndexScore(props) {
-    console.log(props.teamCount);
-
-    let output = 0;
-
-    let rankingScore =  props.teamCount - attemptParseInt(parseInt(props.division["ranking"]));
-
-    // Ranking was 0, they didn't compete at the competition
-    if (rankingScore === props.teamCount) return (0);
-
-    output += attemptParseInt(props.skills["driver"]);
-    output += attemptParseInt(props.skills["programming"]);
-    output +=
-    output += attemptParseInt(parseInt(props.division["wp"]) / attemptParseInt(props.division["wins"])) * 10;
-    output += attemptParseInt(props.division["ap"]) * 10;
-
-
-    return output;
-}
-
-function getIndexScoreColor(score) {
-
-
-    if (score < 50) {
+    if (ratio < 0.3) {
         return "FF0000";
-    } else if (score < 60) {
+    } else if (ratio < 0.4) {
         return "FF8C00";
-    } else if (score < 70) {
+    } else if (ratio < 0.6) {
         return "FFA500"
-    } else if (score < 80) {
-        return "BFFF00"
-    } else if (score < 90) {
+    } else if (ratio < 0.8) {
         return "EECD00"
-    } else if (score < 100) {
+    } else if (ratio <= 1) {
         return "00A86B"
     }
 }
 
 class TeamCard extends React.Component {
     render() {
-        console.log(this.props.division);
-
         return (
             <>
-
                 <div className="col-xl-3 mx-auto col-sm-5 p-2">
                     <div className="card card-common">
                         <div data-tip data-for={this.props.number} className="card-body">
@@ -69,10 +37,12 @@ class TeamCard extends React.Component {
 
                             <div className="row col-md-15 text-secondary">
                                 <span className="col">Index</span>
+                                <span className="col">Rank</span>
                                 <span className="col">Skills</span>
                             </div>
                             <div className="row col-md-15 text-secondary">
-                                <h3 className="col" style={{ color: `#${getIndexScoreColor(calculateIndexScore(this.props))}` }}>{calculateIndexScore(this.props)}</h3>
+                                <h3 className="col" style={{ color: `#${getIndexScoreColor(this.props.score, this.props.maxScore)}` }}>{this.props.score}</h3>
+                                <h3 className="col">#{this.props.division["ranking"]}</h3>
                                 <h3 className="col">{this.props.skills["programming"] + this.props.skills["driver"]}</h3>
                             </div>
                         </div>
@@ -143,8 +113,6 @@ class TeamCard extends React.Component {
                                     <h6 className="col">World Ranking</h6>
                                     <h6 className="col text-end">{this.props.skills["world-rank"]}</h6>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>

@@ -44,6 +44,7 @@ td.text-right {
 
 .tooltip {
   background: rgba(0,0,0,0) !important;
+  max-width: 95%;
 }
 
 /* End of Tooltip */
