@@ -73,7 +73,8 @@ function App() {
     };
 
     // Calculate the index score of the team
-    const score = calculateIndexScore(Object.keys(data).length, data[key]["skills"], division);
+    const score = calculateIndexScore(data[key]["skills"], division);
+    console.log(score);
 
     // Return the information a card will later need
     return { number: key, name: teamName, skills: skills, division: division, score: score }
