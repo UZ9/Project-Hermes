@@ -4,9 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import firebase from '@firebase/app-compat';
 import Button from '@restart/ui/esm/Button';
-
-// The JSON data pulled from the python script
-const data = require("../teamdata.json")
+import useStore from '../stores/TeamDataStore';
 
 /**
  * Attempts to parse a string for an integer
@@ -57,9 +55,12 @@ function calculateIndexScore(skills, division) {
 }
 
 function CardsView() {
+  const data = useStore(state => state.teamData);
+
   let cards = (Object.keys(data).map((key) => {
     const teamName = data[key]["name"];
     const skills = data[key]["skills"];
+    const scouting = data[key]["scouting"];
 
     // If no division waas found (e.g. if they didn't participate) create a default division schema
     const division = data[key]["division"] !== undefined ? data[key]["division"] : {
@@ -77,10 +78,9 @@ function CardsView() {
 
     // Calculate the index score of the team
     const score = calculateIndexScore(data[key]["skills"], division);
-    console.log(score);
 
     // Return the information a card will later need
-    return { number: key, name: teamName, skills: skills, division: division, score: score }
+    return { number: key, scouting: scouting, name: teamName, skills: skills, division: division, score: score }
   })).sort((a, b) => { return b.score - a.score; });
 
   // We use the max score to determine the sorting of the cards
@@ -90,20 +90,20 @@ function CardsView() {
 
   return (
     <div>
-      <nav class="mb-0 navbar  navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand ms-2" href="/">BWHS Robotics</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <Link to="/" class="nav-link text-white">Home <span class="sr-only"></span></Link>
+      <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
+        <a className="navbar-brand ms-2" href="/">BWHS Robotics</a>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item active">
+              <Link to="/" className="nav-link text-white">Home <span className="sr-only"></span></Link>
             </li>
-            <li class="nav-item">
-              <Link to="/scouting" class="nav-link">Scouting</Link>
+            <li className="nav-item">
+              <Link to="/scouting" className="nav-link">Scouting</Link>
             </li>
           </ul>
         </div>
         <div>
-          <Button type="button" class="btn btn-sm btn-danger mx-3" onClick={logOut}>Sign Out</Button>
+          <Button type="button" className="btn btn-sm btn-danger mx-3" onClick={logOut}>Sign Out</Button>
         </div>
       </nav>
       <section>
@@ -112,7 +112,7 @@ function CardsView() {
             <div className="w-100">
               <div className="row">
                 {cards.sort((a, b) => { return b.score - a.score; }).map((key, index) => (
-                  <TeamCard key={index} maxScore={maxScore} teamName={key.name} number={key.number} score={key.score} skills={key.skills} division={key.division} />
+                  <TeamCard key={index} maxScore={maxScore} teamName={key.name} number={key.number} scouting={key.scouting} score={key.score} skills={key.skills} division={key.division} />
                 ))}
               </div>
             </div>

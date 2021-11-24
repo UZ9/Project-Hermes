@@ -1,18 +1,17 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CardsView from './views/CardsView';
-import { Router, Routes } from 'react-router';
+import { Routes } from 'react-router';
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import ScoutingView from './views/ScoutingView';
-import LoginView from './views/LoginView';
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import React, { useEffect, useState } from 'react';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import ScoutFormComponent from './components/ScoutFormComponent';
+import { socket } from './service/Socket';
+import useStore from './stores/TeamDataStore';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -41,6 +40,21 @@ const uiConfig = {
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
 
+  socket.on('connection', (res) => {
+    console.log(":R");
+    console.log(res);
+
+    useStore.setState({ teamData: res.data });
+
+  })
+
+  socket.on('data-update', (res) => {
+    console.log ("received update");
+    console.log(res)
+
+    useStore.setState({ teamData: res.data });
+  })
+
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
       setIsSignedIn(!!user);
@@ -61,8 +75,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<CardsView />} />
-            <Route path="/scouting" element={<ScoutingView />}/>
-            <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent/>}/>
+            <Route path="/scouting" element={<ScoutingView />} />
+            <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent />} />
             {/* <Route path="/login" element={<div id="firebaseui-auth-container" />} /> */}
           </Routes>
         </BrowserRouter>

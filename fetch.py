@@ -9,7 +9,7 @@ credentials = yaml.safe_load(open('./config.yml'))
 authKey = credentials['credentials']['api-key']
 
 # Given as "Event Code" on the page's website
-skuId = "RE-VRC-21-4658"  # "RE-VRC-21-5182"
+skuId = "RE-VRC-21-5182"
 
 # Season ID
 # 154 - 2021 Tipping Point

@@ -8,7 +8,6 @@ import Button from "@restart/ui/esm/Button";
 function LoginView() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [user, setUser] = useState();
 
 
     const handleSubmit = async e => {
