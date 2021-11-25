@@ -12,6 +12,7 @@ import 'firebase/compat/auth';
 import ScoutFormComponent from './components/ScoutFormComponent';
 import { socket } from './service/Socket';
 import useStore from './stores/TeamDataStore';
+import "./custom.scss";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional

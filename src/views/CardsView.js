@@ -54,6 +54,10 @@ function calculateIndexScore(skills, division) {
   return output.toFixed(1);
 }
 
+function isNum(num) {
+  return !isNaN(parseInt(num)) && !isNaN(num - 0);
+}
+
 function CardsView() {
   const data = useStore(state => state.teamData);
 
@@ -79,8 +83,31 @@ function CardsView() {
     // Calculate the index score of the team
     const score = calculateIndexScore(data[key]["skills"], division);
 
+    let scoutingScore = 0;
+
+    for (const key in scouting) {
+      const val = scouting[key];
+
+      if (val !== undefined) {
+        console.log(`Val is ${val}`);
+
+        if (val === "on") {
+          // Checkbox, full value
+          scoutingScore += 10;
+          console.log("e");
+        } else if (isNum(val)) {
+          console.log(`Found ${val}`);
+          scoutingScore += parseInt(scoutingScore)
+        }
+      }
+
+      
+    }
+
+    console.log(`Ended with a score of ${scoutingScore}`);
+
     // Return the information a card will later need
-    return { number: key, scouting: scouting, name: teamName, skills: skills, division: division, score: score }
+    return { number: key, scouting: scouting, name: teamName, skills: skills, division: division, score: score, scoutingScore: scoutingScore }
   })).sort((a, b) => { return b.score - a.score; });
 
   // We use the max score to determine the sorting of the cards
@@ -112,7 +139,7 @@ function CardsView() {
             <div className="w-100">
               <div className="row">
                 {cards.sort((a, b) => { return b.score - a.score; }).map((key, index) => (
-                  <TeamCard key={index} maxScore={maxScore} teamName={key.name} number={key.number} scouting={key.scouting} score={key.score} skills={key.skills} division={key.division} />
+                  <TeamCard key={index} maxScore={maxScore} teamName={key.name} number={key.number} scoutingScore={key.scoutingScore} scouting={key.scouting} score={key.score} skills={key.skills} division={key.division} />
                 ))}
               </div>
             </div>

@@ -27,6 +27,8 @@ function ScoutFormComponent() {
 
     }
 
+    socket.emit("begin-scouting-data", { team: id })
+
     return (
         <div className="col-xl-4 mx-auto col-sm-5 p-2">
             <div className={`card card-common`}>
@@ -56,9 +58,6 @@ function ScoutFormComponent() {
                         </Form.Group>
                         <Form.Group className="mt-4" controlId="formBasicCheckbox5">
                             <Form.Check name="can-park" type="checkbox" label="Can park" />
-                        </Form.Group>
-                        <Form.Group className="mt-4" controlId="formBasicCheckbox6">
-                            <Form.Check name="can-park-with-mobo" type="checkbox" label="Can park with mobile goals" />
                         </Form.Group>
                         <Form.Group className="mt-4" controlId="formBasicCheckbox7">
                             <Form.Label>Amount of mobile goals they can park with:</Form.Label>

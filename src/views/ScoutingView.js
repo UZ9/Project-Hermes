@@ -1,16 +1,33 @@
+import { faBan, faCheck, faCog } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { Link } from "react-router-dom";
 import ScoutingCard from "../cards/ScoutingCard";
-
-// The JSON data pulled from the python script
-const data = require("../teamdata.json")
+import useStore from "../stores/TeamDataStore";
 
 export const ScoutingStatus = {
-    NotStarted: 'Not Started',
-    InProgress: 'In Progress'
+    "not-started": {
+        icon: faBan,
+        message: "Not Started",
+        color: "white",
+        value: 1
+    },
+    "in-progress": {
+        icon: faCog,
+        message: "In Progress",
+        color: "warning",
+        value: 0
+    },
+    "done": {
+        icon: faCheck,
+        message: "Done",
+        color: "success",
+        value: -1
+    }
 }
 
 function ScoutingView() {
+    const data = useStore(state => state.teamData);
+
     return (<div>
         <nav class="navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand ms-2" href="/">BWHS Robotics</a>
@@ -30,8 +47,8 @@ function ScoutingView() {
                 <div className="row">
                     <div className="w-100">
                         <div className="row">
-                            {Object.keys(data).map((key, index) => (
-                                <ScoutingCard teamName={data[key]["name"]} number={key} status={Math.random() > 0.2 ? ScoutingStatus.NotStarted : ScoutingStatus.InProgress}/>
+                            {Object.keys(data).sort((a, b) => ScoutingStatus[data[b]["status"]].value - ScoutingStatus[data[a]["status"]].value).map((key, index) => (
+                                <ScoutingCard teamName={data[key]["name"]} number={key} status={data[key]["status"]}/>
                             ))}
                         </div>
                     </div>
