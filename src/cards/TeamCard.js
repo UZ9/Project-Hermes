@@ -19,7 +19,7 @@ function getIndexScoreColor(score, maxScore) {
     }
 }
 
-function ScoutingSection(props) {
+export function ScoutingSection(props) {
     return (
         <>
             <h5 className="text-center text-primary">Scouting Information</h5>

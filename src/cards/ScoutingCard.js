@@ -8,6 +8,8 @@ import "../App.css"
 import { useNavigate } from "react-router";
 import { Modal } from "react-bootstrap";
 import { useState } from "react";
+import { ScoutingSection } from "./TeamCard";
+import ReactTooltip from "react-tooltip";
 
 
 function ScoutingCard(props) {
@@ -53,9 +55,36 @@ function ScoutingCard(props) {
                 </div>
             </div>
 
+            {/* <ReactTooltip className={`tooltip col-md-${props.scouting !== undefined ? 6 : 3} p-0`} id={props.number} type='error'>
+                <div className="col-md-10 mx-auto col-sm-3">
+                    <div className="card card-common">
+                        <div className="card-body">
+                            {props.scouting !== undefined ? <>
+                                <div className="row">
+                                    <div className="col">
+                                        {props.scouting !== undefined &&
+                                            <>
+                                                <ScoutingSection withScout={true} scoutingScore={props.scoutingScore} scouting={props.scouting} />
+                                            </>
+                                        }
+                                    </div>
+                                </div>
+                                <SkillsSection skills={props.skills} />
+                            </> :
+                                <>
+                                    <MatchStandingsSection division={props.division} />
+                                    <SkillsSection withScout={false} skills={props.skills} />
+                                </>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </ReactTooltip> */}
+
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Hold your horses partner</Modal.Title>
+                    <Modal.Title>Confirm Action</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>This card identifies as <strong>{ScoutingStatus[props.status].message}</strong>. Are you sure you want to modify it?</Modal.Body>
                 <Modal.Footer>
