@@ -2,12 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom"
 import { Form } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
-import axios from "axios";
 import "../App.css"
 import { socket } from "../service/Socket";
 import { useNavigate } from "react-router-dom"
-
-
 
 function ScoutFormComponent() {
     let { id } = useParams();

@@ -1,7 +1,5 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
-import useStore from "../stores/TeamDataStore";
-import { Form } from "react-bootstrap";
 
 function getIndexScoreColor(score, maxScore) {
     let ratio = score / maxScore;

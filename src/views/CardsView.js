@@ -111,7 +111,7 @@ function CardsView() {
   })).sort((a, b) => { return b.score - a.score; });
 
   // We use the max score to determine the sorting of the cards
-  const maxScore = cards[0].score;
+  const maxScore = cards[0] ? cards[0].score : 0;
 
   const logOut = () => firebase.auth().signOut();
 

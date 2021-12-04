@@ -1,15 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBan, faCog } from "@fortawesome/free-solid-svg-icons";
 import { ScoutingStatus } from "../views/ScoutingView";
-import { Link } from "react-router-dom";
 import Button from "@restart/ui/esm/Button";
 import "../App.css"
 import { useNavigate } from "react-router";
 import { Modal } from "react-bootstrap";
 import { useState } from "react";
-import { ScoutingSection } from "./TeamCard";
-import ReactTooltip from "react-tooltip";
 
 
 function ScoutingCard(props) {
@@ -54,33 +50,6 @@ function ScoutingCard(props) {
                     </div>
                 </div>
             </div>
-
-            {/* <ReactTooltip className={`tooltip col-md-${props.scouting !== undefined ? 6 : 3} p-0`} id={props.number} type='error'>
-                <div className="col-md-10 mx-auto col-sm-3">
-                    <div className="card card-common">
-                        <div className="card-body">
-                            {props.scouting !== undefined ? <>
-                                <div className="row">
-                                    <div className="col">
-                                        {props.scouting !== undefined &&
-                                            <>
-                                                <ScoutingSection withScout={true} scoutingScore={props.scoutingScore} scouting={props.scouting} />
-                                            </>
-                                        }
-                                    </div>
-                                </div>
-                                <SkillsSection skills={props.skills} />
-                            </> :
-                                <>
-                                    <MatchStandingsSection division={props.division} />
-                                    <SkillsSection withScout={false} skills={props.skills} />
-                                </>
-                            }
-
-                        </div>
-                    </div>
-                </div>
-            </ReactTooltip> */}
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
