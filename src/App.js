@@ -13,6 +13,7 @@ import ScoutFormComponent from './components/ScoutFormComponent';
 import { socket } from './service/Socket';
 import useStore from './stores/TeamDataStore';
 import "./custom.scss";
+import MatchesView from './views/MatchesView';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -78,6 +79,7 @@ function App() {
             <Route path="/" element={<CardsView />} />
             <Route path="/scouting" element={<ScoutingView />} />
             <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent />} />
+            <Route path="/matches" element={<MatchesView/>}/>
             {/* <Route path="/login" element={<div id="firebaseui-auth-container" />} /> */}
           </Routes>
         </BrowserRouter>

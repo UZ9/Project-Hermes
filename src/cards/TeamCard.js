@@ -1,7 +1,7 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
 
-function getIndexScoreColor(score, maxScore) {
+export function getIndexScoreColor(score, maxScore) {
     let ratio = score / maxScore;
 
     if (ratio < 0.3) {

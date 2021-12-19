@@ -39,6 +39,9 @@ function ScoutingView() {
                     <li class="nav-item active">
                         <Link to="/scouting" class="nav-link text-white">Scouting</Link>
                     </li>
+                    <li class="nav-item">
+                        <Link to="/matches" class="nav-link">Matches<span class="sr-only"></span></Link>
+                    </li>
                 </ul>
             </div>
         </nav>

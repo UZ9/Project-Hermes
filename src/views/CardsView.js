@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import firebase from '@firebase/app-compat';
 import Button from '@restart/ui/esm/Button';
+import Scrollbars from 'react-custom-scrollbars';
 import useStore from '../stores/TeamDataStore';
 
 /**
@@ -41,7 +42,7 @@ function calculateScores(skills, division) {
  * @param {Object} division The division data pulled from the JSON file
  * @returns the Index Score of the team
  */
-function calculateIndexScore(skills, division) {
+export function calculateIndexScore(skills, division) {
   let output = 0;
 
   const nums = calculateScores(skills, division);
@@ -54,7 +55,7 @@ function calculateIndexScore(skills, division) {
   return output.toFixed(1);
 }
 
-function isNum(num) {
+export function isNum(num) {
   return !isNaN(parseInt(num)) && !isNaN(num - 0);
 }
 
@@ -101,7 +102,7 @@ function CardsView() {
         }
       }
 
-      
+
     }
 
     console.log(`Ended with a score of ${scoutingScore}`);
@@ -116,7 +117,7 @@ function CardsView() {
   const logOut = () => firebase.auth().signOut();
 
   return (
-    <div>
+    <div style={{width: "100vw", height: "100vh"}}>
       <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
         <a className="navbar-brand ms-2" href="/">BWHS Robotics</a>
         <div className="collapse navbar-collapse" id="navbarNav">
@@ -127,25 +128,36 @@ function CardsView() {
             <li className="nav-item">
               <Link to="/scouting" className="nav-link">Scouting</Link>
             </li>
+            <li class="nav-item">
+              <Link to="/matches" class="nav-link">Matches<span class="sr-only"></span></Link>
+            </li>
           </ul>
         </div>
         <div>
           <Button type="button" className="btn btn-sm btn-danger mx-3" onClick={logOut}>Sign Out</Button>
         </div>
       </nav>
-      <section>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="w-100">
-              <div className="row">
-                {cards.sort((a, b) => { return b.score - a.score; }).map((key, index) => (
-                  <TeamCard key={index} maxScore={maxScore} teamName={key.name} number={key.number} scoutingScore={key.scoutingScore} scouting={key.scouting} score={key.score} skills={key.skills} division={key.division} />
-                ))}
+
+      <div>
+
+        <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="w-100">
+                <div className="row">
+
+                  {cards.sort((a, b) => { return b.score - a.score; }).map((key, index) => (
+                    <TeamCard key={index} maxScore={maxScore} teamName={key.name} number={key.number} scoutingScore={key.scoutingScore} scouting={key.scouting} score={key.score} skills={key.skills} division={key.division} />
+                  ))}
+
+
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </Scrollbars>
+      </div>
+
     </div>
   );
 }
