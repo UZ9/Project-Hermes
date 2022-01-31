@@ -100,3 +100,7 @@ body {
 .scroll {
   height: "100%"
 }
+
+.modal-content {
+  width: "100%"
+}

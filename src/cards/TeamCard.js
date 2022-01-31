@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
+import Button from "@restart/ui/esm/Button";
+import { Modal } from "react-bootstrap";
+import { HashLink as Link } from 'react-router-hash-link';
 
 export function getIndexScoreColor(score, maxScore) {
     let ratio = score / maxScore;
@@ -56,6 +59,29 @@ export function ScoutingSection(props) {
             </div>
         </>);
 }
+
+function ScoutingNotesSection(props) {
+    return (
+        <>
+            <div className="row mt-3">
+                <h5 className="text-center text-primary">Scouting Notes</h5>
+                <div className="m-2 row text-secondary">
+                    <ul>
+                        <li>Particulary good at (thing)</li>
+                        <li><Link className="text-decoration-none" to={'/matches#Qualifier #8'}>Qualifier 8</Link> was pretty rad.</li>
+                        <li>Also good at (other thing)</li>
+                        <li>Bad at (thing)</li>
+                        <li>Robot encountered several issues regarding (thing) during matches</li>
+                        <li>Ended up throwing <Link className="text-decoration-none" to={'/matches#Final #1-1'}>Final #1-1</Link> match</li>
+                    </ul>
+                    
+                </div>
+
+            </div>
+        </>
+    )
+}
+
 
 function SkillsSection(props) {
     return (
@@ -131,6 +157,15 @@ function MatchStandingsSection(props) {
 
 function TeamCard(props) {
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+
+    const handleClick = async e => {
+        e.preventDefault();
+
+        setShow(true);
+    }
 
 
     return (
@@ -138,9 +173,10 @@ function TeamCard(props) {
             <div className="col-xl-3 mx-auto col-sm-5 p-2">
                 <div className="card card-common">
                     <div data-tip data-for={props.number} className="card-body">
+
                         <div className="d-flex justify-content-between">
                             <div className="text-start text-secondary">
-                                <h5>{props.number}</h5>
+                                <Button style={{ textDecoration: "none" }} onClick={handleClick} className="text-secondary stretched-link shadow-none scout-card-button">{props.number}</Button>
                                 <h6 className="align-top">{props.teamName}</h6>
 
                             </div>
@@ -190,6 +226,27 @@ function TeamCard(props) {
                     </div>
                 </div>
             </ReactTooltip>
+            <Modal show={show} onHide={handleClose} size="lg">
+                <div className="container-fluid">
+                    <div className="m-3">
+
+                        <div className="row">
+                            <div className="col">
+                                <MatchStandingsSection division={props.division} />
+                            </div>
+                            <div className="col">
+                                {props.scouting !== undefined &&
+                                    <>
+                                        <ScoutingSection withScout={true} scoutingScore={props.scoutingScore} scouting={props.scouting} />
+                                    </>
+                                }
+                            </div>
+                        </div>
+                        <SkillsSection skills={props.skills} />
+                        <ScoutingNotesSection skills={props.skills}/>
+                    </div>
+                </div>
+            </Modal>
         </>
     )
 

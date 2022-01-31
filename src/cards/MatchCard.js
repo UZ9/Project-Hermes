@@ -156,7 +156,6 @@ function MatchStandingsSection(props) {
 }
 
 function MatchCard(props) {
-
     const data = props.cards;
 
     console.log(props.cards);
@@ -171,7 +170,7 @@ function MatchCard(props) {
                         <div className="col text-center">
                             <AllianceScoreDisplay color="tomato" currentTeam={props.currentTeam} teamOne={props.redAlliance["teams"][0]} teamTwo={props.redAlliance["teams"][1]} text={props.redAlliance["score"]} />
                         </div>
-                        <div className="col text-center"> {props.matchName}</div>
+                        <div id={props.matchName} className="col text-center"> {props.matchName}</div>
                         <div className="col text-center">
                             <AllianceScoreDisplay color="#00BFFF" currentTeam={props.currentTeam} teamOne={props.blueAlliance["teams"][0]} teamTwo={props.blueAlliance["teams"][1]} text={props.blueAlliance["score"]} />
                         </div>
