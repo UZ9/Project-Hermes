@@ -59,7 +59,7 @@ export function isNum(num) {
   return !isNaN(parseInt(num)) && !isNaN(num - 0);
 }
 
-function CardsView() {
+function CardsView({isAdmin}) {
   const data = useStore(state => state.teamData);
 
   let cards = (Object.keys(data).map((key) => {
@@ -131,6 +131,11 @@ function CardsView() {
             <li class="nav-item">
               <Link to="/matches" class="nav-link">Matches<span class="sr-only"></span></Link>
             </li>
+            {isAdmin ?? 
+            <li class="nav-item">
+              <Link to="/admin" class="nav-link">Admin<span class="sr-only"></span></Link>
+            </li>
+            }
           </ul>
         </div>
         <div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { Form } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
@@ -10,6 +10,17 @@ function ScoutFormComponent() {
     let { id } = useParams();
     const navigate = useNavigate();
 
+    let processed = false;
+
+    useEffect(() => {
+        return () => {
+            // Clear the scouting data status if the user clicks the previous page arrow
+            if (!processed) {
+                socket.emit("cancel-scouting-data", { team: id });
+            }
+        }
+    })
+
     const handleSubmit = async e => {
         e.preventDefault();
 
@@ -18,6 +29,8 @@ function ScoutFormComponent() {
 
         console.log("Sending data")
         socket.emit("add-scouting-data", { team: id, data: formDataObj })
+
+        processed = true;
 
         navigate("/");
 

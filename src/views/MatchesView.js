@@ -4,7 +4,7 @@ import useStore from "../stores/TeamDataStore";
 import { calculateIndexScore, isNum } from "./CardsView";
 
 function MatchesView() {
-    const currentTeam = "33691A"
+    const currentTeam = "21050A"
 
     let data = useStore(state => state.teamData);
 
