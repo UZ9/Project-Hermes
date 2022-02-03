@@ -66,10 +66,7 @@ function App() {
 
       setIsSignedIn(!!user);
 
-      console.log(user["_delegate"]["email"])
-
-
-      if (user["_delegate"]["email"] === "admin@admin.admin") {
+      if (user && user["_delegate"]["email"] === "admin@admin.admin") {
         console.log("we good")
         setIsAdmin(true);
       }

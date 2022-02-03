@@ -50,6 +50,11 @@ td.text-right {
 /* End of Tooltip */
 
 
+.bg-green {
+  background-color: #A2E4B8 !important;
+}
+
+
 /* Utility */
 .nowrap {
   white-space: nowrap;

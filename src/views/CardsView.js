@@ -131,15 +131,15 @@ function CardsView({isAdmin}) {
             <li class="nav-item">
               <Link to="/matches" class="nav-link">Matches<span class="sr-only"></span></Link>
             </li>
-            {isAdmin ?? 
+            {isAdmin ?
             <li class="nav-item">
               <Link to="/admin" class="nav-link">Admin<span class="sr-only"></span></Link>
             </li>
-            }
+            : <></>}
           </ul>
         </div>
         <div>
-          <Button type="button" className="btn btn-sm btn-danger mx-3" onClick={logOut}>Sign Out</Button>
+          <Button type="button" className="btn-danger btn btn-sm  mx-3" onClick={logOut}>Sign Out</Button>
         </div>
       </nav>
 

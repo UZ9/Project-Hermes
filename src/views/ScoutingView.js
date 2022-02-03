@@ -20,7 +20,7 @@ export const ScoutingStatus = {
     "done": {
         icon: faCheck,
         message: "Done",
-        color: "success",
+        color: "green",
         value: -1
     }
 }
