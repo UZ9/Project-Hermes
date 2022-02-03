@@ -45,33 +45,23 @@ function ScoutFormComponent() {
                 <div className="card-body">
                     <h1>Scouting for Team {id}</h1>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group>
-                            <Form.Label>Autonomous Consistency </Form.Label>
-                            <Form.Range name="auton-consistency" min={0} max={5} />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Autonomous Compatibility </Form.Label>
-                            <Form.Range name="auton-compatibility" min={0} max={5} />
-                        </Form.Group>
-                        <Form.Group className="mt-4" controlId="formBasicCheckbox">
-                            <Form.Label>Amount of points their match auton can do:</Form.Label>
-                            <Form.Control name="auton-match-points" type="text" placeholder="Put number here" />
-                        </Form.Group>
                         <Form.Group className="mt-4" controlId="formBasicCheckbox2">
-                            <Form.Check name="can-place-mobo-on-platform" type="checkbox" label="Can place mobile goals on platforms" />
+                            <Form.Check name="can-carry-mobo" type="checkbox" label="Can you carry all mobile goals?" />
                         </Form.Group>
                         <Form.Group className="mt-4" controlId="formBasicCheckbox3">
-                            <Form.Check name="can-place-yellow-mobo-on-platform" type="checkbox" label="Can place yellow mobile yellows on platform" />
+                            <Form.Check name="can-carry-two-mobo" type="checkbox" label="Can you hold two or more mobile goals?" />
                         </Form.Group >
                         <Form.Group className="mt-4" controlId="formBasicCheckbox4">
-                            <Form.Check name="can-move-yellow-mobile-goals" type="checkbox" label="Can move yellow mobile goals" />
+                            <Form.Check name="can-score-rings" type="checkbox" label="Can you score rings?" />
                         </Form.Group>
                         <Form.Group className="mt-4" controlId="formBasicCheckbox5">
-                            <Form.Check name="can-park" type="checkbox" label="Can park" />
+                            <Form.Check name="can-place-mobo-platform" type="checkbox" label="Can you place mobile goals on the platform?" />
+                        </Form.Group>
+                        <Form.Group className="mt-4" controlId="formBasicCheckbox6">
+                            <Form.Check name="can-park" type="checkbox" label="Can you park?" />
                         </Form.Group>
                         <Form.Group className="mt-4" controlId="formBasicCheckbox7">
-                            <Form.Label>Amount of mobile goals they can park with:</Form.Label>
-                            <Form.Control name="mobo-park-count" type="text" placeholder="Put number here" />
+                            <Form.Check name="can-park-with-mobo" type="checkbox" label="Can you park with mobile goals?" />
                         </Form.Group>
                         <Form.Group className="mt-4">
                             <Button className="w-100 btn mt-3 btn-primary" type="submit">Submit</Button>
