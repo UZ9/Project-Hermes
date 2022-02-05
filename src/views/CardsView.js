@@ -62,13 +62,15 @@ export function isNum(num) {
 function CardsView({isAdmin}) {
   const data = useStore(state => state.teamData);
 
-  let cards = (Object.keys(data).map((key) => {
-    const teamName = data[key]["name"];
-    const skills = data[key]["skills"];
-    const scouting = data[key]["scouting"];
+  console.log({data});
+
+  let cards = (data.map((card) => {
+    const teamName = card["name"];
+    const skills = card["skills"];
+    const scouting = card["scouting"];
 
     // If no division waas found (e.g. if they didn't participate) create a default division schema
-    const division = data[key]["division"] !== undefined ? data[key]["division"] : {
+    const division = card["division"] !== undefined ? card["division"] : {
       "ranking": "N/A",
       "wins": 0,
       "losses": 0,
@@ -82,7 +84,7 @@ function CardsView({isAdmin}) {
     };
 
     // Calculate the index score of the team
-    const score = calculateIndexScore(data[key]["skills"], division);
+    const score = calculateIndexScore(card["skills"], division);
 
     let scoutingScore = 0;
 
@@ -108,7 +110,7 @@ function CardsView({isAdmin}) {
     console.log(`Ended with a score of ${scoutingScore}`);
 
     // Return the information a card will later need
-    return { number: key, scouting: scouting, name: teamName, skills: skills, division: division, score: score, scoutingScore: scoutingScore }
+    return { number: card["id"], scouting: scouting, name: teamName, skills: skills, division: division, score: score, scoutingScore: scoutingScore }
   })).sort((a, b) => { return b.score - a.score; });
 
   // We use the max score to determine the sorting of the cards

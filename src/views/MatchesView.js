@@ -1,12 +1,22 @@
+import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MatchCard from "../cards/MatchCard";
 import useStore from "../stores/TeamDataStore";
 import { calculateIndexScore, isNum } from "./CardsView";
+import { Typeahead } from 'react-bootstrap-typeahead'
+import 'react-bootstrap-typeahead/css/Typeahead.css'
+import { useState } from "react";
+import shallow from 'zustand/shallow'
+import Scrollbars from "react-custom-scrollbars";
 
 function MatchesView() {
-    const currentTeam = "21050A"
+    // const currentTeam = "21050A"
 
-    let data = useStore(state => state.teamData);
+    const [data, currentTeam] = useStore(state => [state.teamData, state.currentTeam]);
+
+    const [currentTeamInput, setCurrentTeamInput] = useState(currentTeam);
+
+    console.log("Updating");
 
     let cards = Object.assign({}, ...Object.keys(data).map((key) => {
         const teamName = data[key]["name"];
@@ -53,13 +63,35 @@ function MatchesView() {
 
         // Return the information a card will later need
         return ({
-            [key]: { scouting: scouting, name: teamName, skills: skills, division: division, score: score, scoutingScore: scoutingScore }
+            [data[key]["id"]]: { scouting: scouting, id: data[key]["id"], name: teamName, skills: skills, division: division, score: score, scoutingScore: scoutingScore }
         })
     }));
 
-    const matches = data[currentTeam]["matches"]
+    const handleSubmit = () => {
+        console.log(currentTeamInput[0])
+
+        useStore.setState({ currentTeam: currentTeamInput[0] });
+    }
+
+    console.log({ currentTeam })
+    console.log({ data });
+    console.log((currentTeam in data));
+
+    let matches = data.find(element => element.id === currentTeam)
+
+    if (matches === undefined) {
+        matches = []
+    } else {
+        // TODO: Fix odd nesting of matches
+        matches = matches["matches"];
+    };
+
+
+    // const matches =  ? data[currentTeam]["matches"] : []
 
     console.log({ matches })
+
+    const teamList = data.map(element => element["id"]);
 
     return (
         <div>
@@ -78,16 +110,33 @@ function MatchesView() {
                         </li>
                     </ul>
                 </div>
+                <Typeahead className="me-2 p-0" onChange={setCurrentTeamInput} placeholder={"Team ID"} labelKey={"team-selection"} id="team-selection" highlightOnlyResult={false} type="text" options={teamList} defaultInputValue={currentTeamInput}/>
+                <Button className="btn btm-sm btn-primary me-3" onClick={handleSubmit} >Set Team</Button>
             </nav>
-            <section>
-                <div className="container-fluid">
-                    <div className="row">
-                        {Object.keys(matches).map((key, index) => (
-                            <MatchCard cards={cards} key={index} matchName={key} currentTeam={currentTeam} blueAlliance={matches[key]["blue-alliance"]} redAlliance={matches[key]["red-alliance"]} />
-                        ))}
+                <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
+                    <div className="container-fluid">
+                        <div className="row">
+                            {(matches.length !== 0) ?
+                                Object.keys(matches).map((key, index) => (
+                                    <MatchCard cards={cards} key={index} matchName={key} currentTeam={currentTeam} blueAlliance={matches[key]["blue-alliance"]} redAlliance={matches[key]["red-alliance"]} />
+                                )) :
+                                <>
+                                    <div className="col-xl-3 mx-auto col-sm-5 p-2">
+                                        <div className={`card card-common`}>
+                                            <div className="card-body">
+                                                <div className="d-flex justify-content-between">
+                                                    <div className="text-start text-secondary">
+                                                        <h5 className="text-danger">No team selected.</h5>
+                                                        <h6 className="align-top">Make sure you have selected a valid team from the Team ID selection..</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </Scrollbars>
         </div>
     );
 }

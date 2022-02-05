@@ -44,17 +44,18 @@ function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
+  const currentTeam = useStore(state => state.currentTeam);
+
   socket.on('connection', (res) => {
     console.log(":R");
     console.log(res);
 
     useStore.setState({ teamData: res.data });
-
   })
 
   socket.on('data-update', (res) => {
     console.log("received update");
-    console.log(res)
+    console.log(res.data)
 
     useStore.setState({ teamData: res.data });
   })
@@ -67,8 +68,12 @@ function App() {
       setIsSignedIn(!!user);
 
       if (user && user["_delegate"]["email"] === "admin@admin.admin") {
-        console.log("we good")
         setIsAdmin(true);
+      }
+
+      if (user) {
+        console.log("Setting current team to " + user["_delegate"]["email"].split('@')[0]);
+        useStore.setState({ currentTeam: user["_delegate"]["email"].split('@')[0] });
       }
     })
 
@@ -98,7 +103,7 @@ function App() {
               <Route path="/" element={<CardsView />} isAdmin={isAdmin} />
               <Route path="/scouting" element={<ScoutingView />} />
               <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent />} onLeave={leaveScoutForm} />
-              <Route path="/matches" element={<MatchesView />} />
+              <Route path="/matches" element={<MatchesView/>} />
               <Route path="/admin" element={<AdminView />} />
               {/* <Route path="/login" element={<div id="firebaseui-auth-container" />} /> */}
             </Routes>
