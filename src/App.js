@@ -97,7 +97,7 @@ function App() {
             <Routes>
               <Route path="/" element={<CardsView />} isAdmin={isAdmin} />
               <Route path="/scouting" element={<ScoutingView />} />
-              <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent />} onLeave={leaveScoutForm} />
+              <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent />}/>
               <Route path="/matches" element={<MatchesView />} />
               {/* <Route path="/login" element={<div id="firebaseui-auth-container" />} /> */}
             </Routes>
