@@ -27,7 +27,6 @@ function ScoutFormComponent() {
         const formData = new FormData(e.target);
         const formDataObj = Object.fromEntries(formData.entries());
 
-        console.log("Sending data")
         socket.emit("add-scouting-data", { team: id, data: formDataObj })
 
         processed = true;
@@ -37,7 +36,10 @@ function ScoutFormComponent() {
 
     }
 
-    socket.emit("begin-scouting-data", { team: id })
+    useEffect(() => {
+        socket.emit("begin-scouting-data", { team: id })
+    })
+
 
     return (
         <div className="col-xl-4 mx-auto col-sm-5 p-2">

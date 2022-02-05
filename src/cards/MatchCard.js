@@ -96,8 +96,6 @@ function TeamNameDisplay(props) {
 }
 
 function AllianceScoreDisplay(props) {
-    console.log(props.currentTeam);
-
     const isTeam = props.currentTeam === props.teamOne || props.currentTeam === props.teamTwo;
 
     const color = props.color;
@@ -108,8 +106,6 @@ function AllianceScoreDisplay(props) {
 }
 
 function MatchStandingsSection(props) {
-    console.log({ props });
-
     return (
         <>
             <h4 className="text-center text-secondary pb-2">{props.teamName}</h4>
@@ -157,8 +153,6 @@ function MatchStandingsSection(props) {
 
 function MatchCard(props) {
     const data = props.cards;
-
-    console.log(props.cards);
 
     return (
         <>

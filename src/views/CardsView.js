@@ -62,8 +62,6 @@ export function isNum(num) {
 function CardsView({isAdmin}) {
   const data = useStore(state => state.teamData);
 
-  console.log({data});
-
   let cards = (data.map((card) => {
     const teamName = card["name"];
     const skills = card["skills"];
@@ -92,22 +90,16 @@ function CardsView({isAdmin}) {
       const val = scouting[key];
 
       if (val !== undefined) {
-        console.log(`Val is ${val}`);
-
         if (val === "on") {
           // Checkbox, full value
           scoutingScore += 10;
-          console.log("e");
         } else if (isNum(val)) {
-          console.log(`Found ${val}`);
           scoutingScore += parseInt(scoutingScore)
         }
       }
 
 
     }
-
-    console.log(`Ended with a score of ${scoutingScore}`);
 
     // Return the information a card will later need
     return { number: card["id"], scouting: scouting, name: teamName, skills: skills, division: division, score: score, scoutingScore: scoutingScore }

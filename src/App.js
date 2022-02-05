@@ -44,27 +44,16 @@ function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const currentTeam = useStore(state => state.currentTeam);
-
   socket.on('connection', (res) => {
-    console.log(":R");
-    console.log(res);
-
     useStore.setState({ teamData: res.data });
   })
 
   socket.on('data-update', (res) => {
-    console.log("received update");
-    console.log(res.data)
-
     useStore.setState({ teamData: res.data });
   })
 
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
-      console.log({ user });
-
-
       setIsSignedIn(!!user);
 
       if (user && user["_delegate"]["email"] === "admin@admin.admin") {
@@ -72,21 +61,12 @@ function App() {
       }
 
       if (user) {
-        console.log("Setting current team to " + user["_delegate"]["email"].split('@')[0]);
         useStore.setState({ currentTeam: user["_delegate"]["email"].split('@')[0] });
       }
     })
 
     return () => unregisterAuthObserver();
   }, []);
-
-  const leaveScoutForm = () => {
-    console.log("we do be leavin tho");
-  };
-
-  console.log(isAdmin);
-
-
 
   if (!isSignedIn) {
     return (
@@ -102,7 +82,7 @@ function App() {
             <Routes>
               <Route path="/" element={<CardsView />} isAdmin={isAdmin} />
               <Route path="/scouting" element={<ScoutingView />} />
-              <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent />} onLeave={leaveScoutForm} />
+              <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent />}/>
               <Route path="/matches" element={<MatchesView/>} />
               <Route path="/admin" element={<AdminView />} />
               {/* <Route path="/login" element={<div id="firebaseui-auth-container" />} /> */}

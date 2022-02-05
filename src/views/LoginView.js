@@ -19,11 +19,6 @@ function LoginView() {
             "https://project-hermes-express-backend.herokuapp.com/login",
             user
         )
-
-        console.log(response.data);
-
-
-        console.log(user);
     };
 
 

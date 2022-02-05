@@ -16,8 +16,6 @@ function MatchesView() {
 
     const [currentTeamInput, setCurrentTeamInput] = useState(currentTeam);
 
-    console.log("Updating");
-
     let cards = Object.assign({}, ...Object.keys(data).map((key) => {
         const teamName = data[key]["name"];
         const skills = data[key]["skills"];
@@ -50,7 +48,6 @@ function MatchesView() {
                 if (val === "on") {
                     // Checkbox, full value
                     scoutingScore += 10;
-                    console.log("e");
                 } else if (isNum(val)) {
                     scoutingScore += parseInt(scoutingScore)
                 }
@@ -59,8 +56,6 @@ function MatchesView() {
 
         }
 
-        console.log(`Ended with a score of ${scoutingScore}`);
-
         // Return the information a card will later need
         return ({
             [data[key]["id"]]: { scouting: scouting, id: data[key]["id"], name: teamName, skills: skills, division: division, score: score, scoutingScore: scoutingScore }
@@ -68,14 +63,8 @@ function MatchesView() {
     }));
 
     const handleSubmit = () => {
-        console.log(currentTeamInput[0])
-
         useStore.setState({ currentTeam: currentTeamInput[0] });
     }
-
-    console.log({ currentTeam })
-    console.log({ data });
-    console.log((currentTeam in data));
 
     let matches = data.find(element => element.id === currentTeam)
 
@@ -88,8 +77,6 @@ function MatchesView() {
 
 
     // const matches =  ? data[currentTeam]["matches"] : []
-
-    console.log({ matches })
 
     const teamList = data.map(element => element["id"]);
 

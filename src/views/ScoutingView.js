@@ -28,6 +28,10 @@ export const ScoutingStatus = {
 function ScoutingView() {
     const data = useStore(state => state.teamData);
 
+    // data.sort((a, b) => ScoutingStatus[b["status"] ?? "not-started"].value - ScoutingStatus[a["status"] ?? "not-started"].value).map((element) => (
+    //     <ScoutingCard teamName={element["name"]} number={element["id"]} status={element["status"] ?? "not-started"}/>
+    // ))
+
     return (<div>
         <nav class="navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand ms-2" href="/">BWHS Robotics</a>
@@ -50,8 +54,8 @@ function ScoutingView() {
                 <div className="row">
                     <div className="w-100">
                         <div className="row">
-                            {Object.keys(data).sort((a, b) => ScoutingStatus[data[b]["status"]].value - ScoutingStatus[data[a]["status"]].value).map((key, index) => (
-                                <ScoutingCard teamName={data[key]["name"]} number={key} status={data[key]["status"]}/>
+                            {data.sort((a, b) => ScoutingStatus[b["scouting_status"] ?? "not-started"].value - ScoutingStatus[a["scouting_status"] ?? "not-started"].value).map((element) => (
+                                <ScoutingCard teamName={element["name"]} number={element["id"]} status={element["scouting_status"] ?? "not-started"}/>
                             ))}
                         </div>
                     </div>
