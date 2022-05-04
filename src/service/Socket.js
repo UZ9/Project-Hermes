@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
 
-const SOCKET_URL = "https://project-hermes-express-backend.herokuapp.com/";
+const SOCKET_URL = "localhost:5000";
 
 export const socket = io(SOCKET_URL, { transports: ['websocket', 'polling', 'flashsocket'] });

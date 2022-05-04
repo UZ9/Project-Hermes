@@ -30,7 +30,7 @@ function calculateScores(skills, division) {
   // Win points, skill points, and autonomous points need to be factored into the score
   let wpScore = attemptParseInt(division["wp"]) * 30;
   let spScore = attemptParseInt(division["sp"]) * 0.2;
-  let apScore = attemptParseInt(division["ap"]);
+  let apScore = attemptParseInt(division["ap"]) * 2;
 
   return [driverScore, programmingScore, winScore, apScore, wpScore, spScore];
 }
