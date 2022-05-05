@@ -30,32 +30,68 @@ export function ScoutingSection(props) {
                 </h5>
             </div>
             <div className="row text-secondary">
-                <h6 className="col-7">Auton Consistency</h6>
-                <h6 className="col text-end">{props.scouting["auton-consistency"]}</h6>
+                <h6 className="col-7">Full Win-Point</h6>
+                <h6 className="col text-end">{(props.scouting["full-win-point"] || "No").replace("on", "Yes")}</h6>
             </div>
             <div className="row text-secondary">
-                <h6 className="col-7">Auton Compatibility</h6>
-                <h6 className="col text-end">{props.scouting["auton-compatibility"]}</h6>
+                <h6 className="col-7">Half Win-Point</h6>
+                <h6 className="col text-end">{(props.scouting["half-win-point"] || "No").replace("on", "Yes")}</h6>
             </div>
             <div className="row text-secondary">
-                <h6 className="col-7">Match Auton Points</h6>
-                <h6 className="col text-end">{props.scouting["auton-match-points"] !== "" ? props.scouting["auton-match-points"] : 0}</h6>
+                <h6 className="col-7">Left Auton</h6>
+                <h6 className="col text-end">{(props.scouting["left-auton"] || "No").replace("on", "Yes")}</h6>
             </div>
             <div className="row text-secondary">
-                <h6 className="col-7">Mobo On Plat</h6>
-                <h6 className="col text-end">{props.scouting["can-place-mobo-on-platform"] === "on" ? "Yes" : "No"}</h6>
+                <h6 className="col-7">Right Auton</h6>
+                <h6 className="col text-end">{(props.scouting["right-auton"] || "No").replace("on", "Yes")}</h6>
             </div>
             <div className="row text-secondary">
-                <h6 className="col-7">Yellow Mobo On Plat</h6>
-                <h6 className="col text-end">{props.scouting["can-move-yellow-mobile-goals"] === "on" ? "Yes" : "No"}</h6>
+                <h6 className="col-7">Mid Auton</h6>
+                <h6 className="col text-end">{(props.scouting["mid-auton"] || "No").replace("on", "Yes")}</h6>
+            </div>
+            <div className="row text-secondary">
+                <h6 className="col-7">Consistent Goal Rush</h6>
+                <h6 className="col text-end">{(props.scouting["consistent-goal-rush"] || "No").replace("on", "Yes")}</h6>
+            </div>
+            <div className="row text-secondary">
+                <h6 className="col-7"># Motor Drive</h6>
+                <h6 className="col text-end">{(props.scouting["4-motor-drive"] || "No").replace("on", "Yes") || props.scouting["6-motor-drive"].replace("no", "Yes") || props.scouting["8-motor-drive"].replace("no", "Yes") || "N/A"}</h6>
+            </div>
+            <div className="row text-secondary">
+                <h6 className="col-7">Transmission</h6>
+                <h6 className="col text-end">{(props.scouting["transmission"] || "No").replace("on", "Yes")}</h6>
+            </div>
+            <div className="row text-secondary">
+                <h6 className="col-7">Auton Wings</h6>
+                <h6 className="col text-end">{(props.scouting["auton-wings"] || "No").replace("on", "Yes")}</h6>
+            </div>
+            <div className="row text-secondary">
+                <h6 className="col-7">Auton Stick</h6>
+                <h6 className="col text-end">{(props.scouting["auton-stick"] || "No").replace("on", "Yes")}</h6>
+            </div>
+            <div className="row text-secondary">
+                <h6 className="col-7">Front Clamp Type</h6>
+                <h6 className="col text-end">{props.scouting["pneumatic-front-clamp"] === "on" ? "Pneumatic" : props.scouting["motor-front-clamp"] === "on" ? "Motor" : "N/A"}</h6>
+            </div>
+            <div className="row text-secondary">
+                <h6 className="col-7">Back Clamp Type</h6>
+                <h6 className="col text-end">{props.scouting["pneumatic-back-clamp"] === "on" ? "Pneumatic" : props.scouting["motor-back-clamp"] === "on" ? "Motor" : "N/A"}</h6>
+            </div>
+            <div className="row text-secondary">
+                <h6 className="col-7">Ring Intake Consistency</h6>
+                <h6 className="col text-end">{(props.scouting["consistent-ring-intake"] || "No").replace("on", "Yes")}</h6>
             </div>
             <div className="row text-secondary">
                 <h6 className="col-7">Park</h6>
-                <h6 className="col text-end">{props.scouting["can-park"] === "on" ? "Yes" : "No"}</h6>
+                <h6 className="col text-end">{(props.scouting["park"] || "No").replace("on", "Yes")}</h6>
             </div>
             <div className="row text-secondary">
-                <h6 className="col-7">Mobo Park Count</h6>
-                <h6 className="col text-end">{props.scouting["mobo-park-count"] !== "" ? props.scouting["mobo-park-count"] : 0}</h6>
+                <h6 className="col-7">Double Park</h6>
+                <h6 className="col text-end">{(props.scouting["double-park"] || "No").replace("on", "Yes")}</h6>
+            </div>
+            <div className="row text-secondary">
+                <h6 className="col-7">Park with # Mobile Goals</h6>
+                <h6 className="col text-end">{(props.scouting["full-win-point"] || "No").replace("on", "Yes")}</h6>
             </div>
         </>);
 }
@@ -74,7 +110,7 @@ function ScoutingNotesSection(props) {
                         <li>Robot encountered several issues regarding (thing) during matches</li>
                         <li>Ended up throwing <Link className="text-decoration-none" to={'/matches#Final #1-1'}>Final #1-1</Link> match</li>
                     </ul>
-                    
+
                 </div>
 
             </div>
@@ -138,6 +174,10 @@ function MatchStandingsSection(props) {
             <div className="row text-secondary">
                 <h6 className="col">Skills Points</h6>
                 <h6 className="col text-end">{props.division["sp"]}</h6>
+            </div>
+            <div className="row text-secondary">
+                <h6 className="col">CCWM</h6>
+                <h6 className="col text-end">{props.division["total_points"]}</h6>
             </div>
             <div className="row text-secondary">
                 <h6 className="col">High Score</h6>
@@ -205,6 +245,8 @@ function TeamCard(props) {
                                 <div className="row">
                                     <div className="col">
                                         <MatchStandingsSection division={props.division} />
+                                        <SkillsSection withScout={false} skills={props.skills} />
+
                                     </div>
                                     <div className="col">
                                         {props.scouting !== undefined &&
@@ -214,11 +256,10 @@ function TeamCard(props) {
                                         }
                                     </div>
                                 </div>
-                                <SkillsSection skills={props.skills} />
+                                {/* <SkillsSection skills={props.skills} /> */}
                             </> :
                                 <>
                                     <MatchStandingsSection division={props.division} />
-                                    <SkillsSection withScout={false} skills={props.skills} />
                                 </>
                             }
 
@@ -233,6 +274,8 @@ function TeamCard(props) {
                         <div className="row">
                             <div className="col">
                                 <MatchStandingsSection division={props.division} />
+                                <SkillsSection skills={props.skills} />
+
                             </div>
                             <div className="col">
                                 {props.scouting !== undefined &&
@@ -242,8 +285,7 @@ function TeamCard(props) {
                                 }
                             </div>
                         </div>
-                        <SkillsSection skills={props.skills} />
-                        <ScoutingNotesSection skills={props.skills}/>
+                        <ScoutingNotesSection skills={props.skills} />
                     </div>
                 </div>
             </Modal>
