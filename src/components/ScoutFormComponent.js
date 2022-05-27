@@ -5,6 +5,7 @@ import Button from "@restart/ui/esm/Button";
 import "../App.css"
 import { socket } from "../service/Socket";
 import { useNavigate } from "react-router-dom"
+import axios from "axios";
 
 function ScoutFormComponent() {
     let { id } = useParams();
@@ -27,11 +28,31 @@ function ScoutFormComponent() {
         const formData = new FormData(e.target);
         const formDataObj = Object.fromEntries(formData.entries());
 
-        socket.emit("add-scouting-data", { team: id, data: formDataObj })
+        const img = formDataObj["robot-image"];
 
-        processed = true;
+        const imgUploadData = new FormData();
+        const api = "5882040c00988288991cbc2df2c1fe06";
+        imgUploadData.append("file", img);
+        imgUploadData.append("apikey", api);
 
-        navigate("/");
+        // TODO: Start a loading animation here?
+
+        axios.post('https://beeimg.com/api/upload/file/text/', imgUploadData, {
+			headers: {
+			  'Content-Type': 'multipart/form-data'
+			}
+		}).then(res => {
+            formDataObj["robot-image"] = res.data;
+
+
+            socket.emit("add-scouting-data", { team: id, data: formDataObj })
+    
+            processed = true;
+    
+            navigate("/");
+        });
+
+
 
 
     }
@@ -65,9 +86,14 @@ function ScoutFormComponent() {
                         <Form.Group className="mt-4" controlId="formBasicCheckbox7">
                             <Form.Check name="can-park-with-mobo" type="checkbox" label="Can you park with mobile goals?" />
                         </Form.Group>
+                        <Form.Group controlId="formFile" className="mt-4 mb-3">
+                            <Form.Label>Robot Image</Form.Label>
+                            <Form.Control name="robot-image" type="file" />
+                        </Form.Group>
                         <Form.Group className="mt-4">
                             <Button className="w-100 btn mt-3 btn-primary" type="submit">Submit</Button>
                         </Form.Group>
+
                     </Form>
 
                 </div>

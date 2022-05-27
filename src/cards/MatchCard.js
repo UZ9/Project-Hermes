@@ -1,22 +1,22 @@
 import React from "react";
+import { Image } from "react-bootstrap";
 import ReactTooltip from "react-tooltip";
-import useStore from "../stores/TeamDataStore";
 
-function getIndexScoreColor(score, maxScore) {
-    let ratio = score / maxScore;
+// function getIndexScoreColor(score, maxScore) {
+//     let ratio = score / maxScore;
 
-    if (ratio < 0.3) {
-        return "FF0000";
-    } else if (ratio < 0.4) {
-        return "FF8C00";
-    } else if (ratio < 0.6) {
-        return "FFA500"
-    } else if (ratio < 0.8) {
-        return "EECD00"
-    } else if (ratio <= 1) {
-        return "00A86B"
-    }
-}
+//     if (ratio < 0.3) {
+//         return "FF0000";
+//     } else if (ratio < 0.4) {
+//         return "FF8C00";
+//     } else if (ratio < 0.6) {
+//         return "FFA500"
+//     } else if (ratio < 0.8) {
+//         return "EECD00"
+//     } else if (ratio <= 1) {
+//         return "00A86B"
+//     }
+// }
 
 export function ScoutingSection(props) {
     return (
@@ -200,6 +200,10 @@ function MatchCard(props) {
                             <h3 className="col" >{data[props.redAlliance["teams"][1]]["scoutingScore"]}</h3>
                             <h3 className="col" >{data[props.redAlliance["teams"][1]]["skills"]["driver"] + data[props.redAlliance["teams"][1]]["skills"]["programming"]}</h3>
                         </div>
+                        <div className="row col-md-15 text-secondary">
+                            <div className="col" ><Image style={{maxHeight: "25vh"}} alt="bad" src="https://i.imgur.com/cyKHUaJ.png" /></div>
+                            <div className="col" ><Image style={{maxHeight: "25vh"}} alt="bad" src="https://i.imgur.com/cOFU30D.png" /></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -227,6 +231,13 @@ function MatchCard(props) {
                             <h3 className="col" >{data[props.blueAlliance["teams"][1]]["scoutingScore"]}</h3>
                             <h3 className="col" >{data[props.blueAlliance["teams"][1]]["skills"]["driver"] + data[props.blueAlliance["teams"][1]]["skills"]["programming"]}</h3>
                         </div>
+                        <div className="row col-md-15 text-secondary">
+                            <div className="col" ><Image style={{maxHeight: "25vh"}} alt="bad" src="https://i.imgur.com/9a3Z5AN.jpeg" /></div>
+                            <div className="col" ><Image style={{maxHeight: "25vh"}} alt="bad" src="https://beeimg.com/images/o72477600112.png" /></div>
+                        </div>
+                        
+                        
+                            
                     </div>
                 </div>
             </div>
@@ -262,6 +273,7 @@ function MatchCard(props) {
                                     </div>
                                     <div className="row">
                                         <div className="col">
+
                                             <SkillsSection withScout={false} skills={data[props.redAlliance["teams"][0]]["skills"]} />
                                         </div>
                                         <div className="col">
@@ -300,6 +312,7 @@ function MatchCard(props) {
                                 <>
                                     <div className="row">
                                         <div className="col">
+
                                             <MatchStandingsSection teamName={props.blueAlliance["teams"][0]} division={data[props.blueAlliance["teams"][0]]["division"]} />
                                         </div>
                                         <div className="col">

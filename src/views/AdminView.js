@@ -1,4 +1,3 @@
-import { faBan, faCheck, faCog } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { socket } from "../service/Socket";

@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import firebase from '@firebase/app-compat';
 import Button from '@restart/ui/esm/Button';
-import Scrollbars from 'react-custom-scrollbars';
 import useStore from '../stores/TeamDataStore';
 
 /**
@@ -59,7 +58,7 @@ export function isNum(num) {
   return !isNaN(parseInt(num)) && !isNaN(num - 0);
 }
 
-function CardsView({isAdmin}) {
+function CardsView({ isAdmin }) {
   const data = useStore(state => state.teamData);
 
   let cards = (data.map((card) => {
@@ -111,35 +110,40 @@ function CardsView({isAdmin}) {
   const logOut = () => firebase.auth().signOut();
 
   return (
-    <div style={{width: "100vw", height: "100vh"}}>
-      <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
-        <a className="navbar-brand ms-2" href="/">BWHS Robotics</a>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item active">
-              <Link to="/" className="nav-link text-white">Home <span className="sr-only"></span></Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/scouting" className="nav-link">Scouting</Link>
-            </li>
-            <li class="nav-item">
-              <Link to="/matches" class="nav-link">Matches<span class="sr-only"></span></Link>
-            </li>
-            {isAdmin ?
-            <li class="nav-item">
-              <Link to="/admin" class="nav-link">Admin<span class="sr-only"></span></Link>
-            </li>
-            : <></>}
-          </ul>
-        </div>
+    cards.length === 0 ? (
+      <div class="loadingio-spinner-eclipse-uzl9l7691o "><div class="ldio-5ki7dfraqbv">
+        <div></div>
+      </div></div>
+    ) : (
+      <div style={{ width: "100vw", height: "100vh" }}>
+        <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
+          <a className="navbar-brand ms-2" href="/">BWHS Robotics</a>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item active">
+                <Link to="/" className="nav-link text-white">Home <span className="sr-only"></span></Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/scouting" className="nav-link">Scouting</Link>
+              </li>
+              <li class="nav-item">
+                <Link to="/matches" class="nav-link">Matches<span class="sr-only"></span></Link>
+              </li>
+              {isAdmin ?
+                <li class="nav-item">
+                  <Link to="/admin" class="nav-link">Admin<span class="sr-only"></span></Link>
+                </li>
+                : <></>}
+            </ul>
+          </div>
+          <div>
+            <Button type="button" className="btn-danger btn btn-sm  mx-3" onClick={logOut}>Sign Out</Button>
+          </div>
+        </nav>
+
         <div>
-          <Button type="button" className="btn-danger btn btn-sm  mx-3" onClick={logOut}>Sign Out</Button>
-        </div>
-      </nav>
 
-      <div>
-
-        <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
+          {/* <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}> */}
           <div className="container-fluid">
             <div className="row">
               <div className="w-100">
@@ -154,10 +158,10 @@ function CardsView({isAdmin}) {
               </div>
             </div>
           </div>
-        </Scrollbars>
-      </div>
+          {/* </Scrollbars> */}
+        </div>
 
-    </div>
+      </div>)
   );
 }
 

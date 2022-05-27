@@ -1,4 +1,4 @@
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MatchCard from "../cards/MatchCard";
 import useStore from "../stores/TeamDataStore";
@@ -6,7 +6,6 @@ import { calculateIndexScore, isNum } from "./CardsView";
 import { Typeahead } from 'react-bootstrap-typeahead'
 import 'react-bootstrap-typeahead/css/Typeahead.css'
 import { useState } from "react";
-import shallow from 'zustand/shallow'
 import Scrollbars from "react-custom-scrollbars";
 
 function MatchesView() {
