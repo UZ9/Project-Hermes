@@ -18,10 +18,10 @@ function attemptParseInt(val) {
 
 function calculateScores(skills, division) {
   // Driving Skills Score
-  let driverScore = attemptParseInt(skills["driver"]) * 0.6;
+  let driverScore = attemptParseInt(skills["driver"]) * 1.2;
 
   // Programming Skills Score
-  let programmingScore = attemptParseInt(skills["programming"]) * 0.6;
+  let programmingScore = attemptParseInt(skills["programming"]) * 0.3;
 
   // Record score, calculated using wins and ties
   let winScore = (attemptParseInt(division["wins"]) + attemptParseInt(division["ties"]) * 0.5) * 35;
