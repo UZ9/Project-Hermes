@@ -5,9 +5,9 @@
 
 <h1 align="center">Project Hermes</h1>
 
-<p align="center">
+<!-- <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/BWHS-Robotics/pros-grafana-lib?color=56BEB8">
-</p>
+</p> -->
 
 
 <h4 align="center"> 
