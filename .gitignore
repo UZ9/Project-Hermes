@@ -96,3 +96,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 config.yml
+
+
+# Client specific
+client/node_modules
+
+# Server specific
+server/dist
+server/node_modules
