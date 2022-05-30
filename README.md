@@ -7,12 +7,6 @@
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/BWHS-Robotics/pros-grafana-lib?color=56BEB8">
-
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/Yerti/pros-grafana-lib?color=56BEB8" /> -->
-
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/Yerti/pros-grafana-lib?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/Yerti/pros-grafana-lib?color=56BEB8" /> -->
 </p>
 
 
