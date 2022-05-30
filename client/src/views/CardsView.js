@@ -111,7 +111,7 @@ function CardsView({ isAdmin }) {
 
   return (
     cards.length === 0 ? (
-      <div class="loadingio-spinner-eclipse-uzl9l7691o "><div class="ldio-5ki7dfraqbv">
+      <div className="loadingio-spinner-eclipse-uzl9l7691o "><div className="ldio-5ki7dfraqbv">
         <div></div>
       </div></div>
     ) : (
@@ -126,12 +126,12 @@ function CardsView({ isAdmin }) {
               <li className="nav-item">
                 <Link to="/scouting" className="nav-link">Scouting</Link>
               </li>
-              <li class="nav-item">
-                <Link to="/matches" class="nav-link">Matches<span class="sr-only"></span></Link>
+              <li className="nav-item">
+                <Link to="/matches" className="nav-link">Matches<span className="sr-only"></span></Link>
               </li>
               {isAdmin ?
-                <li class="nav-item">
-                  <Link to="/admin" class="nav-link">Admin<span class="sr-only"></span></Link>
+                <li className="nav-item">
+                  <Link to="/admin" className="nav-link">Admin<span className="sr-only"></span></Link>
                 </li>
                 : <></>}
             </ul>

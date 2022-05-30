@@ -124,7 +124,7 @@ function SkillsSection(props) {
         <>
             <div className="row">
                 {props.withScout ?? <div className="col" />}
-                <div className={props.withScout ?? "col-7"}>
+                <div className={props.withScout ? "col-7" : ""}>
 
                     <h5 className="text-center text-primary">Skills Scores</h5>
                     <div className="row text-secondary">
@@ -256,7 +256,6 @@ function TeamCard(props) {
                                         }
                                     </div>
                                 </div>
-                                {/* <SkillsSection skills={props.skills} /> */}
                             </> :
                                 <>
                                     <MatchStandingsSection division={props.division} />
