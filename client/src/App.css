@@ -149,3 +149,26 @@ body {
   backface-visibility: hidden;
 }
 .ldio-5ki7dfraqbv div { box-sizing: content-box; }
+
+.logo {
+  font-family: 'Audiowide', cursive;
+}
+
+.logo-primary {
+  color: #E77917;
+}
+
+.logo-secondary {
+  color: #ededed;
+}
+
+.nav-option {
+  font-family: 'Audiowide', cursive;
+}
+
+.signout-btn {
+  color: #ffffff !important;
+  background-color: #E77917 !important;
+  border-radius: 2px !important;
+  font-family: 'Audiowide', cursive;
+}

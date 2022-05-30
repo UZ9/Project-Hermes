@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import firebase from '@firebase/app-compat';
 import Button from '@restart/ui/esm/Button';
 import useStore from '../stores/TeamDataStore';
+import Scrollbars from 'react-custom-scrollbars';
 
 /**
  * Attempts to parse a string for an integer
@@ -117,48 +118,52 @@ function CardsView({ isAdmin }) {
     ) : (
       <div style={{ width: "100vw", height: "100vh" }}>
         <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
-          <a className="navbar-brand ms-2" href="/">BWHS Robotics</a>
+          <a className="navbar-brand ms-2 " href="/">
+            <span className='ms-2 logo logo-primary'>BWHS</span>
+            <span className='logo logo-secondary'>ROBOTICS</span>
+          </a>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <Link to="/" className="nav-link text-white">Home <span className="sr-only"></span></Link>
+                <Link to="/" className="nav-option nav-link text-white">Home <span className="sr-only"></span></Link>
               </li>
               <li className="nav-item">
-                <Link to="/scouting" className="nav-link">Scouting</Link>
+                <Link to="/scouting" className="nav-option nav-link">Scouting</Link>
               </li>
               <li className="nav-item">
-                <Link to="/matches" className="nav-link">Matches<span className="sr-only"></span></Link>
+                <Link to="/matches" className="nav-option nav-link">Matches<span className="sr-only"></span></Link>
               </li>
               {isAdmin ?
                 <li className="nav-item">
-                  <Link to="/admin" className="nav-link">Admin<span className="sr-only"></span></Link>
+                  <Link to="/admin" className="nav-option nav-link">Admin<span className="sr-only"></span></Link>
                 </li>
                 : <></>}
             </ul>
           </div>
           <div>
-            <Button type="button" className="btn-danger btn btn-sm  mx-3" onClick={logOut}>Sign Out</Button>
+            <Button type="button" className="signout-btn btn btn-sm  mx-3" onClick={logOut}>Sign Out</Button>
           </div>
         </nav>
 
         <div>
+          <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
 
-          {/* <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}> */}
-          <div className="container-fluid">
-            <div className="row">
-              <div className="w-100">
-                <div className="row">
+            {/* <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}> */}
+            <div className="container-fluid">
+              <div className="row">
+                <div className="w-100">
+                  <div className="row">
 
-                  {cards.sort((a, b) => { return b.score - a.score; }).map((key, index) => (
-                    <TeamCard key={index} maxScore={maxScore} teamName={key.name} number={key.number} scoutingScore={key.scoutingScore} scouting={key.scouting} score={key.score} skills={key.skills} division={key.division} />
-                  ))}
+                    {cards.sort((a, b) => { return b.score - a.score; }).map((key, index) => (
+                      <TeamCard key={index} maxScore={maxScore} teamName={key.name} number={key.number} scoutingScore={key.scoutingScore} scouting={key.scouting} score={key.score} skills={key.skills} division={key.division} />
+                    ))}
 
 
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          {/* </Scrollbars> */}
+          </Scrollbars>
         </div>
 
       </div>)

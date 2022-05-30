@@ -82,47 +82,52 @@ function MatchesView() {
     return (
         <div>
             <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
-                <a className="navbar-brand ms-2" href="/">BWHS Robotics</a>
+                <a className="navbar-brand ms-2 " href="/">
+                    <span className='ms-2 logo logo-primary'>BWHS</span>
+                    <span className='logo logo-secondary'>ROBOTICS</span>
+                </a>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link to="/" className="nav-link">Home <span className="sr-only"></span></Link>
+                            <Link to="/" className="nav-link nav-option">Home <span className="sr-only"></span></Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/scouting" className="nav-link">Scouting</Link>
+                            <Link to="/scouting" className="nav-link nav-option">Scouting</Link>
                         </li>
-                        <li class="nav-item active">
-                            <Link to="/matches" class="nav-link text-white">Matches<span class="sr-only"></span></Link>
+                        <li className="nav-item active">
+                            <Link to="/matches" className="nav-link nav-option text-white">Matches<span className="sr-only"></span></Link>
                         </li>
                     </ul>
                 </div>
-                <Typeahead className="me-2 p-0" onChange={setCurrentTeamInput} placeholder={"Team ID"} labelKey={"team-selection"} id="team-selection" highlightOnlyResult={false} type="text" options={teamList} defaultInputValue={currentTeamInput}/>
-                <Button className="btn btm-sm btn-primary me-3" onClick={handleSubmit} >Set Team</Button>
+                <div className="me-2">
+                    <Typeahead className="p-0" onChange={setCurrentTeamInput} placeholder={"Team ID"} labelKey={"team-selection"} id="team-selection" highlightOnlyResult={false} type="text" options={teamList} defaultInputValue={currentTeamInput + ""} />
+                </div>
+                <Button className="btn btm-sm signout-btn me-3" onClick={handleSubmit} >Set Team</Button>
             </nav>
-                <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
-                    <div className="container-fluid">
-                        <div className="row">
-                            {(matches.length !== 0) ?
-                                Object.keys(matches).map((key, index) => (
-                                    <MatchCard cards={cards} key={index} matchName={key} currentTeam={currentTeam} blueAlliance={matches[key]["blue-alliance"]} redAlliance={matches[key]["red-alliance"]} />
-                                )) :
-                                <>
-                                    <div className="col-xl-3 mx-auto col-sm-5 p-2">
-                                        <div className={`card card-common`}>
-                                            <div className="card-body">
-                                                <div className="d-flex justify-content-between">
-                                                    <div className="text-start text-secondary">
-                                                        <h5 className="text-danger">No team selected.</h5>
-                                                        <h6 className="align-top">Make sure you have selected a valid team from the Team ID selection..</h6>
-                                                    </div>
+            <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
+                <div className="container-fluid">
+                    <div className="row">
+                        {(matches.length !== 0) ?
+                            Object.keys(matches).map((key, index) => (
+                                <MatchCard cards={cards} key={index} matchName={key} currentTeam={currentTeam} blueAlliance={matches[key]["blue-alliance"]} redAlliance={matches[key]["red-alliance"]} />
+                            )) :
+                            <>
+                                <div className="col-xl-3 mx-auto col-sm-5 p-2">
+                                    <div className={`card card-common`}>
+                                        <div className="card-body">
+                                            <div className="d-flex justify-content-between">
+                                                <div className="text-start text-secondary">
+                                                    <h5 className="text-danger">No team selected.</h5>
+                                                    <h6 className="align-top">Make sure you have selected a valid team from the Team ID selection..</h6>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </>}
-                        </div>
+                                </div>
+                            </>}
                     </div>
-                </Scrollbars>
+                </div>
+            </Scrollbars>
         </div>
     );
 }

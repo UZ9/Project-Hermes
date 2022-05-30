@@ -57,7 +57,10 @@ function AdminView() {
     return (
         <>
             <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
-                <a className="navbar-brand ms-2" href="/">BWHS Robotics</a>
+                <a className="navbar-brand ms-2 " href="/">
+                    <span className='ms-2 logo logo-primary'>BWHS</span>
+                    <span className='logo logo-secondary'>ROBOTICS</span>
+                </a>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item active">
@@ -66,11 +69,11 @@ function AdminView() {
                         <li className="nav-item">
                             <Link to="/scouting" className="nav-link">Scouting</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link to="/matches" class="nav-link">Matches<span class="sr-only"></span></Link>
+                        <li className="nav-item">
+                            <Link to="/matches" className="nav-link">Matches<span className="sr-only"></span></Link>
                         </li>
-                        <li class="nav-item">
-                            <Link to="/admin" class="nav-link text-white">Admin<span class="sr-only"></span></Link>
+                        <li className="nav-item">
+                            <Link to="/admin" className="nav-link text-white">Admin<span className="sr-only"></span></Link>
                         </li>
                     </ul>
                 </div>
@@ -111,11 +114,11 @@ function AdminView() {
 
                     <div className="row">
                         {/* <div className="col-xl-4 text-center mx-auto col-sm-5 p-2"> */}
-                            <div className="col-4 text-center text-white mx-auto p-2">
-                                <button onClick={handleClick} className="btn-block card mx-auto card-common border-danger btn-danger bg-danger p-2">
-                                    Clear all scouting data
-                                </button>
-                            </div>
+                        <div className="col-4 text-center text-white mx-auto p-2">
+                            <button onClick={handleClick} className="btn-block card mx-auto card-common border-danger btn-danger bg-danger p-2">
+                                Clear all scouting data
+                            </button>
+                        </div>
                         {/* </div> */}
                     </div>
                 </div>
