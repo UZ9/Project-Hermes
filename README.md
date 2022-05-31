@@ -54,11 +54,63 @@ The following tools were used in this project:
 - [Firebase](https://firebase.google.com/)
 - [MongoDB](https://www.mongodb.com/)
 
-## :white_check_mark: Requirements ##
+## :white_check_mark: Development Requirements ##
+
+- [Node.js](https://nodejs.org/en/download/)
+- [Git](https://git-scm.com/)
+
+## :checkered_flag: Development Setup ##
+To start, navigate to a folder you wish the project to be located in, and clone the repository:
+```bash
+git clone https://github.com/BWHS-Robotics/Project-Hermes.git
+cd Project-Hermes
+```
+
+Once the project has been successfully downloaded, you use the following command to install any dependencies:
+
+```bash
+npm run install
+```
+
+## MongoDB Setup
+The Scouting App stores a variety of match, scouting, skills data for each team in a MongoDB Database. As such, one is needed for develop. The following instructions will guide you on how to setup a free cloud-based MongoDB Server, as well as connecting it to your development workspace. 
 
 TODO
 
-## :checkered_flag: Starting ##
+## `.env` File Configuration
+
+The project utilizes several `.env` files in order to provide the project with critical information, such as API keys, database credentials, and tournament IDs. 
+
+### Client `.env`
+To begin, navigate to the `/client` folder and create a new file labelled `.env`. Notice that there isn't any name, only the file extension! 
+
+After creating the file, open it using some sort of text editor (I personally recommend [Visual Studio Code](https://code.visualstudio.com/)) and fill out the following information:
+
+<Note: this segment will be edited to provide better documentation later>
+```
+REACT_APP_SOCKET_URL=<YOUR IP ADDRESS>:5000
+```
+
+Example Data:
+```
+REACT_APP_SOCKET_URL=244.82.31.209:5000
+```
+
+
+### Server `.env`
+Just like for the client folder, navigate to the `/server` directory and create a new file labelled `.env`, and fill out the following information:
+
+```bash
+DB_NAME=<MongoDB Database Name> 
+DB_USER=<MongoDB Username>
+DB_PASS=<MongoDB Password>
+SKU=<Tournament SKU ID> 
+API_KEY=<RobotEvents API Key>
+```
+
+### 
+
+### 
 
 TODO
 
