@@ -1,6 +1,7 @@
 {
-  "name": "project-hermes",
+  "name": "project-hermes-frontend",
   "version": "0.1.0",
+  "description": "The backend portion of Project Hermes",
   "private": true,
   "engines": {
     "node": "14.x"
@@ -40,7 +41,7 @@
     "zustand": "^3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

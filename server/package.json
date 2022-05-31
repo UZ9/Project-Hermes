@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
+  "name": "project-hermes-backend",
   "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
+  "description": "The backend portion of Project Hermes",
   "engines": {
     "node": "14.x"
   },
