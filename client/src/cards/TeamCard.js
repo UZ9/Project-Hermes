@@ -256,6 +256,10 @@ function TeamCard(props) {
                                         }
                                     </div>
                                 </div>
+                                <div className="row text-center">
+                                    <img className="mx-auto d-block" style={{ maxWidth: "300px", maxHeight: "300px" }} src={props.scouting["robot-image"]} alt="Robot" />
+
+                                </div>
                             </> :
                                 <>
                                     <MatchStandingsSection division={props.division} />

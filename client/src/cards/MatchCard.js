@@ -201,8 +201,10 @@ function MatchCard(props) {
                             <h3 className="col" >{data[props.redAlliance["teams"][1]]["skills"]["driver"] + data[props.redAlliance["teams"][1]]["skills"]["programming"]}</h3>
                         </div>
                         <div className="row col-md-15 text-secondary">
-                            <div className="col" ><Image style={{maxHeight: "25vh"}} alt="bad" src="https://i.imgur.com/cyKHUaJ.png" /></div>
-                            <div className="col" ><Image style={{maxHeight: "25vh"}} alt="bad" src="https://i.imgur.com/cOFU30D.png" /></div>
+                            {data[props.redAlliance["teams"][0]]["scouting"] !== undefined &&
+                                <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.redAlliance["teams"][0]]["scouting"]["robot-image"] ?? ""} /></div>}
+                            {(data[props.redAlliance["teams"][1]]["scouting"] !== undefined) &&
+                                <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.redAlliance["teams"][1]]["scouting"]["robot-image"] ?? ""} /></div>}
                         </div>
                     </div>
                 </div>
@@ -232,12 +234,14 @@ function MatchCard(props) {
                             <h3 className="col" >{data[props.blueAlliance["teams"][1]]["skills"]["driver"] + data[props.blueAlliance["teams"][1]]["skills"]["programming"]}</h3>
                         </div>
                         <div className="row col-md-15 text-secondary">
-                            <div className="col" ><Image style={{maxHeight: "25vh"}} alt="bad" src="https://i.imgur.com/9a3Z5AN.jpeg" /></div>
-                            <div className="col" ><Image style={{maxHeight: "25vh"}} alt="bad" src="https://beeimg.com/images/o72477600112.png" /></div>
+                            {data[props.blueAlliance["teams"][0]]["scouting"] !== undefined &&
+                                (<div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.blueAlliance["teams"][0]]["scouting"]["robot-image"] ?? ""} /></div>)}
+                            {data[props.blueAlliance["teams"][1]]["scouting"] !== undefined &&
+                                <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.blueAlliance["teams"][1]]["scouting"]["robot-image"] ?? ""} /></div>}
                         </div>
-                        
-                        
-                            
+
+
+
                     </div>
                 </div>
             </div>
