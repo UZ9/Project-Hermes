@@ -3,7 +3,7 @@ import { mongoConfig } from "../configs/mongodb.config"
 import { logger } from "../middlewares/logging.middleware"
 
 export class MongoService {
-    private readonly URI: string =  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.k13sr.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;;
+    private readonly URI: string =  `mongodb+srv://${mongoConfig.user}:${mongoConfig.password}@cluster0.k13sr.mongodb.net/${mongoConfig.name}?retryWrites=true&w=majority`;;
 
     private db: Db;
     private dbName: string;

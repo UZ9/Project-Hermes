@@ -1,13 +1,13 @@
 import dotenv from "dotenv"
+
+// Allow server to use environmental variables
+dotenv.config();
+
 import { startSocketListener } from "./listeners/socketevents.listener";
 import { SocketManager } from './listeners/socketmanager.listener';
 import { logger } from "./middlewares/logging.middleware";
 import { MatchDataService } from "./services/matchdata.service";
 import { MongoService } from "./services/mongodb.service";
-
-
-// Allow server to use environmental variables
-dotenv.config();
 
 // Start socket server
 const socketManager = new SocketManager();
