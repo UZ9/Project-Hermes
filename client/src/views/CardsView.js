@@ -140,9 +140,9 @@ function CardsView({ isAdmin }) {
                 : <></>}
             </ul>
           </div>
-          <div>
+          {/* <div>
             <Button type="button" className="signout-btn btn btn-sm  mx-3" onClick={logOut}>Sign Out</Button>
-          </div>
+          </div> */}
         </nav>
 
         <div>
