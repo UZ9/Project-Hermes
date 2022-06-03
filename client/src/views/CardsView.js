@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import useStore from '../stores/TeamDataStore';
 import Scrollbars from 'react-custom-scrollbars';
+import Navbar from '../components/NavbarItems';
+import NavbarLogo from '../components/NavbarLogo';
+import NavbarItems from '../components/NavbarItems';
 
 /**
  * Attempts to parse a string for an integer
@@ -60,6 +63,8 @@ export function isNum(num) {
 function CardsView({ isAdmin }) {
   const data = useStore(state => state.teamData);
 
+  console.time("scoreCalculations");
+
   let cards = (data.map((card) => {
     const teamName = card["name"];
     const skills = card["skills"];
@@ -106,6 +111,9 @@ function CardsView({ isAdmin }) {
   // We use the max score to determine the sorting of the cards
   const maxScore = cards[0] ? cards[0].score : 0;
 
+  console.timeEnd("scoreCalculations");
+
+
   // const logOut = () => firebase.auth().signOut();
 
   return (
@@ -116,31 +124,8 @@ function CardsView({ isAdmin }) {
     ) : (
       <div style={{ width: "100vw", height: "100vh" }}>
         <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
-          <a className="navbar-brand ms-2 " href="/">
-            <span className='ms-2 logo logo-primary'>BWHS</span>
-            <span className='logo logo-secondary'>ROBOTICS</span>
-          </a>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item active">
-                <Link to="/" className="nav-option nav-link text-white">Home <span className="sr-only"></span></Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/scouting" className="nav-option nav-link">Scouting</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/matches" className="nav-option nav-link">Matches<span className="sr-only"></span></Link>
-              </li>
-              {isAdmin ?
-                <li className="nav-item">
-                  <Link to="/admin" className="nav-option nav-link">Admin<span className="sr-only"></span></Link>
-                </li>
-                : <></>}
-            </ul>
-          </div>
-          {/* <div>
-            <Button type="button" className="signout-btn btn btn-sm  mx-3" onClick={logOut}>Sign Out</Button>
-          </div> */}
+          <NavbarLogo />
+          <NavbarItems active="" />
         </nav>
 
         <div>

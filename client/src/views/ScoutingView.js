@@ -3,6 +3,8 @@ import React from "react";
 import Scrollbars from "react-custom-scrollbars";
 import { Link } from "react-router-dom";
 import ScoutingCard from "../cards/ScoutingCard";
+import NavbarItems from "../components/NavbarItems";
+import NavbarLogo from "../components/NavbarLogo";
 import useStore from "../stores/TeamDataStore";
 
 export const ScoutingStatus = {
@@ -35,23 +37,8 @@ function ScoutingView() {
 
     return (<div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <a className="navbar-brand ms-2 " href="/">
-                <span className='ms-2 logo logo-primary '>BWHS</span>
-                <span className='logo logo-secondary'>ROBOTICS</span>
-            </a>
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link to="/" className="nav-link nav-option">Home <span className="sr-only"></span></Link>
-                    </li>
-                    <li className="nav-item active">
-                        <Link to="/scouting" className="nav-link nav-option text-white">Scouting</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/matches" className="nav-link nav-option">Matches<span className="sr-only"></span></Link>
-                    </li>
-                </ul>
-            </div>
+            <NavbarLogo/>
+            <NavbarItems active="scouting"/>
         </nav>
         <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
 
