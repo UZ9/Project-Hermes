@@ -75,7 +75,50 @@ npm run install
 ## MongoDB Setup
 The Scouting App stores a variety of match, scouting, skills data for each team in a MongoDB Database. As such, one is needed for develop. The following instructions will guide you on how to setup a free cloud-based MongoDB Server, as well as connecting it to your development workspace. 
 
-TODO
+In order to utilize MongoDB's free cloud tier, you need to first register an account [here](https://www.mongodb.com/cloud/atlas/register). After you confirm your account via email, you should be brought to a page like this: 
+
+![image](https://user-images.githubusercontent.com/36551149/171782472-ad27d9ae-bfef-4b04-9a78-0a066a2c98d2.png)
+
+### Creating a new Cluster
+
+To begin, click on the giant green `Build a Database` button in the center of the screen. This will bring you to a list of cloud database plans, where you choose the free `Shared` option. 
+
+For the next page, scroll down and write whatever **Cluster Name** you want to provide, and press the `Create Cluster` button in the bottom right of the page:
+
+![image](https://user-images.githubusercontent.com/36551149/171782613-7e4b8066-467f-4a7c-ae0f-0bbfa60bd8ef.png)
+
+This should bring you to the `Security Quickstart` page, in which you should do the following steps:
+
+- For `How would you like to authenticate your connection` create a new user by specifying a **Username** and **Password** and then clicking **Create User**. Make sure you remember these!
+- Add your IP Address to the `Where would you like to connect from` header by clicking **Add My Current IP Address**. If you host this on some sort of website (such as Heroku) you'll need to add its IP Address later on. 
+- Hit the `Finish and Close` button
+
+
+### Creating the Project Hermes Database
+
+
+Now that you have a Cluster to hold the Database, you can create a new Database by selecting the newly created Cluster, and navigating to the **Collections** page:
+![image](https://user-images.githubusercontent.com/36551149/171783522-de1e05f1-386d-4312-a462-27149f28a151.png)
+
+Choose the `Add My Own Data` option under **Explore Your Data** and fill in the following information.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36551149/171783623-ff0ab76f-9074-4972-ae93-2b043e43d97a.png">
+</p>
+
+<br>
+
+Click on the green `Create` button to create the database.
+
+## RobotEvents API & SKU ID
+
+### RobotEvents API Key
+
+For the program to actively pull data from robotevents, it requires an API key. You can create one by going to https://www.robotevents.com/api/v2 and clicking on `Request Access`. Assuming you're logged in, the website will provide instructions on generating a new key. This will be entered into the project's configuration file later on.
+
+### SKU ID
+
+For the program to know what tournament to pull from, it will need the SKU ID of the tournament. This can be found fairly straightforward by navigating to the tournament on RobotEvents and finding the `Event Code`. This should be in the format `RE-VRC-XX-XXXX`, and will be entered into the project's configuration file in the following step.  
 
 ## `.env` File Configuration
 
@@ -84,7 +127,7 @@ The project utilizes several `.env` files in order to provide the project with c
 ### Client `.env`
 To begin, navigate to the `/client` folder and create a new file labelled `.env`. Notice that there isn't any name, only the file extension! 
 
-After creating the file, open it using some sort of text editor (I personally recommend [Visual Studio Code](https://code.visualstudio.com/)) and fill out the following information:
+After creating the file, open it using some sort of text editor (I personally recommend [Visual Studio Code](https://code.visualstudio.com/)) and fill out the following information. If this happens to be hosted on a site like Heroku, the web address would be used rather than your IP Address (e.g. `https://<heroku project name>.herokuapp.com/`)
 
 <Note: this segment will be edited to provide better documentation later>
 ```
@@ -98,25 +141,38 @@ REACT_APP_SOCKET_URL=244.82.31.209:5000
 
 
 ### Server `.env`
-Just like for the client folder, navigate to the `/server` directory and create a new file labelled `.env`, and fill out the following information:
+Just like for the client folder, navigate to the `/server` directory and create a new file labelled `.env`, and fill out the following information. Note that the MongoDB credentials are from the user you created specifically for the cluster, NOT your Atlas account. 
 
 ```bash
-DB_NAME=<MongoDB Database Name> 
+DB_NAME=hermes
 DB_USER=<MongoDB Username>
 DB_PASS=<MongoDB Password>
 SKU=<Tournament SKU ID> 
 API_KEY=<RobotEvents API Key>
 ```
 
-### 
+###
 
-### 
+## Running the project in development 
 
-TODO
+Now that everything for the project has been configured, you should be able to start the entire project using the following command:
+```bash
+npm run dev
+```
+
+This should start both the server and client for the program. Other commands include:
+
+Run server only:
+```bash
+npm run server
+```
+
+Run client only:
+```bash
+npm run client
+```
 
 ## :memo: Usage ##
-
-TODO
 
 Made with :heart: by <a href="https://github.com/UZ9" target="_blank">Ryder</a>
 
