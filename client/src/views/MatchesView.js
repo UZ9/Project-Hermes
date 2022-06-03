@@ -1,5 +1,4 @@
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import MatchCard from "../cards/MatchCard";
 import useStore from "../stores/TeamDataStore";
 import { calculateIndexScore, isNum } from "./CardsView";

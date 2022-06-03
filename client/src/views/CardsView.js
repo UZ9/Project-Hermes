@@ -1,10 +1,8 @@
 import '../App.css';
 import TeamCard from '../cards/TeamCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
 import useStore from '../stores/TeamDataStore';
 import Scrollbars from 'react-custom-scrollbars';
-import Navbar from '../components/NavbarItems';
 import NavbarLogo from '../components/NavbarLogo';
 import NavbarItems from '../components/NavbarItems';
 

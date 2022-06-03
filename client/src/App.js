@@ -33,7 +33,6 @@ function App() {
           <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent />} />
           <Route path="/matches" element={<MatchesView />} />
           <Route path="/admin" element={<AdminView />} />
-          {/* <Route path="/login" element={<div id="firebaseui-auth-container" />} /> */}
         </Routes>
       </BrowserRouter>
     </>

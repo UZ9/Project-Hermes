@@ -6,6 +6,7 @@ export default function NavbarItems(props) {
         "": "Home",
         "scouting": "Scouting",
         "matches": "Matches",
+        "admin": "Visuals"
     }
 
 

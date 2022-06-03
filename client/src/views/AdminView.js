@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { socket } from "../service/Socket";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -8,6 +7,11 @@ import Scrollbars from "react-custom-scrollbars";
 import { Button, Modal } from "react-bootstrap";
 import NavbarItems from "../components/NavbarItems";
 import NavbarLogo from "../components/NavbarLogo";
+import podiumData from '../components/data'
+
+import Podium from "../components/Podium";
+import PodiumCardList from "../components/PodiumCardList";
+import useStore from "../stores/TeamDataStore";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -33,7 +37,7 @@ export const data = {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)',
             ],
-            borderWidth: 1,
+            borderWidth: 2,
         },
     ],
 };
@@ -56,15 +60,44 @@ function AdminView() {
         setShow(false);
     }
 
+    const winners = useStore(state => state.teamData).sort((a, b) => (a["division"]["ranking"] < b["division"]["ranking"]) ? -1 : 1);
+
+
     return (
         <>
             <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
-                <NavbarLogo/>
-                <NavbarItems active="admin"/>
+                <NavbarLogo />
+                <NavbarItems active="admin" />
             </nav>
             <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
                 <div className="container-fluid">
 
+
+
+                    <div className="row">
+
+                        <div className="col-xl-12 mx-auto col-sm-5 p-2">
+                            <div className="card card-common">
+                                <div className="card-body">
+                                    <div className="d-flex justify-content-between">
+                                        <Podium winners={winners} />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* <div className="row">
+                        <div className="col-xl-12 mx-auto col-sm-5 p-2">
+                            <div className="card card-common">
+                                <div className="card-body">
+                                    <div className="d-flex justify-content-between">
+                                        <PodiumCardList winners={winners}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> */}
                     <div className="row">
                         <div className="col-xl-4 mx-auto col-sm-5 p-2">
                             <div className="card card-common">
@@ -95,20 +128,17 @@ function AdminView() {
                         </div>
                     </div>
 
-
-                    <div className="row">
-                        {/* <div className="col-xl-4 text-center mx-auto col-sm-5 p-2"> */}
+                    {/* <div className="row">
                         <div className="col-4 text-center text-white mx-auto p-2">
                             <button onClick={handleClick} className="btn-block card mx-auto card-common border-danger btn-danger bg-danger p-2">
                                 Clear all scouting data
                             </button>
                         </div>
-                        {/* </div> */}
-                    </div>
+                    </div> */}
                 </div>
             </Scrollbars>
 
-            <Modal show={show} onHide={handleClose}>
+            {/* <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Confirm Action</Modal.Title>
                 </Modal.Header>
@@ -121,7 +151,7 @@ function AdminView() {
                         Continue
                     </Button>
                 </Modal.Footer>
-            </Modal>
+            </Modal> */}
 
             {/* <div className="row">
                 <div className="mx-auto">
