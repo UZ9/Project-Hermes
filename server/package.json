@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
-    "@types/node": "^17.0.36",
+    "@types/node": "^17.0.39",
     "@types/winston": "^2.4.4",
     "cli-progress": "^3.11.1",
     "got": "^12.1.0",
