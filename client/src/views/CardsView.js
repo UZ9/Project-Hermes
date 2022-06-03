@@ -2,8 +2,6 @@ import '../App.css';
 import TeamCard from '../cards/TeamCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import firebase from '@firebase/app-compat';
-import Button from '@restart/ui/esm/Button';
 import useStore from '../stores/TeamDataStore';
 import Scrollbars from 'react-custom-scrollbars';
 
@@ -108,7 +106,7 @@ function CardsView({ isAdmin }) {
   // We use the max score to determine the sorting of the cards
   const maxScore = cards[0] ? cards[0].score : 0;
 
-  const logOut = () => firebase.auth().signOut();
+  // const logOut = () => firebase.auth().signOut();
 
   return (
     cards.length === 0 ? (
