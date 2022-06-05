@@ -1,4 +1,3 @@
-import useStore from "../stores/TeamDataStore"
 import PodiumStep from "./PodiumStep"
 
 export default function Podium({ winners }) {
@@ -24,7 +23,7 @@ export default function Podium({ winners }) {
                 alignContent: 'flex-end',
                 alignItems: 'flex-end',
                 // borderBottom: '1px solid #e5e7eb',
-                height: 200
+                height: 225
             }}
         >
             {podium.map((winner) => (

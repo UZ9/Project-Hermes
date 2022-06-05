@@ -104,3 +104,4 @@ client/node_modules
 # Server specific
 server/dist
 server/node_modules
+.VSCodeCounter

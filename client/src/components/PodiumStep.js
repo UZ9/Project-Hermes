@@ -1,9 +1,9 @@
-import { AnimatePresence, motion } from 'framer-motion/dist/framer-motion'
+import { motion } from 'framer-motion/dist/framer-motion'
 
 export default function PodiumStep({ podium, winner }) {
     console.log({ podium, winner });
 
-    const offset = podium.length - winner["division"]["ranking"] / 1.2
+    const offset = podium.length - winner["division"]["ranking"] / 1.3
 
     return (
         <div

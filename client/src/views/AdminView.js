@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { socket } from "../service/Socket";
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, defaults, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie, } from 'react-chartjs-2';
 import Scrollbars from "react-custom-scrollbars";
-import { Button, Modal } from "react-bootstrap";
+
 import NavbarItems from "../components/NavbarItems";
 import NavbarLogo from "../components/NavbarLogo";
-import podiumData from '../components/data'
 
 import Podium from "../components/Podium";
 import PodiumCardList from "../components/PodiumCardList";
@@ -15,14 +12,104 @@ import useStore from "../stores/TeamDataStore";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+console.log("Default aimat")
+console.log(defaults.animation);
+
+defaults.font.family = "Montserrat, sans-serif"
+
+
+// defaults.animation = false;
+
+export const inOptions = {
+    animation: {
+        delay: 1000,
+        duration: 3000,
+        easing: 'easeOutQuart',
+        colors: {
+            type: "color",
+            duration: 1500,
+            from: "transparent",
+        }
+    },
+    legend: {
+        display: false,
+    },
+    title: {
+        display: true,
+        text: 'Custom Chart Title'
+    },
+    plugins: {
+        title: {
+            text: "YEET",
+            display: true
+        }
+    }
+}
+
+export const outOptions = {
+    animation: {
+        delay: 1250,
+        duration: 2500,
+        easing: 'easeOutQuart',
+        // numbers: { duration: 0 },
+        colors: {
+            type: "color",
+            duration: 1500,
+            from: "transparent",
+        }
+
+    },
+    plugins: {
+        title: {
+            display: true,
+            text: 'Doughnut Chart',
+            color: 'blue',
+            font: {
+                size: 34
+            },
+            padding: {
+                top: 30,
+                bottom: 30
+            },
+            responsive: true,
+            animation: {
+                animateScale: true,
+            }
+        }
+    }
+}
+
+export const data1 = {
+    labels: ['Not Scouted', 'In Progress', 'Scouted'],
     datasets: [
         {
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [32, 3, 56],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                '#F4BE90',
+
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgb(231, 121, 23)',
+
+            ],
+            borderWidth: 2,
+        },
+    ],
+};
+
+export const data2 = {
+    labels: ['Matches Finished', 'Matches Left'],
+    datasets: [
+        {
+            label: '# of Votes',
+            data: [205, 0],
+            backgroundColor: [
+                '#F4BE90',
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
@@ -30,7 +117,61 @@ export const data = {
                 'rgba(255, 159, 64, 0.2)',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
+                'rgb(231, 121, 23)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 2,
+        },
+    ],
+};
+
+export const data3 = {
+    labels: ['Not Scouted', 'In Progress', 'Scouted'],
+    datasets: [
+        {
+            label: '# of Votes',
+            data: [12, 19, 3],
+            backgroundColor: [
+                '#F4BE90',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+            ],
+            borderColor: [
+                'rgb(231, 121, 23)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 2,
+        },
+    ],
+};
+
+export const data4 = {
+    labels: ['Not Scouted', 'In Progress', 'Scouted'],
+    datasets: [
+        {
+            label: '# of Votes',
+            data: [12, 19, 3],
+            backgroundColor: [
+                '#F4BE90',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+            ],
+            borderColor: [
+                'rgb(231, 121, 23)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
@@ -43,24 +184,25 @@ export const data = {
 };
 
 function AdminView() {
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
 
-    const handleClick = async e => {
-        e.preventDefault();
+    // const handleClick = async e => {
+    //     e.preventDefault();
 
-        setShow(true);
-    }
+    //     setShow(true);
+    // }
 
-    const removeScoutingData = () => {
-        // Send a signal to the server to remove the data.
-        socket.emit("remove-scouting-data");
+    // const removeScoutingData = () => {
+    //     // Send a signal to the server to remove the data.
+    //     socket.emit("remove-scouting-data");
 
-        setShow(false);
-    }
+    //     setShow(false);
+    // }
 
-    const winners = useStore(state => state.teamData).sort((a, b) => (a["division"]["ranking"] < b["division"]["ranking"]) ? -1 : 1);
+    const teamData = useStore(state => state.teamData);
+
+    const winners = teamData.sort((a, b) => (a["division"]["ranking"] < b["division"]["ranking"]) ? -1 : 1);
 
 
     return (
@@ -75,10 +217,11 @@ function AdminView() {
 
 
                     <div className="row">
-
                         <div className="col-xl-12 mx-auto col-sm-5 p-2">
                             <div className="card card-common">
                                 <div className="card-body">
+                                    <h1 className="logo text-center" style={{ color: "#212529" }}>QUALIFICATION RANKINGS</h1>
+
                                     <div className="d-flex justify-content-between">
                                         <Podium winners={winners} />
 
@@ -87,46 +230,66 @@ function AdminView() {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="row">
-                        <div className="col-xl-12 mx-auto col-sm-5 p-2">
-                            <div className="card card-common">
-                                <div className="card-body">
-                                    <div className="d-flex justify-content-between">
-                                        <PodiumCardList winners={winners}/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
                     <div className="row">
-                        <div className="col-xl-4 mx-auto col-sm-5 p-2">
+                        <div className="col-xl-3 mx-auto col-sm-5 p-2">
                             <div className="card card-common">
                                 <div className="card-body">
+                                    <h5 className="logo text-center">SCOUTING PROGRESS</h5>
                                     <div className="d-flex justify-content-between">
-                                        <Pie data={data} />
+                                        <Pie data={data1} options={inOptions} />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xl-4 mx-auto col-sm-5 p-2">
+                        <div className="col-xl-6">
+                            <PodiumCardList winners={winners} />
+                        </div>
+                        {/* <div className="col-xl-3 mx-auto col-sm-5 p-2">
                             <div className="card card-common">
                                 <div className="card-body">
+                                    <h5 className="logo text-center">QUALIFICATION MATCHES</h5>
+
                                     <div className="d-flex justify-content-between">
-                                        <Pie data={data} />
+                                        <Pie data={data2} options={outOptions} />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xl-4 mx-auto col-sm-5 p-2">
+                        <div className="col-xl-3 mx-auto col-sm-5 p-2">
                             <div className="card card-common">
                                 <div className="card-body">
+                                    <h5 className="logo text-center">SCOUTING PROGRESS</h5>
+
                                     <div className="d-flex justify-content-between">
-                                        <Pie data={data} />
+                                        <Pie data={data3} options={outOptions} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div> */}
+                        <div className="col-xl-3 mx-auto col-sm-5 p-2">
+                            <div className="card card-common">
+                                <div className="card-body">
+                                    <h5 className="logo text-center">QUALIFICATION MATCHES</h5>
+
+                                    <div className="d-flex justify-content-between">
+                                        <Pie data={data2} options={inOptions} />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div className="row">
+                        {/* <div className="col-xl-12 mx-auto col-sm-5 p-2">
+                            <div className="card card-common">
+                                <div className="card-body">
+                                    <div className="d-flex justify-content-between"> */}
+                        <PodiumCardList winners={winners} />
+                        {/* </div>
+                                </div>
+                            </div>
+                        </div> */}
+                    </div>
+
 
                     {/* <div className="row">
                         <div className="col-4 text-center text-white mx-auto p-2">
