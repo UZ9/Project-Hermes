@@ -1,5 +1,5 @@
 <div align="center" id="top"> 
-  <img src="https://user-images.githubusercontent.com/36551149/171046103-333710d6-edba-4d59-ad9e-d653e948e83b.png" alt="Project Hermes" />
+  <img src="https://user-images.githubusercontent.com/36551149/172487219-650720ad-beca-439b-a66b-cd052c03084a.png" alt="Project Hermes" />
   &#xa0;
 </div>
 
