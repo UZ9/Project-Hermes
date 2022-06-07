@@ -38,14 +38,14 @@ function ScoutingCard(props) {
                     <div className="card-body">
                         <div className="d-flex justify-content-between">
                             <div className="text-start text-secondary">
-                                <h5>{props.number}</h5>
-                                <h6 className="align-top">{props.teamName}</h6>
+                                <h4 className="subtext">{props.number}</h4>
+                                <h6 className="align-top subtext">{props.teamName}</h6>
                             </div>
                         </div>
                     </div>
                     <div className="card-footer text-secondary">
                         <FontAwesomeIcon icon={ScoutingStatus[props.status].icon} className="fas fa-sync me-3" />
-                        <Button style={{ textDecoration: "none" }} onClick={handleClick} className="text-secondary stretched-link shadow-none scout-card-button" to={`/scouting/scoutforms/${props.number}`}>{ScoutingStatus[props.status].message}</Button>
+                        <Button style={{ textDecoration: "none" }} onClick={handleClick} className="text-secondary stretched-link subtext shadow-none scout-card-button" to={`/scouting/scoutforms/${props.number}`}>{ScoutingStatus[props.status].message}</Button>
 
                     </div>
                 </div>
