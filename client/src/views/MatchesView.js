@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import MatchCard from "../cards/MatchCard";
 import useStore from "../stores/TeamDataStore";
-import { calculateIndexScore, isNum } from "./CardsView";
+import { calculateIndexScore, isNum } from "../components/TeamCardList";
 import { Typeahead } from 'react-bootstrap-typeahead'
 import 'react-bootstrap-typeahead/css/Typeahead.css'
 import { useState } from "react";

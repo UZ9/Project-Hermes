@@ -159,6 +159,11 @@ body {
   color: #E77917;
 }
 
+.subtext {
+  font-family: "Jura", sans-serif;
+  font-weight: bold;
+}
+
 .logo-secondary {
   color: #ededed;
 }

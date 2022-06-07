@@ -23,8 +23,8 @@ export default function PodiumCard({ winners, winner, index }) {
             }}
             key={winner.id}
         >
-            <div className={`flex items-center my-2 mb-3 bg-white rounded-lg card-common p-3 border border-gray-300 hover:border-pink-300 hover:bg-pink-200 cursor-pointer`}>
-                <div className='row'>
+            <div className={`flex items-center my-1 mb-3 mx-3 bg-white rounded-lg card-common p-3 border border-gray-300 hover:border-pink-300 hover:bg-pink-200 cursor-pointer`}>
+                <div className='row '>
                     <div className='col-2'>
                         <span className='logo logo-primary'>
                             #{index + 1} 

@@ -1,13 +1,17 @@
 import PodiumStep from "./PodiumStep"
 
-export default function Podium({ winners }) {
+export default function Podium({ podiumOffset, winners, winnerValueFunc }) {
 
-    console.log({winners});
+    console.log({ winners });
 
 
-    const podium = [16, 14, 12, 10, 8, 6, 4, 2, 0, 1, 3, 5, 7, 9, 11, 13, 15]
-    .reduce((podiumOrder, position) => [...podiumOrder, winners[position]], [])
-    .filter(Boolean)
+    const podium = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+        .reduce((podiumOrder, position) => {
+            return [...podiumOrder, { ...winners[position], position: position }]
+        }, [])
+        .filter(Boolean)
+
+    console.log({ podium })
 
     return (
         <div
@@ -26,8 +30,8 @@ export default function Podium({ winners }) {
                 height: 225
             }}
         >
-            {podium.map((winner) => (
-                <PodiumStep key={winner.id} podium={podium} winner={winner} />
+            {podium.map((winner, index) => (
+                <PodiumStep key={winner.id} podiumOffset={podiumOffset} podium={podium} winnerIndex={winner.position} winnerValueFunc={winnerValueFunc} winner={winner} />
             ))}
         </div>
     )

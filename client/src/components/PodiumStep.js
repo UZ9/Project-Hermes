@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion/dist/framer-motion'
 
-export default function PodiumStep({ podium, winner }) {
-    console.log({ podium, winner });
+export default function PodiumStep({ podium, podiumOffset, winnerIndex, winnerValueFunc, winner }) {
 
-    const offset = podium.length - winner["division"]["ranking"] / 1.3
+    const offset = podium.length - winnerIndex / 1.3;
 
     return (
         <div
@@ -66,7 +65,7 @@ export default function PodiumStep({ podium, winner }) {
                 }}
             >
                 <span style={{ fontFamily: "Audiowide, cursive", color: 'white', alignSelf: 'flex-end' }}>
-                    {winner["division"]["ranking"]}
+                    {winnerValueFunc(winner)}
                 </span>
             </motion.div>
         </div>

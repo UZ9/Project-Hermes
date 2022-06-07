@@ -215,23 +215,23 @@ function TeamCard(props) {
                     <div data-tip data-for={props.number} className="card-body">
 
                         <div className="d-flex justify-content-between">
-                            <div className="text-start text-secondary">
-                                <Button style={{ textDecoration: "none" }} onClick={handleClick} className="text-secondary stretched-link shadow-none scout-card-button">{props.number}</Button>
-                                <h6 className="align-top">{props.teamName}</h6>
+                            <div className="text-start">
+                                <Button style={{ textDecoration: "none" }} onClick={handleClick} className="stretched-link shadow-none scout-card-button subtext"><h4 className="subtext">{props.number}</h4></Button>
+                                <h6 className="align-top subtext">{props.teamName}</h6>
 
                             </div>
 
                         </div>
 
-                        <div className="row col-md-15 text-secondary">
-                            <span className="col">Index</span>
-                            <span className="col">Scouting</span>
-                            <span className="col">Skills</span>
+                        <div className="row col-md-15">
+                            <span className="col subtext">INDEX</span>
+                            <span className="col subtext">SCOUTING</span>
+                            <span className="col subtext">SKILLS</span>
                         </div>
-                        <div className="row col-md-15 text-secondary">
-                            <h3 className="col" style={{ color: `#${getIndexScoreColor(props.score, props.maxScore)}` }}>{props.score}</h3>
-                            <h3 className="col">{props.scouting !== undefined ? props.scoutingScore : "0"}</h3>
-                            <h3 className="col">{props.skills["programming"] + props.skills["driver"]}</h3>
+                        <div className="row col-md-15">
+                            <h4 className="col subtext" style={{ color: `#${getIndexScoreColor(props.score, props.maxScore)}` }}>{props.score}</h4>
+                            <h4 className="col subtext">{props.scouting !== undefined ? props.scoutingScore : "0"}</h4>
+                            <h4 className="col subtext">{props.skills["programming"] + props.skills["driver"]}</h4>
                         </div>
                     </div>
                 </div>
