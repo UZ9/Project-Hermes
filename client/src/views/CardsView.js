@@ -26,7 +26,9 @@ function CardsView({ isAdmin }) {
         </nav>
         <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
 
-          <TeamCardList />
+          <div className="container-fluid">
+            <TeamCardList />
+          </div>
 
         </Scrollbars>
 

@@ -101,16 +101,29 @@ export default function TeamCardList(props) {
 
         // Return the information a card will later need
         return { number: card["id"], scouting: scouting, name: teamName, skills: skills, division: division, score: score, scoutingScore: scoutingScore }
-    }))
-
-    const sortMethod = props.sort ? props.sort : (a, b) => { return b.score - a.score };
-
-    if (props.limit) cards = cards.splice(0, props.limit);
+    })).sort((a, b) => { return b.score - a.score })
 
     // We use the max score to determine the sorting of the cards
     const maxScore = cards[0] ? cards[0].score : 0;
 
+    if (props.sort) {
+        cards.sort(props.sort);
+    }   
+
+    if (props.limit) cards = cards.splice(0, props.limit);
+
+    console.log("Cards");
+    console.log(cards);
+    console.log(cards[0].score)
+    console.log(cards[0])
+
+
+
+    console.log({maxScore})
+
     console.timeEnd("scoreCalculations");
+
+    console.log(cards[0])
 
     return (
         <div>
@@ -121,7 +134,7 @@ export default function TeamCardList(props) {
                     {/* <div className="w-100"> */}
                         {/* <div className="row"> */}
 
-                            {cards.sort(sortMethod).map((key, index) => (
+                            {cards.map((key, index) => (
                                 <TeamCard key={index} maxScore={maxScore} teamName={key.name} number={key.number} scoutingScore={key.scoutingScore} scouting={key.scouting} score={key.score} skills={key.skills} division={key.division} />
                             ))}
 

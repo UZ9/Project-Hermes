@@ -198,6 +198,7 @@ function MatchStandingsSection(props) {
 function TeamCard(props) {
 
     const [show, setShow] = useState(false);
+    const [showTooltip, setShowTooltip] = useState(false);
 
     const handleClose = () => setShow(false);
 
@@ -212,11 +213,11 @@ function TeamCard(props) {
         <>
             <div className="col-xl-3 mx-auto col-sm-5 p-2">
                 <div className="card card-common">
-                    <div data-tip data-for={props.number} className="card-body">
+                    <div data-tip data-for={props.number}  onMouseEnter={() => setShowTooltip(true)} className="card-body">
 
                         <div className="d-flex justify-content-between">
                             <div className="text-start">
-                                <Button style={{ textDecoration: "none" }} onClick={handleClick} className="stretched-link shadow-none scout-card-button subtext"><h4 className="subtext">{props.number}</h4></Button>
+                                <Button style={{ textDecoration: "none" }} onClick={handleClick} className="stretched-link text-secondary shadow-none scout-card-button subtext"><h4 className="subtext">{props.number}</h4></Button>
                                 <h6 className="align-top subtext">{props.teamName}</h6>
 
                             </div>
@@ -224,9 +225,9 @@ function TeamCard(props) {
                         </div>
 
                         <div className="row col-md-15">
-                            <span className="col subtext">INDEX</span>
-                            <span className="col subtext">SCOUTING</span>
-                            <span className="col subtext">SKILLS</span>
+                            <span className="col subtext">Index</span>
+                            <span className="col subtext">Scouting</span>
+                            <span className="col subtext">Skills</span>
                         </div>
                         <div className="row col-md-15">
                             <h4 className="col subtext" style={{ color: `#${getIndexScoreColor(props.score, props.maxScore)}` }}>{props.score}</h4>
@@ -237,39 +238,45 @@ function TeamCard(props) {
                 </div>
             </div>
 
-            <ReactTooltip className={`tooltip col-md-${props.scouting !== undefined ? 6 : 3} p-0`} id={props.number} type='error'>
-                <div className="col-md-10 mx-auto col-sm-3">
-                    <div className="card card-common">
-                        <div className="card-body">
-                            {props.scouting !== undefined ? <>
-                                <div className="row">
-                                    <div className="col">
+            {showTooltip ?
+
+                <ReactTooltip className={`tooltip col-md-${props.scouting !== undefined ? 6 : 3} p-0`} id={props.number} type='error'>
+                    <div className="col-md-10 mx-auto col-sm-3">
+                        <div className="card card-common">
+                            <div className="card-body">
+                                {props.scouting !== undefined ? <>
+                                    <div className="row">
+                                        <div className="col">
+                                            <MatchStandingsSection division={props.division} />
+                                            <SkillsSection withScout={false} skills={props.skills} />
+
+                                        </div>
+                                        <div className="col">
+                                            {props.scouting !== undefined &&
+                                                <>
+                                                    <ScoutingSection withScout={true} scoutingScore={props.scoutingScore} scouting={props.scouting} />
+                                                </>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div className="row text-center">
+                                        <img className="mx-auto d-block" style={{ maxWidth: "300px", maxHeight: "300px" }} src={props.scouting["robot-image"]} alt="Robot" />
+
+                                    </div>
+                                </> :
+                                    <>
                                         <MatchStandingsSection division={props.division} />
-                                        <SkillsSection withScout={false} skills={props.skills} />
+                                    </>
+                                }
 
-                                    </div>
-                                    <div className="col">
-                                        {props.scouting !== undefined &&
-                                            <>
-                                                <ScoutingSection withScout={true} scoutingScore={props.scoutingScore} scouting={props.scouting} />
-                                            </>
-                                        }
-                                    </div>
-                                </div>
-                                <div className="row text-center">
-                                    <img className="mx-auto d-block" style={{ maxWidth: "300px", maxHeight: "300px" }} src={props.scouting["robot-image"]} alt="Robot" />
-
-                                </div>
-                            </> :
-                                <>
-                                    <MatchStandingsSection division={props.division} />
-                                </>
-                            }
-
+                            </div>
                         </div>
                     </div>
-                </div>
-            </ReactTooltip>
+                </ReactTooltip>
+
+
+                : undefined}
+
             <Modal show={show} onHide={handleClose} size="lg">
                 <div className="container-fluid">
                     <div className="m-3">
