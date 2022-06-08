@@ -320,8 +320,7 @@ function AdminView() {
             </div></div>
         ) :
             <>
-                <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
-                    <NavbarLogo />
+                <nav className="mb-0 navbar navbar-expand-lg navbar-dark bg-dark">
                     <NavbarItems active="admin" />
                 </nav>
 

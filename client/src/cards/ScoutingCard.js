@@ -33,7 +33,7 @@ function ScoutingCard(props) {
 
     return (
         <>
-            <div className="col-xl-3 mx-auto col-sm-5 p-2">
+            <div className="col-xl-3 mx-auto col-sm-6 p-2">
                 <div className={`card card-common ${"bg-" + ScoutingStatus[props.status].color}`}>
                     <div className="card-body">
                         <div className="d-flex justify-content-between">

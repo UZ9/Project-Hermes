@@ -5,13 +5,19 @@ import NavbarLogo from '../components/NavbarLogo';
 import NavbarItems from '../components/NavbarItems';
 import TeamCardList from '../components/TeamCardList';
 import Scrollbars from 'react-custom-scrollbars';
+import { useMobileDetect } from '../util/responsiveHooks';
 
 
 function CardsView({ isAdmin }) {
 
+  // We can only load the custom scrollbars when the device isn't mobile
+  // const { isMobile } = useMobileDetect();
+
   const data = useStore(state => state.teamData);
 
   // const logOut = () => firebase.auth().signOut();
+
+  // console.log(isMobile);
 
   return (
     data.length === 0 ? (
@@ -20,17 +26,23 @@ function CardsView({ isAdmin }) {
       </div></div>
     ) : (
       <div style={{ width: "100vw", height: "100vh" }}>
-        <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
-          <NavbarLogo />
+        <nav className="mb-0 navbar navbar-expand-lg navbar-dark bg-dark">
           <NavbarItems active="" />
         </nav>
-        <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
-
+{/* 
+        {isMobile ?
           <div className="container-fluid">
             <TeamCardList />
           </div>
+          : */}
+          <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
+            <div className="container-fluid">
+              <TeamCardList />
+            </div>
 
-        </Scrollbars>
+          </Scrollbars>
+        {/* } */}
+
 
       </div>)
   );

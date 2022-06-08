@@ -211,7 +211,7 @@ function TeamCard(props) {
 
     return (
         <>
-            <div className="col-xl-3 mx-auto col-sm-5 p-2">
+            <div className="col-xl-3 mx-auto col-sm-6 p-2">
                 <div className="card card-common">
                     <div data-tip data-for={props.number}  onMouseEnter={() => setShowTooltip(true)} className="card-body">
 

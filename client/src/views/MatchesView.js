@@ -82,13 +82,12 @@ function MatchesView() {
 
     return (
         <div>
-            <nav className="mb-0 navbar  navbar-expand navbar-dark bg-dark">
-                <NavbarLogo/>
+            <nav className="mb-0 navbar navbar-expand-lg navbar-dark bg-dark">
                 <NavbarItems active="matches"/>
                 <div className="me-2">
-                    <Typeahead className="p-0" onChange={setCurrentTeamInput} placeholder={"Team ID"} labelKey={"team-selection"} id="team-selection" highlightOnlyResult={false} type="text" options={teamList} defaultInputValue={currentTeamInput + ""} />
+                    <Typeahead className="px-3 pt-3 pt-sm-0 p-sm-0" onChange={setCurrentTeamInput} placeholder={"Team ID"} labelKey={"team-selection"} id="team-selection" highlightOnlyResult={false} type="text" options={teamList} defaultInputValue={currentTeamInput + ""} />
                 </div>
-                <Button className="btn btm-sm signout-btn me-3" onClick={handleSubmit} >Set Team</Button>
+                <Button className="btn btm-sm mt-3 mt-sm-0 signout-btn me-3" onClick={handleSubmit} >Set Team</Button>
             </nav>
 
             <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>

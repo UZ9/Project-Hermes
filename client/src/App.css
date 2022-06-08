@@ -179,6 +179,12 @@ body {
   font-family: 'Audiowide', cursive;
 }
 
+@media (max-width: 800px) {
+  html, body {
+  overflow-x: hidden;
+  }
+}
+
 @keyframes fadein {
   from {
       opacity:0;

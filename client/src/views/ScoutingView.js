@@ -35,14 +35,13 @@ function ScoutingView() {
     // ))
 
     return (<div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <NavbarLogo/>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <NavbarItems active="scouting"/>
         </nav>
         <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
 
             <div className="container-fluid">
-                <div className="row">
+                <div className="row px-1">
                     <div className="w-100">
                         <div className="row">
                             {data.sort((a, b) => ScoutingStatus[b["scouting_status"] ?? "not-started"].value - ScoutingStatus[a["scouting_status"] ?? "not-started"].value).map((element) => (

@@ -156,8 +156,8 @@ function MatchCard(props) {
 
     return (
         <>
-            <div className="col-xl-12 mx-auto col-sm-5 pt-2">
-                <div className="card card-common">
+            <div className="col-xl-12 mx-auto col-sm-5 pt-2 card card-common mb-3">
+                <div className="row">
                     <h3 className="d-flex justify-content-between pt-3 pb-1 ps-2 pe-2 text-secondary">
                         <div className="col text-center" />
                         <div className="col text-center" />
@@ -175,76 +175,76 @@ function MatchCard(props) {
 
                     </h3>
                 </div>
-            </div>
-            <div className="col-xl-6 mx-auto col-sm-5 pb-3 pt-2">
+                <div className="row">
+                    <div className="col-xl-6 mx-auto col-sm-5 pb-3 pt-2">
+                        <div data-tip data-for={props.matchName + "-red"} className="card-body">
+                            <h5 className="row col-md-15 text-secondary">
+                                <TeamNameDisplay color="tomato" currentTeam={props.currentTeam} text={props.redAlliance["teams"][0]} />
+                                <TeamNameDisplay color="tomato" currentTeam={props.currentTeam} text={props.redAlliance["teams"][1]} />
+                            </h5>
+                            <div className="row col-md-15 text-secondary">
+                                <span className="col">Index</span>
+                                <span className="col">Scouting</span>
+                                <span className="col">Skills</span>
+                                <span className="col">Index</span>
+                                <span className="col">Scouting</span>
+                                <span className="col">Skills</span>
+                            </div>
+                            <div className="row col-md-15 text-secondary">
+                                <h3 className="col" >{data[props.redAlliance["teams"][0]]["score"]}</h3>
+                                <h3 className="col" >{data[props.redAlliance["teams"][0]]["scoutingScore"]}</h3>
+                                <h3 className="col" >{data[props.redAlliance["teams"][0]]["skills"]["driver"] + data[props.redAlliance["teams"][0]]["skills"]["programming"]}</h3>
+                                <h3 className="col" >{data[props.redAlliance["teams"][1]]["score"]}</h3>
+                                <h3 className="col" >{data[props.redAlliance["teams"][1]]["scoutingScore"]}</h3>
+                                <h3 className="col" >{data[props.redAlliance["teams"][1]]["skills"]["driver"] + data[props.redAlliance["teams"][1]]["skills"]["programming"]}</h3>
+                            </div>
+                            <div className="row col-md-15 text-secondary">
+                                {data[props.redAlliance["teams"][0]]["scouting"] !== undefined &&
+                                    <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.redAlliance["teams"][0]]["scouting"]["robot-image"] ?? ""} /></div>}
+                                {(data[props.redAlliance["teams"][1]]["scouting"] !== undefined) &&
+                                    <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.redAlliance["teams"][1]]["scouting"]["robot-image"] ?? ""} /></div>}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xl-6 mx-auto col-sm-6 pb-3 pt-2">
 
-                <div className="card card-common">
-                    <div data-tip data-for={props.matchName + "-red"} className="card-body">
-                        <h5 className="row col-md-15 text-secondary">
-                            <TeamNameDisplay color="tomato" currentTeam={props.currentTeam} text={props.redAlliance["teams"][0]} />
-                            <TeamNameDisplay color="tomato" currentTeam={props.currentTeam} text={props.redAlliance["teams"][1]} />
-                        </h5>
-                        <div className="row col-md-15 text-secondary">
-                            <span className="col">Index</span>
-                            <span className="col">Scouting</span>
-                            <span className="col">Skills</span>
-                            <span className="col">Index</span>
-                            <span className="col">Scouting</span>
-                            <span className="col">Skills</span>
-                        </div>
-                        <div className="row col-md-15 text-secondary">
-                            <h3 className="col" >{data[props.redAlliance["teams"][0]]["score"]}</h3>
-                            <h3 className="col" >{data[props.redAlliance["teams"][0]]["scoutingScore"]}</h3>
-                            <h3 className="col" >{data[props.redAlliance["teams"][0]]["skills"]["driver"] + data[props.redAlliance["teams"][0]]["skills"]["programming"]}</h3>
-                            <h3 className="col" >{data[props.redAlliance["teams"][1]]["score"]}</h3>
-                            <h3 className="col" >{data[props.redAlliance["teams"][1]]["scoutingScore"]}</h3>
-                            <h3 className="col" >{data[props.redAlliance["teams"][1]]["skills"]["driver"] + data[props.redAlliance["teams"][1]]["skills"]["programming"]}</h3>
-                        </div>
-                        <div className="row col-md-15 text-secondary">
-                            {data[props.redAlliance["teams"][0]]["scouting"] !== undefined &&
-                                <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.redAlliance["teams"][0]]["scouting"]["robot-image"] ?? ""} /></div>}
-                            {(data[props.redAlliance["teams"][1]]["scouting"] !== undefined) &&
-                                <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.redAlliance["teams"][1]]["scouting"]["robot-image"] ?? ""} /></div>}
+                        <div data-tip data-for={props.matchName + "-blue"} className="card-body">
+                            <h5 className="row col-md-15 text-secondary">
+                                <TeamNameDisplay color="#00BFFF" currentTeam={props.currentTeam} text={props.blueAlliance["teams"][0]} />
+                                <TeamNameDisplay color="#00BFFF" currentTeam={props.currentTeam} text={props.blueAlliance["teams"][1]} />
+                            </h5>
+                            <div className="row col-md-15 text-secondary">
+                                <span className="col">Index</span>
+                                <span className="col">Scouting</span>
+                                <span className="col">Skills</span>
+                                <span className="col">Index</span>
+                                <span className="col">Scouting</span>
+                                <span className="col">Skills</span>
+                            </div>
+                            <div className="row col-md-15 text-secondary">
+                                <h3 className="col" >{data[props.blueAlliance["teams"][0]]["score"]}</h3>
+                                <h3 className="col" >{data[props.blueAlliance["teams"][0]]["scoutingScore"]}</h3>
+                                <h3 className="col" >{data[props.blueAlliance["teams"][0]]["skills"]["driver"] + data[props.blueAlliance["teams"][0]]["skills"]["programming"]}</h3>
+                                <h3 className="col" >{data[props.blueAlliance["teams"][1]]["score"]}</h3>
+                                <h3 className="col" >{data[props.blueAlliance["teams"][1]]["scoutingScore"]}</h3>
+                                <h3 className="col" >{data[props.blueAlliance["teams"][1]]["skills"]["driver"] + data[props.blueAlliance["teams"][1]]["skills"]["programming"]}</h3>
+                            </div>
+                            <div className="row col-md-15 text-secondary">
+                                {data[props.blueAlliance["teams"][0]]["scouting"] !== undefined &&
+                                    (<div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.blueAlliance["teams"][0]]["scouting"]["robot-image"] ?? ""} /></div>)}
+                                {data[props.blueAlliance["teams"][1]]["scouting"] !== undefined &&
+                                    <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.blueAlliance["teams"][1]]["scouting"]["robot-image"] ?? ""} /></div>}
+                            </div>
+
+
+
                         </div>
                     </div>
                 </div>
+
             </div>
-            <div className="col-xl-6 mx-auto col-sm-5 pb-3 pt-2">
-
-                <div className="card card-common">
-                    <div data-tip data-for={props.matchName + "-blue"} className="card-body">
-                        <h5 className="row col-md-15 text-secondary">
-                            <TeamNameDisplay color="#00BFFF" currentTeam={props.currentTeam} text={props.blueAlliance["teams"][0]} />
-                            <TeamNameDisplay color="#00BFFF" currentTeam={props.currentTeam} text={props.blueAlliance["teams"][1]} />
-                        </h5>
-                        <div className="row col-md-15 text-secondary">
-                            <span className="col">Index</span>
-                            <span className="col">Scouting</span>
-                            <span className="col">Skills</span>
-                            <span className="col">Index</span>
-                            <span className="col">Scouting</span>
-                            <span className="col">Skills</span>
-                        </div>
-                        <div className="row col-md-15 text-secondary">
-                            <h3 className="col" >{data[props.blueAlliance["teams"][0]]["score"]}</h3>
-                            <h3 className="col" >{data[props.blueAlliance["teams"][0]]["scoutingScore"]}</h3>
-                            <h3 className="col" >{data[props.blueAlliance["teams"][0]]["skills"]["driver"] + data[props.blueAlliance["teams"][0]]["skills"]["programming"]}</h3>
-                            <h3 className="col" >{data[props.blueAlliance["teams"][1]]["score"]}</h3>
-                            <h3 className="col" >{data[props.blueAlliance["teams"][1]]["scoutingScore"]}</h3>
-                            <h3 className="col" >{data[props.blueAlliance["teams"][1]]["skills"]["driver"] + data[props.blueAlliance["teams"][1]]["skills"]["programming"]}</h3>
-                        </div>
-                        <div className="row col-md-15 text-secondary">
-                            {data[props.blueAlliance["teams"][0]]["scouting"] !== undefined &&
-                                (<div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.blueAlliance["teams"][0]]["scouting"]["robot-image"] ?? ""} /></div>)}
-                            {data[props.blueAlliance["teams"][1]]["scouting"] !== undefined &&
-                                <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.blueAlliance["teams"][1]]["scouting"]["robot-image"] ?? ""} /></div>}
-                        </div>
 
 
-
-                    </div>
-                </div>
-            </div>
 
             <ReactTooltip className={`tooltip col-md-10 p-0`} id={props.matchName + "-red"} type='error'>
                 <div className="col-md-12 mx-auto col-sm-3">
