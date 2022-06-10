@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { Form } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
-import "../App.css"
+// import "../App.css"
 import { socket } from "../service/Socket";
 import { useNavigate } from "react-router-dom"
 import axios from "axios";

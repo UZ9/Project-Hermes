@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import '../App.css';
 import { Form } from "react-bootstrap";
 import axios from "axios";
 import Button from "@restart/ui/esm/Button";

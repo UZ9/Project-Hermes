@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ScoutingStatus } from "../views/ScoutingView";
 import Button from "@restart/ui/esm/Button";
-import "../App.css"
+// import "../App.css"
 import { useNavigate } from "react-router";
 import { Modal } from "react-bootstrap";
 import { useState } from "react";

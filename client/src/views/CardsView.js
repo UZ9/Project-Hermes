@@ -1,5 +1,5 @@
-import '../App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import '../App.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import useStore from '../stores/TeamDataStore';
 import NavbarLogo from '../components/NavbarLogo';
 import NavbarItems from '../components/NavbarItems';
@@ -29,18 +29,18 @@ function CardsView({ isAdmin }) {
         <nav className="mb-0 navbar navbar-expand-lg navbar-dark bg-dark">
           <NavbarItems active="" />
         </nav>
-{/* 
+        {/* 
         {isMobile ?
           <div className="container-fluid">
             <TeamCardList />
           </div>
           : */}
-          <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
-            <div className="container-fluid">
-              <TeamCardList />
-            </div>
+        <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
+          <div className="container-fluid">
+            <TeamCardList />
+          </div>
 
-          </Scrollbars>
+        </Scrollbars>
         {/* } */}
 
 

@@ -13,6 +13,7 @@ import useStore from './stores/TeamDataStore';
 import "./custom.scss";
 import MatchesView from './views/MatchesView';
 import AdminView from './views/AdminView';
+import SettingsView from './views/SettingsView';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/scouting/scoutforms/:id" element={<ScoutFormComponent />} />
           <Route path="/matches" element={<MatchesView />} />
           <Route path="/admin" element={<AdminView />} />
+          <Route path="/settings" element={<SettingsView />} />
         </Routes>
       </BrowserRouter>
     </>
