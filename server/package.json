@@ -11,7 +11,16 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node .",
+    "dev": "tsc-watch --onSuccess \"npm start\"",
     "test": "node test.js"
+  },
+  "nodemonConfig": {
+    "ext": "js",
+    "ignore": [
+      "*.test.ts",
+      "db/*"
+    ],
+    "delay": "2"
   },
   "dependencies": {
     "@types/cli-progress": "^3.11.0",

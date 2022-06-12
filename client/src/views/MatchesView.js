@@ -3,10 +3,9 @@ import MatchCard from "../cards/MatchCard";
 import useStore from "../stores/TeamDataStore";
 import { calculateIndexScore, isNum } from "../components/TeamCardList";
 import { Typeahead } from 'react-bootstrap-typeahead'
-// import 'react-bootstrap-typeahead/css/Typeahead.css'
+import 'react-bootstrap-typeahead/css/Typeahead.css'
 import { useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
-import NavbarLogo from "../components/NavbarLogo";
 import NavbarItems from "../components/NavbarItems";
 
 function MatchesView() {

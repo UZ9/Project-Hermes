@@ -1,11 +1,9 @@
 // import '../App.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import useStore from '../stores/TeamDataStore';
-import NavbarLogo from '../components/NavbarLogo';
 import NavbarItems from '../components/NavbarItems';
 import TeamCardList from '../components/TeamCardList';
 import Scrollbars from 'react-custom-scrollbars';
-import { useMobileDetect } from '../util/responsiveHooks';
 
 
 function CardsView({ isAdmin }) {
@@ -16,8 +14,6 @@ function CardsView({ isAdmin }) {
   const data = useStore(state => state.teamData);
 
   // const logOut = () => firebase.auth().signOut();
-
-  // console.log(isMobile);
 
   return (
     data.length === 0 ? (

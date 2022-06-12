@@ -18,11 +18,11 @@ import SettingsView from './views/SettingsView';
 
 function App() {
   socket.on('connection', (res) => {
-    useStore.setState({ teamData: res.data });
+    useStore.setState({ teamData: res.data, config: res.config });
   })
 
   socket.on('data-update', (res) => {
-    useStore.setState({ teamData: res.data });
+    useStore.setState({ teamData: res.data, config: res.config });
   })
 
   return (
@@ -35,6 +35,7 @@ function App() {
           <Route path="/matches" element={<MatchesView />} />
           <Route path="/admin" element={<AdminView />} />
           <Route path="/settings" element={<SettingsView />} />
+          <Route path="/settings/:id" element={<SettingsView />} />
         </Routes>
       </BrowserRouter>
     </>

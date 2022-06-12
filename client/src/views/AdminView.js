@@ -5,23 +5,16 @@ import { motion } from 'framer-motion/dist/framer-motion'
 import Scrollbars from "react-custom-scrollbars";
 
 import NavbarItems from "../components/NavbarItems";
-import NavbarLogo from "../components/NavbarLogo";
 
 import Podium from "../components/Podium";
-import PodiumCardList from "../components/PodiumCardList";
 import useStore from "../stores/TeamDataStore";
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useState } from 'react';
 import { useRef } from 'react';
-import { useEffect } from 'react';
-import TeamCardList from '../components/TeamCardList';
 
 ChartJS.register(ArcElement, Tooltip, Legend, LineElement, LinearScale, CategoryScale, PointElement, BarElement);
-
-console.log("Default aimat")
-console.log(defaults.animation);
 
 defaults.font.family = "Jura, sans-serif"
 defaults.font.opacity = 1.0
@@ -309,10 +302,6 @@ function AdminView() {
         }
     };
 
-    const afterChange = () => {
-
-    }
-
     return (
         teamData.length === 0 ? (
             <div className="loadingio-spinner-eclipse-uzl9l7691o "><div className="ldio-5ki7dfraqbv">
@@ -325,7 +314,6 @@ function AdminView() {
                 </nav>
 
                 <Carousel draggable={false} shouldResetAutoplay={false} autoPlay={false} ref={(el) => (carouselRef.current = el)} beforeChange={e => {
-                    console.log(e);
                     carouselKeys[e][1](carouselKeys[e][0] + "a");
 
                 }}

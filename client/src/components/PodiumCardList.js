@@ -1,5 +1,3 @@
-import PodiumCard from "./PodiumCard";
-
 export default function PodiumCardList({ winners }) {
     return (
         <div className="container-fluid">

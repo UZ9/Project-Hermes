@@ -7,22 +7,64 @@ import * as cliProgress from 'cli-progress'
 
 // TODO: Find a more appropriate name for this service
 export class MatchDataService {
-    private readonly collectionName: string = "hermes";
+    private dataCollectionName: string = "hermes";
+    private readonly dataConfigName: string = "hermes-config";
+    private updating: boolean = false;
+    private config: any = {};
 
-    constructor() {
+    public initialize() {
+        this.initialFetch();
+
         // Update match data every 5 minutes
         setInterval(() => {
             this.fetchMatchData();
         }, 1000 * 60 * 5);
     }
 
+    private async initialFetch() {
+        await this.fetchConfig();
+        await this.fetchMatchData();
+    }
+
+    private async fetchConfig() {
+        const configObj = await mongoService.getDb().collection(this.dataConfigName).findOne({});
+
+        logger.debug("Successfully loaded the following configuration:", configObj);
+
+        this.config = configObj.config;
+        this.dataCollectionName = this.config["tournament.sku-id"]
+    }
+
     private async updateClientData() {
         // Retrieve all data from mongodb
-        const data = await mongoService.getDb().collection(this.collectionName).find({}).toArray();
+        const data = await mongoService.getDb().collection(this.dataCollectionName).find({}).toArray();
+        const config = await mongoService.getDb().collection(this.dataConfigName).findOne({});
 
         // Send updated data to all clients
-        socketServer.emit("data-update", { data });
+        socketServer.emit("data-update", { data, config: config.config });
     }
+
+    private async updateServerConfig(newConfig: any) {
+        // TODO: Only make the refetch happen if SKU or division have changed
+        this.config = newConfig;
+        this.dataCollectionName = this.config["tournament.sku-id"]
+
+        mongoService.getDb().collection(this.dataConfigName).updateOne(
+            { "id": "main-config" },
+            {
+                $set: {
+                    config: newConfig
+                }
+            },
+            { upsert: true }
+        ).then(_ => {
+            logger.debug("Successfully updated MongoDB with new application configuration");
+            this.updateClientData();
+            this.fetchMatchData();
+        })
+    }
+
+
 
     private async updateServerData(newData: any) {
         // Bulk write data to avoid unncessary write calls to mongodb
@@ -47,13 +89,15 @@ export class MatchDataService {
             })
         }
 
-        await mongoService.getDb().collection('hermes').bulkWrite(bulk);
+        await mongoService.getDb().collection(this.dataCollectionName).bulkWrite(bulk);
 
         logger.debug("Finished pushing MongoDB bulk write update");
     }
 
     public async fetchMatchData() {
         logger.debug("Starting match data fetch retrieval")
+
+        this.updating = true;
 
         const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 
@@ -62,12 +106,21 @@ export class MatchDataService {
         // RobotEvents requires an API key to operate
         robotevents.authentication.setBearer(process.env.API_KEY);
 
+        const skuId = "RE-VRC-" + this.config["tournament.sku-id"];
+
 
         // Pull event data
-        const event = await robotevents.events.get(process.env.SKU);
+        const event = await robotevents.events.get(skuId);
 
-        // TODO: Don't hardcode the division index
-        const division = event.divisions[1];
+        if (event === null) {
+            logger.error(`The provided tournament SKU ID ${skuId} does not exist, cancelling data update`)
+            return;
+        }
+
+        logger.debug(`Successfully loaded event with SKU ID ${skuId}`);
+
+
+        const division = event.divisions[this.config["tournament.division"]];
 
         const matches = await event.matches(division.id);
 
@@ -103,8 +156,8 @@ export class MatchDataService {
                 team.skills({ season: [robotevents.seasons.current("VRC")] }).then(skills => {
                     const allSkills = skills.array();
 
-                    const programming = allSkills.filter(sk => sk.type === 'programming').reduce((a, b) => a.score > b.score ? a : b).score;
-                    const driver = allSkills.filter(sk => sk.type === 'driver').reduce((a, b) => a.score > b.score ? a : b).score;
+                    const programming = allSkills.filter(sk => sk.type === 'programming').reduce((a, b) => a.score > b.score ? a : b, {score: 0}).score;
+                    const driver = allSkills.filter(sk => sk.type === 'driver').reduce((a, b) => a.score > b.score ? a : b, {score: 0}).score;
 
                     const teamMatches = (matchesPerTeam as any)[teamObjects[index].id] as Match[]
 
@@ -146,24 +199,34 @@ export class MatchDataService {
                         })
 
                         bar1.increment();
-                        if (bar1.getProgress() === teamObjects.length) {
+
+                        logger.debug(bar1.getProgress().toString() + " versus " + teamObjects.length);
+                        if (bar1.getProgress() === 1) {
                             bar1.stop();
+
+                            logger.debug("Successfully finished fetching data")
 
                             this.updateServerData(data);
 
+                            this.updating = false;
+
+
                         }
 
+                    }).catch(e => {
+                        logger.error("Experienced an error while fetching skills rankings", e)
                     })
 
 
 
 
                 }).catch(e => {
-                    logger.error(e)
+                    logger.error("Experienced an error while fetching division rankings", e)
                 })
             }, 0.8 * 1000 * index);
 
         })
+
     }
 
     public connect(socket: Socket): void {
@@ -182,7 +245,7 @@ export class MatchDataService {
             // Update team to be marked as in-progress
             // The in-progress status is updated to all other clients in order to prevent
             // two people  from scouting the same team at once.
-            mongoService.getDb().collection("hermes").updateOne(
+            mongoService.getDb().collection(this.dataCollectionName).updateOne(
                 { "id": newData.team },
                 { $set: { "scouting_status": "in-progress" } },
                 { upsert: true }
@@ -196,7 +259,7 @@ export class MatchDataService {
         socket.on("add-scouting-data", (newData) => {
             logger.info(`Received ${JSON.stringify(newData)} from a client form submission`)
 
-            mongoService.getDb().collection(this.collectionName).updateOne(
+            mongoService.getDb().collection(this.dataCollectionName).updateOne(
                 { "id": newData.team },
                 {
                     $set: {
@@ -213,7 +276,7 @@ export class MatchDataService {
 
         // Triggered when a scout attempts to cancel their scouting form, e.g. closing the browser or hitting the back button
         socket.on('cancel-scouting-data', (newData) => {
-            mongoService.getDb().collection("hermes").updateOne(
+            mongoService.getDb().collection(this.dataCollectionName).updateOne(
                 { "id": newData.team },
                 { $set: { "scouting_status": "not-started" } },
                 { upsert: true }
@@ -221,6 +284,10 @@ export class MatchDataService {
                 logger.debug("Successfully updated MongoDB and marked a team as not-started");
                 this.updateClientData();
             })
+        })
+
+        socket.on('update-config', (newConfig) => {
+            this.updateServerConfig(newConfig);
         })
     }
 }

@@ -1,4 +1,3 @@
-import Scrollbars from "react-custom-scrollbars";
 import TeamCard from "../cards/TeamCard";
 import useStore from "../stores/TeamDataStore";
 
@@ -58,8 +57,6 @@ export function isNum(num) {
 export default function TeamCardList(props) {
     const data = useStore(state => state.teamData);
 
-    console.time("scoreCalculations");
-
     let cards = (data.map((card) => {
         const teamName = card["name"];
         const skills = card["skills"];
@@ -111,19 +108,6 @@ export default function TeamCardList(props) {
     }   
 
     if (props.limit) cards = cards.splice(0, props.limit);
-
-    console.log("Cards");
-    console.log(cards);
-    console.log(cards[0].score)
-    console.log(cards[0])
-
-
-
-    console.log({maxScore})
-
-    console.timeEnd("scoreCalculations");
-
-    console.log(cards[0])
 
     return (
         <div>

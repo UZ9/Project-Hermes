@@ -115,6 +115,10 @@ body {
   width: "100%"
 }
 
+.settings-sidebar {
+  min-height: calc(100vh - 56px);
+}
+
 /* Loading Animation */
 @keyframes ldio-5ki7dfraqbv {
   0% { transform: rotate(0deg); opacity: 1 }

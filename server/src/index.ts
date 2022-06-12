@@ -27,6 +27,8 @@ mongoService.connect((err, client) => {
     if (err) logger.error(err);
 
     logger.info("Successfully initialized MongoDB Connection")
+
+    matchDataService.initialize();
 });
 
 export { app, socketServer, mongoService, matchDataService };

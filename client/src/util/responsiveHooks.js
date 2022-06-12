@@ -11,7 +11,6 @@ export const useMobileDetect = () => {
 
     useEffect(() => {
         const handlePageResized = () => {
-            console.log(window.innerWidth);
             setIsMobile(isMobileResolution);
         };
 

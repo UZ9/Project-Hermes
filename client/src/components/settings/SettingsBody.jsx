@@ -1,20 +1,34 @@
-import { faTrophy } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { socket } from "../../service/Socket";
 
 export function SettingsBody(props) {
-    const current = 0;
+    const handleCancel = () => {
 
-    console.log({props})
+    }
+
+    const handleSubmit = () => {
+        socket.emit("update-config", props.config);
+    }
+
 
     return (
         <>
-            <div class="col py-3 ms-4">
-                <h1 className="subtext pb-3">{props.options[current].name.toUpperCase()}</h1>
+            <div class="col py-3 ms-5">
+                <h1 className="subtext pb-3">{props.currentPage.name.toUpperCase()}</h1>
 
-                {React.Children.map(props.children, (child, i) => i === current && child)}
-                
+                {React.Children.map(props.children, (child, i) => {
+                    if (child.props.pageId === props.currentPage.id && child) {
+                        return React.cloneElement(child, {config: props.config, setConfigOption: props.setConfigOption});
+                    }
+                })}
+
+                <div className="text-end">
+                    <button onClick={handleCancel} className="button btn btn-secondary logo me-3 p-2 px-3">Cancel</button>
+
+                    <button onClick={handleSubmit} className="button btn  signout-btn p-2 px-3">Save</button>
+                </div>
+
+
             </div>
         </>
 
