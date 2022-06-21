@@ -7,6 +7,7 @@ import 'react-bootstrap-typeahead/css/Typeahead.css'
 import { useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import NavbarItems from "../components/NavbarItems";
+import LoadingAnimation from "../components/loading/LoadingAnimation";
 
 function MatchesView() {
     // const currentTeam = "21050A"
@@ -80,40 +81,48 @@ function MatchesView() {
     const teamList = data.map(element => element["id"]);
 
     return (
-        <div>
-            <nav className="mb-0 navbar navbar-expand-lg navbar-dark bg-dark">
-                <NavbarItems active="matches"/>
-                <div className="me-2">
-                    <Typeahead className="px-3 pt-3 pt-sm-0 p-sm-0" onChange={setCurrentTeamInput} placeholder={"Team ID"} labelKey={"team-selection"} id="team-selection" highlightOnlyResult={false} type="text" options={teamList} defaultInputValue={currentTeamInput + ""} />
-                </div>
-                <Button className="btn btm-sm mt-3 mt-sm-0 signout-btn me-3" onClick={handleSubmit} >Set Team</Button>
-            </nav>
+        data.length === 0 ?
+            <>
+                <nav className="mb-0 navbar navbar-expand-lg navbar-dark bg-dark">
+                    <NavbarItems active="" />
+                </nav>
 
-            <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
-                <div className="container-fluid">
-                    <div className="row">
-                        {(matches.length !== 0) ?
-                            Object.keys(matches).map((key, index) => (
-                                <MatchCard cards={cards} key={index} matchName={key} currentTeam={currentTeam} blueAlliance={matches[key]["blue-alliance"]} redAlliance={matches[key]["red-alliance"]} />
-                            )) :
-                            <>
-                                <div className="col-xl-3 mx-auto col-sm-5 p-2">
-                                    <div className={`card card-common`}>
-                                        <div className="card-body">
-                                            <div className="d-flex justify-content-between">
-                                                <div className="text-start text-secondary">
-                                                    <h5 className="text-danger">No team selected.</h5>
-                                                    <h6 className="align-top">Make sure you have selected a valid team from the Team ID selection..</h6>
+                <LoadingAnimation />
+            </> :
+            <div>
+                <nav className="mb-0 navbar navbar-expand-lg navbar-dark bg-dark">
+                    <NavbarItems active="matches" />
+                    <div className="me-2">
+                        <Typeahead className="px-3 pt-3 pt-sm-0 p-sm-0" onChange={setCurrentTeamInput} placeholder={"Team ID"} labelKey={"team-selection"} id="team-selection" highlightOnlyResult={false} type="text" options={teamList} defaultInputValue={currentTeamInput + ""} />
+                    </div>
+                    <Button className="btn btm-sm mt-3 mt-sm-0 signout-btn me-3" onClick={handleSubmit} >Set Team</Button>
+                </nav>
+
+                <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
+                    <div className="container-fluid">
+                        <div className="row">
+                            {(matches.length !== 0) ?
+                                Object.keys(matches).map((key, index) => (
+                                    <MatchCard cards={cards} key={index} matchName={key} currentTeam={currentTeam} blueAlliance={matches[key]["blue-alliance"]} redAlliance={matches[key]["red-alliance"]} />
+                                )) :
+                                <>
+                                    <div className="col-xl-3 mx-auto col-sm-5 p-2">
+                                        <div className={`card card-common`}>
+                                            <div className="card-body">
+                                                <div className="d-flex justify-content-between">
+                                                    <div className="text-start text-secondary">
+                                                        <h5 className="text-danger">No team selected.</h5>
+                                                        <h6 className="align-top">Make sure you have selected a valid team from the Team ID selection..</h6>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </>}
+                                </>}
+                        </div>
                     </div>
-                </div>
-            </Scrollbars>
-        </div>
+                </Scrollbars>
+            </div>
     );
 }
 

@@ -1,7 +1,10 @@
 import { useRef } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+import useStore from "../../stores/TeamDataStore";
 
 export default function LoadingAnimation(props) {
+    const loadingStatus = useStore(state => state.loadingStatus)
 
     const textRef = useRef({ text: "LOADING DATA", color: "#212529" });
     const loadingPolygon = useRef();
@@ -10,8 +13,14 @@ export default function LoadingAnimation(props) {
     const [loadingClasses, setLoadingClasses] = useState("rotating-triangle")
     const [loadingCircleClasses, setLoadingCircleClasses] = useState("loader triangle")
 
-    const errorMessage = (text) => {
-        textRef.current = { text: text, color: "#ff3333" }
+    useEffect(() => {
+        if (loadingStatus === "InvalidSku") {
+            errorMessage("Invalid SKU ID", "Enter a valid SKU ID on the Settings page.")
+        }
+    }, [loadingStatus]) 
+
+    const errorMessage = (text, subtext="") => {
+        textRef.current = { text: text.toUpperCase(), subtext: subtext, color: "#ff3333" }
 
         setLoadingClasses("rotating-triangle rotating-triangle-error")
         setLoadingCircleClasses("loader triangle-error triangle ")
@@ -27,6 +36,7 @@ export default function LoadingAnimation(props) {
                     </svg>
                 </div>
                 <h1 style={{ color: textRef.current.color }} className="logo logo-primary loading-text text-center justify-content-center">{textRef.current.text}</h1>
+                <h3 className="subtext loading-subtext text-center justify-content-center">{textRef.current.subtext}</h3>
             </>
         </>
     )

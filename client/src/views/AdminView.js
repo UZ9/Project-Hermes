@@ -13,6 +13,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useState } from 'react';
 import { useRef } from 'react';
+import LoadingAnimation from '../components/loading/LoadingAnimation';
 
 ChartJS.register(ArcElement, Tooltip, Legend, LineElement, LinearScale, CategoryScale, PointElement, BarElement);
 
@@ -304,9 +305,13 @@ function AdminView() {
 
     return (
         teamData.length === 0 ? (
-            <div className="loadingio-spinner-eclipse-uzl9l7691o "><div className="ldio-5ki7dfraqbv">
-                <div></div>
-            </div></div>
+            <>
+                <nav className="mb-0 navbar navbar-expand-lg navbar-dark bg-dark">
+                    <NavbarItems active="" />
+                </nav>
+
+                <LoadingAnimation />
+            </>
         ) :
             <>
                 <nav className="mb-0 navbar navbar-expand-lg navbar-dark bg-dark">

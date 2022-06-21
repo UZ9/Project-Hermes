@@ -25,6 +25,10 @@ function App() {
     useStore.setState({ teamData: res.data, config: res.config });
   })
 
+  socket.on('loading-update', (res) => {
+    useStore.setState({ loadingStatus: res.status })
+  })
+
   return (
     <>
       <BrowserRouter>

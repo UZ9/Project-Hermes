@@ -5,7 +5,8 @@ import { mountStoreDevtool } from 'simple-zustand-devtools'
 const useStore = create(set => ({
     teamData: [],
     currentTeam: "",
-    do: "s"
+    do: "s",
+    loadingStatus: "",
 }))
 
 if (process.env.NODE_ENV === 'development') {

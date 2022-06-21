@@ -4,9 +4,6 @@ import useStore from '../stores/TeamDataStore';
 import NavbarItems from '../components/NavbarItems';
 import TeamCardList from '../components/TeamCardList';
 import Scrollbars from 'react-custom-scrollbars';
-import { useState } from 'react';
-import { useRef } from 'react';
-import { useEffect } from 'react';
 import LoadingAnimation from '../components/loading/LoadingAnimation';
 
 

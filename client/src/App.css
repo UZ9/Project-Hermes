@@ -157,7 +157,20 @@ body {
 
 .loading-text {
   position: fixed;
+  width: 100%;
   top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: -webkit-translate(-50%, -50%);
+  transform: -moz-translate(-50%, -50%);
+  transform: -ms-translate(-50%, -50%);
+
+  animation: fadein 2s;
+}
+
+.loading-subtext {
+  position: fixed;
+  top: 71.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   transform: -webkit-translate(-50%, -50%);

@@ -5,11 +5,20 @@ import * as robotevents from 'robotevents';
 import { Match } from "robotevents/out/endpoints/matches";
 import * as cliProgress from 'cli-progress'
 
+enum MatchDataStatus {
+    Unloaded = 0,
+    Loaded = 1,
+    InvalidSku = 2,
+    Loading = 3,
+
+}
+
 // TODO: Find a more appropriate name for this service
 export class MatchDataService {
     private dataCollectionName: string = "hermes";
     private readonly dataConfigName: string = "hermes-config";
     private updating: boolean = false;
+    private status: MatchDataStatus = MatchDataStatus.InvalidSku;
     private config: any = {};
 
     public initialize() {
@@ -39,6 +48,12 @@ export class MatchDataService {
         // Retrieve all data from mongodb
         const data = await mongoService.getDb().collection(this.dataCollectionName).find({}).toArray();
         const config = await mongoService.getDb().collection(this.dataConfigName).findOne({});
+
+
+        if (data.length === 0) {
+            logger.debug("Data not loaded, sending loading update of status " + MatchDataStatus[this.status])
+            socketServer.emit("loading-update", { status: MatchDataStatus[this.status] });
+        }
 
         // Send updated data to all clients
         socketServer.emit("data-update", { data, config: config.config });
@@ -94,8 +109,16 @@ export class MatchDataService {
         logger.debug("Finished pushing MongoDB bulk write update");
     }
 
+    private setStatus(status: MatchDataStatus) {
+        this.status = status;
+
+        socketServer.emit("loading-update", { status: MatchDataStatus[this.status] });
+    }
+
     public async fetchMatchData() {
         logger.debug("Starting match data fetch retrieval")
+
+        this.setStatus(MatchDataStatus.Loading);
 
         this.updating = true;
 
@@ -113,7 +136,10 @@ export class MatchDataService {
         const event = await robotevents.events.get(skuId);
 
         if (event === null) {
-            logger.error(`The provided tournament SKU ID ${skuId} does not exist, cancelling data update`)
+            logger.warn(`The provided tournament SKU ID ${skuId} does not exist, cancelling data update`)
+
+            this.setStatus(MatchDataStatus.InvalidSku);
+
             return;
         }
 
@@ -156,8 +182,8 @@ export class MatchDataService {
                 team.skills({ season: [robotevents.seasons.current("VRC")] }).then(skills => {
                     const allSkills = skills.array();
 
-                    const programming = allSkills.filter(sk => sk.type === 'programming').reduce((a, b) => a.score > b.score ? a : b, {score: 0}).score;
-                    const driver = allSkills.filter(sk => sk.type === 'driver').reduce((a, b) => a.score > b.score ? a : b, {score: 0}).score;
+                    const programming = allSkills.filter(sk => sk.type === 'programming').reduce((a, b) => a.score > b.score ? a : b, { score: 0 }).score;
+                    const driver = allSkills.filter(sk => sk.type === 'driver').reduce((a, b) => a.score > b.score ? a : b, { score: 0 }).score;
 
                     const teamMatches = (matchesPerTeam as any)[teamObjects[index].id] as Match[]
 
@@ -205,6 +231,8 @@ export class MatchDataService {
                             bar1.stop();
 
                             logger.debug("Successfully finished fetching data")
+
+                            this.setStatus(MatchDataStatus.Loaded);
 
                             this.updateServerData(data);
 
