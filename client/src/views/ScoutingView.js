@@ -3,7 +3,7 @@ import React from "react";
 import Scrollbars from "react-custom-scrollbars";
 import ScoutingCard from "../cards/ScoutingCard";
 import LoadingAnimation from "../components/loading/LoadingAnimation";
-import NavbarItems from "../components/NavbarItems";
+import NavbarItems from "../components/navbar/NavbarItems";
 import useStore from "../stores/TeamDataStore";
 
 export const ScoutingStatus = {

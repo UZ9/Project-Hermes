@@ -1,12 +1,12 @@
 import { Button } from "react-bootstrap";
 import MatchCard from "../cards/MatchCard";
 import useStore from "../stores/TeamDataStore";
-import { calculateIndexScore, isNum } from "../components/TeamCardList";
+import { calculateIndexScore, isNum } from "../components/display/TeamCardList";
 import { Typeahead } from 'react-bootstrap-typeahead'
 import 'react-bootstrap-typeahead/css/Typeahead.css'
 import { useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
-import NavbarItems from "../components/NavbarItems";
+import NavbarItems from "../components/navbar/NavbarItems";
 import LoadingAnimation from "../components/loading/LoadingAnimation";
 
 function MatchesView() {

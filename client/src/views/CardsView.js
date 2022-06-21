@@ -1,8 +1,8 @@
 // import '../App.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import useStore from '../stores/TeamDataStore';
-import NavbarItems from '../components/NavbarItems';
-import TeamCardList from '../components/TeamCardList';
+import NavbarItems from '../components/navbar/NavbarItems';
+import TeamCardList from '../components/display/TeamCardList';
 import Scrollbars from 'react-custom-scrollbars';
 import LoadingAnimation from '../components/loading/LoadingAnimation';
 

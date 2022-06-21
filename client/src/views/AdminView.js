@@ -4,9 +4,9 @@ import { Pie, Bar } from 'react-chartjs-2';
 import { motion } from 'framer-motion/dist/framer-motion'
 import Scrollbars from "react-custom-scrollbars";
 
-import NavbarItems from "../components/NavbarItems";
+import NavbarItems from "../components/navbar/NavbarItems";
 
-import Podium from "../components/Podium";
+import Podium from "../components/podium/Podium";
 import useStore from "../stores/TeamDataStore";
 
 import Carousel from 'react-multi-carousel';

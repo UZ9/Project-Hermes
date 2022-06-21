@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ScoutingView from './views/ScoutingView';
 import React from 'react';
 import 'firebase/compat/auth';
-import ScoutFormComponent from './components/ScoutFormComponent';
+import ScoutFormComponent from './components/forms/ScoutFormComponent';
 import { socket } from './service/Socket';
 import useStore from './stores/TeamDataStore';
 import "./custom.scss";

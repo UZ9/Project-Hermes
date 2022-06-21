@@ -1,6 +1,6 @@
 import { faCog, faPen, faTrophy } from "@fortawesome/free-solid-svg-icons";
 import LoadingAnimation from "../components/loading/LoadingAnimation";
-import NavbarItems from "../components/NavbarItems";
+import NavbarItems from "../components/navbar/NavbarItems";
 import { SettingsBody } from "../components/settings/SettingsBody";
 import SettingsNavbar from "../components/settings/SettingsNavbar";
 import SettingsOption from "../components/settings/SettingsOption";

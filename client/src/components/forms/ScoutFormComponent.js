@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { Form } from "react-bootstrap";
-import { socket } from "../service/Socket";
+import { socket } from "../../service/Socket";
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
 

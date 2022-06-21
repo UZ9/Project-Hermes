@@ -1,5 +1,5 @@
-import TeamCard from "../cards/TeamCard";
-import useStore from "../stores/TeamDataStore";
+import TeamCard from "../../cards/TeamCard";
+import useStore from "../../stores/TeamDataStore";
 
 /**
  * Attempts to parse a string for an integer

@@ -2,22 +2,6 @@ import React from "react";
 import { Image } from "react-bootstrap";
 import ReactTooltip from "react-tooltip";
 
-// function getIndexScoreColor(score, maxScore) {
-//     let ratio = score / maxScore;
-
-//     if (ratio < 0.3) {
-//         return "FF0000";
-//     } else if (ratio < 0.4) {
-//         return "FF8C00";
-//     } else if (ratio < 0.6) {
-//         return "FFA500"
-//     } else if (ratio < 0.8) {
-//         return "EECD00"
-//     } else if (ratio <= 1) {
-//         return "00A86B"
-//     }
-// }
-
 export function ScoutingSection(props) {
     return (
         <>
