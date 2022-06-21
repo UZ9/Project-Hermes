@@ -22,7 +22,7 @@ export default function LoadingAnimation(props) {
             errorMessage("Invalid SKU ID", "Enter a valid SKU ID on the Settings page.")
         }
 
-    }, [loadingStatus]) 
+    }, [loadingStatus, props.error]) 
 
     const errorMessage = (text, subtext="") => {
         textRef.current = { text: text.toUpperCase(), subtext: subtext, color: "#ff3333" }
