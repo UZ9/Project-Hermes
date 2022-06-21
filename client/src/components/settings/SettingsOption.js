@@ -35,9 +35,9 @@ function SettingsOption(props) {
             <h5 className="subtext">{props.name.toUpperCase()}</h5>
 
 
-            <div class="input-group mb-4">
+            <div className="input-group mb-4">
                 {props.prefix && <span className="input-group-text" id="basic-addon3">{props.prefix}</span>}
-                <input autoComplete={"off"} value={props.setting in props.config ? props.config[props.setting] : input} onChange={handleInput} placeholder={props.placeholder}  type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" />
+                <input autoComplete={"off"} value={props.setting in props.config ? props.config[props.setting] : input} onChange={handleInput} placeholder={props.placeholder}  type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3" />
             </div>
         </>
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
-import Button from "@restart/ui/esm/Button";
 import { Modal } from "react-bootstrap";
 import { HashLink as Link } from 'react-router-hash-link';
 
@@ -217,7 +216,7 @@ function TeamCard(props) {
 
                         <div className="d-flex justify-content-between">
                             <div className="text-start">
-                                <Button style={{ textDecoration: "none" }} onClick={handleClick} className="stretched-link text-secondary shadow-none scout-card-button subtext"><h4 className="subtext">{props.number}</h4></Button>
+                                <button style={{ textDecoration: "none" }} onClick={handleClick} className="stretched-link text-secondary shadow-none scout-card-button subtext"><h4 className="subtext">{props.number}</h4></button>
                                 <h6 className="align-top subtext">{props.teamName}</h6>
 
                             </div>

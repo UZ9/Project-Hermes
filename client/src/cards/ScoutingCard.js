@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ScoutingStatus } from "../views/ScoutingView";
-import Button from "@restart/ui/esm/Button";
 import { useNavigate } from "react-router";
 import { Modal } from "react-bootstrap";
 import { useState } from "react";
@@ -44,7 +43,7 @@ function ScoutingCard(props) {
                     </div>
                     <div className="card-footer text-secondary">
                         <FontAwesomeIcon icon={ScoutingStatus[props.status].icon} className="fas fa-sync me-3" />
-                        <Button style={{ textDecoration: "none" }} onClick={handleClick} className="text-secondary stretched-link subtext shadow-none scout-card-button" to={`/scouting/scoutforms/${props.number}`}>{ScoutingStatus[props.status].message}</Button>
+                        <button style={{ textDecoration: "none" }} onClick={handleClick} className="text-secondary stretched-link subtext shadow-none scout-card-button" to={`/scouting/scoutforms/${props.number}`}>{ScoutingStatus[props.status].message}</button>
 
                     </div>
                 </div>
@@ -56,12 +55,12 @@ function ScoutingCard(props) {
                 </Modal.Header>
                 <Modal.Body>This card identifies as <strong>{ScoutingStatus[props.status].message}</strong>. Are you sure you want to modify it?</Modal.Body>
                 <Modal.Footer>
-                    <Button className="btn" variant="secondary" onClick={handleClose}>
+                    <button className="btn" variant="secondary" onClick={handleClose}>
                         Cancel
-                    </Button>
-                    <Button className="btn" variant="primary" onClick={goToScoutForm}>
+                    </button>
+                    <button className="btn" variant="primary" onClick={goToScoutForm}>
                         Continue
-                    </Button>
+                    </button>
                 </Modal.Footer>
             </Modal>
         </>

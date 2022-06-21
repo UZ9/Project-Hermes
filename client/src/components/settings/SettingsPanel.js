@@ -13,8 +13,8 @@ function SettingsPanel(props) {
 
     return (
         <>
-            <div class="container-fluid">
-                <div class="row flex-nowrap" >
+            <div className="container-fluid">
+                <div className="row flex-nowrap" >
                     {React.cloneElement(props.children[0], { config: config, setConfigOption: setConfigOption, options: props.options, currentPage: currentPage })}
                     {React.cloneElement(props.children[1], { config: config, setConfigOption: setConfigOption, options: props.options, currentPage: currentPage })}
                 </div>

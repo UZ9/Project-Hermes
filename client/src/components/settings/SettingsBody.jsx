@@ -13,7 +13,7 @@ export function SettingsBody(props) {
 
     return (
         <>
-            <div class="col py-3 ms-5 me-5">
+            <div className="col py-3 ms-5 me-5">
                 <h1 className="subtext pb-3">{props.currentPage.name.toUpperCase()}</h1>
 
                 {React.Children.map(props.children, (child, i) => {

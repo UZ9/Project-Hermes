@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { Form } from "react-bootstrap";
-import Button from "@restart/ui/esm/Button";
-// import "../App.css"
 import { socket } from "../service/Socket";
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
@@ -145,7 +143,7 @@ function ScoutFormComponent() {
                             <Form.Control name="robot-image" type="file" />
                         </Form.Group>
                         <Form.Group className="mt-4">
-                            <Button className="w-100 btn mt-3 btn-primary" type="submit">Submit</Button>
+                            <button className="w-100 btn mt-3 btn-primary" type="submit">Submit</button>
                         </Form.Group>
 
                     </Form>

@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('navbar renders no matter what', async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  expect(await screen.findByText(/PROJECT/)).toBeInTheDocument();
+  expect(await screen.findByText(/HERMES/)).toBeInTheDocument();
 });
