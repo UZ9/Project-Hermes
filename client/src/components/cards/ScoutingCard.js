@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ScoutingStatus } from "../views/ScoutingView";
+import { ScoutingStatus } from "../../views/ScoutingView";
 import { useNavigate } from "react-router";
 import { Modal } from "react-bootstrap";
 import { useState } from "react";

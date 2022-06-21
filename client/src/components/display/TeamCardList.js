@@ -1,4 +1,4 @@
-import TeamCard from "../../cards/TeamCard";
+import TeamCard from "../cards/TeamCard";
 import useStore from "../../stores/TeamDataStore";
 
 /**

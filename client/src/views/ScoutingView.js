@@ -1,7 +1,7 @@
 import { faBan, faCheck, faCog } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import Scrollbars from "react-custom-scrollbars";
-import ScoutingCard from "../cards/ScoutingCard";
+import ScoutingCard from "../components/cards/ScoutingCard";
 import LoadingAnimation from "../components/loading/LoadingAnimation";
 import NavbarItems from "../components/navbar/NavbarItems";
 import useStore from "../stores/TeamDataStore";

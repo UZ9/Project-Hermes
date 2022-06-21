@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import MatchCard from "../cards/MatchCard";
+import MatchCard from "../components/cards/MatchCard";
 import useStore from "../stores/TeamDataStore";
 import { calculateIndexScore, isNum } from "../components/display/TeamCardList";
 import { Typeahead } from 'react-bootstrap-typeahead'
