@@ -40,7 +40,6 @@ This project aims to improve the VEX Robotics tournament process by easily allow
 :heavy_check_mark: Automatic team performance score indexer\
 :heavy_check_mark: Team display dashboard\
 :heavy_check_mark: Matches display for any team\
-:heavy_check_mark: (WiP) Authentication system
 
 ## :rocket: Technologies ##
 
