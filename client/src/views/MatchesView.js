@@ -76,8 +76,6 @@ function MatchesView() {
     };
 
 
-    // const matches =  ? data[currentTeam]["matches"] : []
-
     const teamList = data.map(element => element["id"]);
 
     return (
@@ -102,22 +100,16 @@ function MatchesView() {
                     <div className="container-fluid">
                         <div className="row">
                             {(matches.length !== 0) ?
-                                Object.keys(matches).map((key, index) => (
-                                    <MatchCard cards={cards} key={index} matchName={key} currentTeam={currentTeam} blueAlliance={matches[key]["blue-alliance"]} redAlliance={matches[key]["red-alliance"]} />
-                                )) :
+                                Object.keys(matches).map((key, index) => {
+                                    console.log(matches[key]);
+                                    console.log(matches[key]["red-alliance"]);
+
+                                    return (
+                                        <MatchCard cards={cards} key={index} matchName={matches[key][0]} currentTeam={currentTeam} blueAlliance={matches[key][1]["blue-alliance"]} redAlliance={matches[key][1]["red-alliance"]} />
+                                    )
+                                }) :
                                 <>
-                                    <div className="col-xl-3 mx-auto col-sm-5 p-2">
-                                        <div className={`card card-common`}>
-                                            <div className="card-body">
-                                                <div className="d-flex justify-content-between">
-                                                    <div className="text-start text-secondary">
-                                                        <h5 className="text-danger">No team selected.</h5>
-                                                        <h6 className="align-top">Make sure you have selected a valid team from the Team ID selection..</h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <LoadingAnimation error={{ text: "No team selected", subtext: "Select a valid team form the Team ID selection menu." }} />
                                 </>}
                         </div>
                     </div>

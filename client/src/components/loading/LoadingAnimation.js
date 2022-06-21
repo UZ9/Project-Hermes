@@ -14,9 +14,14 @@ export default function LoadingAnimation(props) {
     const [loadingCircleClasses, setLoadingCircleClasses] = useState("loader triangle")
 
     useEffect(() => {
+        if (props.error) {
+            errorMessage(props.error.text, props.error.subtext)
+        }
+
         if (loadingStatus === "InvalidSku") {
             errorMessage("Invalid SKU ID", "Enter a valid SKU ID on the Settings page.")
         }
+
     }, [loadingStatus]) 
 
     const errorMessage = (text, subtext="") => {
