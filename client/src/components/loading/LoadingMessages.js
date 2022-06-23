@@ -5,7 +5,11 @@ const LoadingMessages = {
     },
     "NotConnected": {
         title: "No Connection",
-        subtitle: "Are you sure the server is up?"
+        subtitle: "Are you, sure the server is up?"
+    },
+    "NoTeamSelected": {
+        title: "No team selected", 
+        subtitle: "Select a valid team from the Team ID selection menu."
     }
 }
 

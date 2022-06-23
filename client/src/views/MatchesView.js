@@ -109,7 +109,7 @@ function MatchesView() {
                                     )
                                 }) :
                                 <>
-                                    <LoadingAnimation error={{ text: "No team selected", subtext: "Select a valid team from the Team ID selection menu." }} />
+                                    <LoadingAnimation error={"NoTeamSelected"} />
                                 </>}
                         </div>
                     </div>

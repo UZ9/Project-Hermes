@@ -219,9 +219,6 @@ function MatchCard(props) {
                                 {data[props.blueAlliance["teams"][1]]["scouting"] !== undefined &&
                                     <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.blueAlliance["teams"][1]]["scouting"]["robot-image"] ?? ""} /></div>}
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>

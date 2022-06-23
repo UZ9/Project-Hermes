@@ -15,12 +15,10 @@ export default function LoadingAnimation(props) {
     const [loadingCircleClasses, setLoadingCircleClasses] = useState("loader triangle")
 
     useEffect(() => {
-        if (props.error) {
-            errorMessage(props.error.text, props.error.subtext)
-        }
+        const status = props.error ?? loadingStatus;
 
-        if (LoadingMessages[loadingStatus]) {
-            const { title, subtitle } = LoadingMessages[loadingStatus];
+        if (LoadingMessages[status]) {
+            const { title, subtitle } = LoadingMessages[status];
             
             errorMessage(title, subtitle)
         }
