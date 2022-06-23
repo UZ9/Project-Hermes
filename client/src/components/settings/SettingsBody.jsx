@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { socket } from "../../service/Socket";
 
 export function SettingsBody(props) {
@@ -7,6 +8,22 @@ export function SettingsBody(props) {
     }
 
     const handleSubmit = () => {
+        toast.success('Your changes saved successfully.', {
+            className: "subtext",
+            style: {
+                marginTop: "3em",
+                padding: '16px',
+                fontFamily: '"Jura", sans-serif',
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+            },
+            iconTheme: {
+                primary: '#e77917',
+                secondary: '#ededed',
+            },
+        });
+
         socket.emit("update-config", props.config);
     }
 

@@ -7,6 +7,8 @@ import SettingsOption from "../components/settings/SettingsOption";
 import SettingsPage from "../components/settings/SettingsPage";
 import SettingsPanel from "../components/settings/SettingsPanel";
 import useStore from "../stores/TeamDataStore";
+import { Toaster } from 'react-hot-toast';
+
 
 
 export default function SettingsView() {
@@ -30,6 +32,7 @@ export default function SettingsView() {
         }
     ]
 
+
     return (
         configStore === undefined ? (
             <>
@@ -44,6 +47,8 @@ export default function SettingsView() {
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <NavbarItems active="settings" />
                 </nav>
+
+                <Toaster/>
 
 
                 <SettingsPanel config={configStore} options={options}>

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import useStore from "../../stores/TeamDataStore";
+import LoadingMessages from "./LoadingMessages";
 
 export default function LoadingAnimation(props) {
     const loadingStatus = useStore(state => state.loadingStatus)
@@ -18,9 +19,16 @@ export default function LoadingAnimation(props) {
             errorMessage(props.error.text, props.error.subtext)
         }
 
-        if (loadingStatus === "InvalidSku") {
-            errorMessage("Invalid SKU ID", "Enter a valid SKU ID on the Settings page.")
+        if (LoadingMessages[loadingStatus]) {
+            const { title, subtitle } = LoadingMessages[loadingStatus];
+            
+            errorMessage(title, subtitle)
         }
+
+        // if (loadingStatus === "InvalidSku") {
+            
+        //     errorMessage("Invalid SKU ID", "Enter a valid SKU ID on the Settings page.")
+        // }
 
     }, [loadingStatus, props.error]) 
 

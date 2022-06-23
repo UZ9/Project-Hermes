@@ -16,7 +16,16 @@ import AdminView from './views/AdminView';
 import SettingsView from './views/SettingsView';
 
 
+function handleSocketError(err) {
+  useStore.setState({ loadingStatus: "NotConnected" })
+}
+
 function App() {
+
+  socket.on('connect_error', err => handleSocketError(err))
+  socket.on('connect_failed', err => handleSocketError(err))
+  socket.on('disconnect', err => handleSocketError(err))
+
   socket.on('connection', (res) => {
     useStore.setState({ teamData: res.data, config: res.config });
   })
