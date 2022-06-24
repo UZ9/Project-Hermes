@@ -42,7 +42,7 @@ export function SettingsBody(props) {
                 <div className="text-end">
                     <button onClick={handleCancel} className="button btn btn-secondary logo me-3 p-2 px-3">Cancel</button>
 
-                    <button onClick={handleSubmit} className="button btn  signout-btn p-2 px-3">Save</button>
+                    <button onClick={handleSubmit} className="button btn signout-btn p-2 px-3">Save</button>
                 </div>
 
 

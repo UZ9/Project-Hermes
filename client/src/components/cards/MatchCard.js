@@ -227,7 +227,7 @@ function MatchCard(props) {
 
 
 
-            <ReactTooltip className={`tooltip col-md-10 p-0`} id={props.matchName + "-red"} type='error'>
+            {/* <ReactTooltip className={`tooltip col-md-10 p-0`} id={props.matchName + "-red"} type='error'>
                 <div className="col-md-12 mx-auto col-sm-3">
                     <div className="card card-common">
                         <div className="card-body">
@@ -237,15 +237,7 @@ function MatchCard(props) {
                                         <MatchStandingsSection division={data[props.redAlliance["teams"][0]]["division"]} />
                                         <MatchStandingsSection division={data[props.redAlliance["teams"][1]]["division"]} />
                                     </div>
-                                    {/* <div className="col">
-                                        {props.scouting !== undefined &&
-                                            <>
-                                                <ScoutingSection withScout={true} scoutingScore={props.scoutingScore} scouting={props.scouting} />
-                                            </>
-                                        }
-                                    </div> */}
                                 </div>
-                                {/* <SkillsSection skills={props.skills} /> */}
                             </> :
                                 <>
                                     <div className="row">
@@ -284,15 +276,7 @@ function MatchCard(props) {
                                         <MatchStandingsSection division={data[props.blueAlliance["teams"][0]]["division"]} />
                                         <MatchStandingsSection division={data[props.blueAlliance["teams"][1]]["division"]} />
                                     </div>
-                                    {/* <div className="col">
-                                        {props.scouting !== undefined &&
-                                            <>
-                                                <ScoutingSection withScout={true} scoutingScore={props.scoutingScore} scouting={props.scouting} />
-                                            </>
-                                        }
-                                    </div> */}
                                 </div>
-                                {/* <SkillsSection skills={props.skills} /> */}
                             </> :
                                 <>
                                     <div className="row">
@@ -320,7 +304,7 @@ function MatchCard(props) {
                         </div>
                     </div>
                 </div>
-            </ReactTooltip>
+            </ReactTooltip> */}
         </>
     )
 

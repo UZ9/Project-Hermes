@@ -12,7 +12,7 @@ import { socket } from './service/Socket';
 import useStore from './stores/TeamDataStore';
 import "./custom.scss";
 import MatchesView from './views/MatchesView';
-import AdminView from './views/AdminView';
+import AdminView from './views/VisualsView';
 import SettingsView from './views/SettingsView';
 
 

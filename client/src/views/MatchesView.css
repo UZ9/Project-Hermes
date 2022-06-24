@@ -1,0 +1,34 @@
+.nav-matches {
+    background-color: #2f343d;
+}
+
+.card-matches {
+    background-color: #2f343d;
+    margin-bottom: 0.25em;
+}
+
+.dropdown-menu {
+    background-color: #2f343d !important;
+}
+
+.dropdown-item {
+    color: #ededed !important;
+}
+
+.dropdown-item:hover {
+    background-color: #4c5463;
+}
+
+.custom-dropdown {
+    position: relative;
+}
+
+.custom-dropdown .custom-dropdown-icon {
+    position: absolute;
+    right: 32px;
+    height: 100%;
+}
+
+.custom-dropdown .form-control {
+    padding-right: 36px;
+}
