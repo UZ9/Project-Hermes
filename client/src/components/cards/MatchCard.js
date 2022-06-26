@@ -172,8 +172,6 @@ function MatchCard(props) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row">
                             <div className="col-6 ">
                                 <div className="match-robot-image match-robot-image-blue" >
                                     <div className="text-start logo shadow px-2 text-white" style={{ position: "relative", display: "inline-block", backgroundColor: "rgba(0, 0, 0, 0.6)" }}>

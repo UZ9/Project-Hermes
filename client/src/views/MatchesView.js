@@ -218,7 +218,7 @@ function MatchesView() {
 
                                             return (<>
                                                 <div className="col-12 position-relative">
-                                                    <div className="card-matches pe-1">
+                                                    <div className="card-matches">
                                                         <div className="card-body shadow" style={{}}>
 
                                                             <div className="row me-1 me-md-0">
@@ -275,7 +275,7 @@ function MatchesView() {
                             </div>
                         </div>
 
-                        <div className="col-xl-9 px-0">
+                        <div className="col-xl-9 px-0" style={{zIndex: -1}}>
                             <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
                                 <div >
                                     <div className="row">
