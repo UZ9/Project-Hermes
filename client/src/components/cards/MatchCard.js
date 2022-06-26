@@ -1,6 +1,10 @@
 import React from "react";
 import { Image } from "react-bootstrap";
 import ReactTooltip from "react-tooltip";
+import "./MatchCard.css"
+
+import { ReactComponent as RedTriangleSvg } from '../../assets/svg/redtriangle.svg'
+import { ReactComponent as BlueTriangleSvg } from '../../assets/svg/bluetriangle.svg'
 
 export function ScoutingSection(props) {
     return (
@@ -140,87 +144,54 @@ function MatchCard(props) {
 
     return (
         <>
-            <div className="col-xl-12 mx-auto col-sm-5 pt-2 card card-common mb-3">
-                <div className="row">
-                    <h3 className="d-flex justify-content-between pt-3 pb-1 ps-2 pe-2 text-secondary">
-                        <div className="col text-center" />
-                        <div className="col text-center" />
-                        <div className="col text-center">
-                            <AllianceScoreDisplay color="tomato" currentTeam={props.currentTeam} teamOne={props.redAlliance["teams"][0]} teamTwo={props.redAlliance["teams"][1]} text={props.redAlliance["score"]} />
-                        </div>
-                        <div id={props.matchName} className="col text-center"> {props.matchName}</div>
-                        <div className="col text-center">
-                            <AllianceScoreDisplay color="#00BFFF" currentTeam={props.currentTeam} teamOne={props.blueAlliance["teams"][0]} teamTwo={props.blueAlliance["teams"][1]} text={props.blueAlliance["score"]} />
-                        </div>
-                        <div className="col text-center">
 
-                        </div>
-                        <div className="col text-center" />
-
-                    </h3>
+            <div className="col-xl-12 px-0 col-sm-5 match-card mb-3">
+                <div className="text-center logo text-white matches-title">
+                    {props.matchName.toUpperCase()}
                 </div>
-                <div className="row">
-                    <div className="col-xl-6 mx-auto col-sm-5 pb-3 pt-2">
-                        <div data-tip data-for={props.matchName + "-red"} className="card-body">
-                            <h5 className="row col-md-15 text-secondary">
-                                <TeamNameDisplay color="tomato" currentTeam={props.currentTeam} text={props.redAlliance["teams"][0]} />
-                                <TeamNameDisplay color="tomato" currentTeam={props.currentTeam} text={props.redAlliance["teams"][1]} />
-                            </h5>
-                            <div className="row col-md-15 text-secondary">
-                                <span className="col">Index</span>
-                                <span className="col">Scouting</span>
-                                <span className="col">Skills</span>
-                                <span className="col">Index</span>
-                                <span className="col">Scouting</span>
-                                <span className="col">Skills</span>
-                            </div>
-                            <div className="row col-md-15 text-secondary">
-                                <h3 className="col" >{data[props.redAlliance["teams"][0]]["score"]}</h3>
-                                <h3 className="col" >{data[props.redAlliance["teams"][0]]["scoutingScore"]}</h3>
-                                <h3 className="col" >{data[props.redAlliance["teams"][0]]["skills"]["driver"] + data[props.redAlliance["teams"][0]]["skills"]["programming"]}</h3>
-                                <h3 className="col" >{data[props.redAlliance["teams"][1]]["score"]}</h3>
-                                <h3 className="col" >{data[props.redAlliance["teams"][1]]["scoutingScore"]}</h3>
-                                <h3 className="col" >{data[props.redAlliance["teams"][1]]["skills"]["driver"] + data[props.redAlliance["teams"][1]]["skills"]["programming"]}</h3>
-                            </div>
-                            <div className="row col-md-15 text-secondary">
-                                {data[props.redAlliance["teams"][0]]["scouting"] !== undefined &&
-                                    <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.redAlliance["teams"][0]]["scouting"]["robot-image"] ?? ""} /></div>}
-                                {(data[props.redAlliance["teams"][1]]["scouting"] !== undefined) &&
-                                    <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.redAlliance["teams"][1]]["scouting"]["robot-image"] ?? ""} /></div>}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-xl-6 mx-auto col-sm-6 pb-3 pt-2">
+                <div className="d-flex justify-content-end">
+                    <BlueTriangleSvg style={{ marginTop: "40px", marginRight: "auto" }} />
 
-                        <div data-tip data-for={props.matchName + "-blue"} className="card-body">
-                            <h5 className="row col-md-15 text-secondary">
-                                <TeamNameDisplay color="#00BFFF" currentTeam={props.currentTeam} text={props.blueAlliance["teams"][0]} />
-                                <TeamNameDisplay color="#00BFFF" currentTeam={props.currentTeam} text={props.blueAlliance["teams"][1]} />
-                            </h5>
-                            <div className="row col-md-15 text-secondary">
-                                <span className="col">Index</span>
-                                <span className="col">Scouting</span>
-                                <span className="col">Skills</span>
-                                <span className="col">Index</span>
-                                <span className="col">Scouting</span>
-                                <span className="col">Skills</span>
+                    <RedTriangleSvg style={{ marginTop: "0px" }} />
+                </div>
+
+                <div style={{ outline: "0px solid #ff0000", transform: "translate(-50%, -65%)", position: "absolute", width: "1050px", height: "420px", left: "50%", top: "50%" }} >
+                    <div className="container-fluid p-0" style={{ overflow: "hidden" }}>
+                        <div className="row">
+                            <div className="col-6 ">
+                                <div className="match-robot-image match-robot-image-blue" style={{ borderBottom: "none" }}>
+                                    <div className="text-start logo shadow px-2 text-white" style={{ position: "relative", display: "inline-block", backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+                                        {props.blueAlliance["teams"][0]}
+                                    </div>
+                                </div>
                             </div>
-                            <div className="row col-md-15 text-secondary">
-                                <h3 className="col" >{data[props.blueAlliance["teams"][0]]["score"]}</h3>
-                                <h3 className="col" >{data[props.blueAlliance["teams"][0]]["scoutingScore"]}</h3>
-                                <h3 className="col" >{data[props.blueAlliance["teams"][0]]["skills"]["driver"] + data[props.blueAlliance["teams"][0]]["skills"]["programming"]}</h3>
-                                <h3 className="col" >{data[props.blueAlliance["teams"][1]]["score"]}</h3>
-                                <h3 className="col" >{data[props.blueAlliance["teams"][1]]["scoutingScore"]}</h3>
-                                <h3 className="col" >{data[props.blueAlliance["teams"][1]]["skills"]["driver"] + data[props.blueAlliance["teams"][1]]["skills"]["programming"]}</h3>
+                            <div className="col-6 ">
+                                <div className="match-robot-image match-robot-image-red" style={{ borderBottom: "none" }}>
+                                    <div className="text-start logo shadow px-2 text-white" style={{ position: "relative", display: "inline-block", backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+                                        {props.redAlliance["teams"][0]}
+                                    </div>
+                                </div>
                             </div>
-                            <div className="row col-md-15 text-secondary">
-                                {data[props.blueAlliance["teams"][0]]["scouting"] !== undefined &&
-                                    (<div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.blueAlliance["teams"][0]]["scouting"]["robot-image"] ?? ""} /></div>)}
-                                {data[props.blueAlliance["teams"][1]]["scouting"] !== undefined &&
-                                    <div className="col" ><Image style={{ maxHeight: "25vh" }} alt="N/A" src={data[props.blueAlliance["teams"][1]]["scouting"]["robot-image"] ?? ""} /></div>}
+                        </div>
+                        <div className="row">
+                            <div className="col-6 ">
+                                <div className="match-robot-image match-robot-image-blue" >
+                                    <div className="text-start logo shadow px-2 text-white" style={{ position: "relative", display: "inline-block", backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+                                        {props.blueAlliance["teams"][1]}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-6 ">
+                                <div className="match-robot-image match-robot-image-red">
+                                    <div className="text-start logo shadow px-2 text-white" style={{ position: "relative", display: "inline-block", backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+                                        {props.redAlliance["teams"][1]}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>

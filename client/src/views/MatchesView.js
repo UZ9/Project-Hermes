@@ -13,6 +13,26 @@ import "./MatchesView.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngry, faCheck, faCheckCircle, faCircle, faSearch, faShower, faTrophy } from "@fortawesome/free-solid-svg-icons";
 
+const orderPriority = (str) => {
+    let score = 0;
+
+    if (str.includes("Qualifier")) {
+        score += 10000;
+    } else if (str.includes("Final")) {
+        score -= 10000;
+    } else if (str.includes("SF")) {
+        score -= 1000;
+    } else if (str.includes("QF")) {
+        score -= 500;
+    } else if (str.includes("R16")) {
+        score -= 250;
+    }
+    
+    const num = parseInt(str.replace( /^\D+/g, ''));
+
+    return num + score;
+}
+
 function MatchesView() {
     // const currentTeam = "21050A"
 
@@ -144,47 +164,50 @@ function MatchesView() {
 
                         <div className="px-0 col-md-12 col-xl-3">
                             <div className="nav-matches flex-column align-items-center align-items-sm-start">
-                                <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
+                                <div className="col-12">
+                                    <div className="custom-dropdown">
+                                        <FontAwesomeIcon size={"lg"} className="custom-dropdown-icon" icon={faSearch} style={{
+                                            textAlign: "center",
+                                            width: "16px",
+                                            lineHieght: "10px",
+                                            zIndex: 1,
+                                            color: "#ededed"
+                                        }} />
+                                        <Typeahead className=" pt-1 pt-sm-0 p-sm-0 px-4 ms-0" renderMenu={(results, menuProps) => (
+                                            <Menu {...menuProps}>
+                                                <Scrollbars autoHeight>
+                                                    {results.map((result, index) => (
+                                                        <MenuItem option={result} position={index}>
+                                                            <span className="text-white subtext">
+                                                                {result}
+
+                                                            </span>
+                                                        </MenuItem>
+                                                    ))}
+                                                </Scrollbars>
+
+                                            </Menu>
+                                        )}
+                                            inputProps={{ className: "py-2 my-1 shadow subtext text-white", style: { fontSize: "20px", backgroundColor: 'transparent', border: "none" } }}
+                                            onChange={setCurrentTeamInput}
+                                            placeholder={"Filter by Team ID"}
+                                            labelKey={"team-selection"}
+                                            id="team-selection"
+                                            highlightOnlyResult={false}
+                                            type="text"
+                                            options={teamList}
+                                            defaultInputValue={currentTeamInput + ""} />
+                                    </div>
+
+                                </div>
+                                <Scrollbars autoHeight autoHeightMin={"100vh - 110px"} autoHeightMax={"100vh - 110px"}>
                                     <ul className="navbar-dark navbar-nav  nav-pills flex-column mb-sm-auto align-items-center align-items-sm-start" id="menu">
-                                        <div className="col-12">
-                                            <div className="custom-dropdown">
-                                                <FontAwesomeIcon size={"lg"} className="custom-dropdown-icon" icon={faSearch} style={{
-                                                    textAlign: "center",
-                                                    width: "16px",
-                                                    lineHieght: "10px",
-                                                    zIndex: 1,
-                                                    color: "#ededed"
-                                                }} />
-                                                <Typeahead className=" pt-1 pt-sm-0 p-sm-0 px-4 ms-0" renderMenu={(results, menuProps) => (
-                                                    <Menu {...menuProps}>
-                                                        <Scrollbars autoHeight>
-                                                            {results.map((result, index) => (
-                                                                <MenuItem option={result} position={index}>
-                                                                    <span className="text-white subtext">
-                                                                        {result}
 
-                                                                    </span>
-                                                                </MenuItem>
-                                                            ))}
-                                                        </Scrollbars>
-
-                                                    </Menu>
-                                                )}
-                                                    inputProps={{ className: "py-2 my-1 shadow subtext text-white", style: { fontSize: "20px", backgroundColor: 'transparent', border: "none" } }}
-                                                    onChange={setCurrentTeamInput}
-                                                    placeholder={"Filter by Team ID"}
-                                                    labelKey={"team-selection"}
-                                                    id="team-selection"
-                                                    highlightOnlyResult={false}
-                                                    type="text"
-                                                    options={teamList}
-                                                    defaultInputValue={currentTeamInput + ""} />
-                                            </div>
-
-                                        </div>
                                         {/* <Button className="btn btm-sm mt-3 mt-sm-0 signout-btn col-4" onClick={handleSubmit} >Set Team</Button> */}
 
-                                        {(matches.length !== 0) ? Object.keys(allMatches).map((key, index) => {
+
+
+                                        {(matches.length !== 0) ? Object.keys(allMatches).sort((a, b) => orderPriority(a) < orderPriority(b) ? -1 : 1).map((key, index) => {
 
                                             const blueScore = allMatches[key]["blue-alliance"]["score"];
                                             const redScore = allMatches[key]["red-alliance"]["score"];
@@ -217,9 +240,9 @@ function MatchesView() {
                                                                     <table className="table mb-0 text-white subtext" style={{ width: "100%", border: "none" }}>
                                                                         <tbody>
                                                                             <tr className="d-flex">
-                                                                                <td style={{ color: "tomato", border: "none" }} className={"subtext px-0 col-4 me-1 " + (victor === "Red" ? "text-decoration-underline" : "")}><h4>{redScore}</h4></td>
-                                                                                <td style={{ color: "#ededed", border: "none" }} className="subtext px-0 col-3 ">{<h4>{"-"}</h4>}</td>
-                                                                                <td style={{ color: "#5973ff", border: "none" }} className={"subtext px-0 col-3 " + (victor === "Blue" ? "text-decoration-underline" : "")}><h4>{blueScore}</h4></td>
+                                                                                <td style={{ color: "tomato", border: "none" }} className={"subtext px-0 col-4 me-1 " + (victor === "Red" ? "text-decoration-underline" : "")}><h4 className="subtext">{redScore}</h4></td>
+                                                                                <td style={{ color: "#ededed", border: "none" }} className="subtext px-0 col-3 ">{<h4 className="subtext">{"-"}</h4>}</td>
+                                                                                <td style={{ color: "#5973ff", border: "none" }} className={"subtext px-0 col-3 " + (victor === "Blue" ? "text-decoration-underline" : "")}><h4 className="subtext">{blueScore}</h4></td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -255,7 +278,7 @@ function MatchesView() {
                         <div className="col-xl-9 px-0">
                             <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
                                 <div >
-                                    <div className="row mt-3 mx-3">
+                                    <div className="row">
                                         {
 
 

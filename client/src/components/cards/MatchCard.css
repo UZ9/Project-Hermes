@@ -1,0 +1,41 @@
+.match-card {
+    background-color: #2f343d;
+    transition: all .3s;
+    animation: fadein 1s;
+}
+
+
+body {
+    background-color: #2f343d !important;
+}
+
+.match-robot-image {
+    background-image: url("https://thumbs.dreamstime.com/b/cute-cat-portrait-square-photo-beautiful-white-closeup-105311158.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+    
+
+
+    padding-bottom: 46%;
+}
+
+.match-robot-image-red {
+    border: 10px solid #bd0a04;
+    margin-left: -12.5px;
+
+
+}
+
+.match-robot-image-blue {
+    border: 10px solid #0f8deb;
+    margin-right: -12.5px;
+
+}
+
+.matches-title {
+    font-size: 43px;
+    margin-top: 1em;
+    margin-bottom: -2.5em;
+}

@@ -19,6 +19,11 @@
     background-color: #4c5463;
 }
 
+.custom-sticky-header {
+    position: sticky;
+    top: 0;
+}
+
 .custom-dropdown {
     position: relative;
 }
