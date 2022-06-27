@@ -44,7 +44,7 @@
     "@types/express": "^4.17.13",
     "@types/node": "^18.0.0",
     "@types/winston": "^2.4.4",
-    "cli-progress": "^3.11.1",
+    "cli-progress": "^3.11.2",
     "got": "^12.1.0",
     "tape": "^5.5.3",
     "tslint": "^6.1.3",
