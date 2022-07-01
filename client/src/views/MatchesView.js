@@ -27,8 +27,8 @@ const orderPriority = (str) => {
     } else if (str.includes("R16")) {
         score -= 250;
     }
-    
-    const num = parseInt(str.replace( /^\D+/g, ''));
+
+    const num = parseInt(str.replace(/^\D+/g, ''));
 
     return num + score;
 }
@@ -173,7 +173,7 @@ function MatchesView() {
                                             zIndex: 1,
                                             color: "#ededed"
                                         }} />
-                                        <Typeahead className=" pt-1 pt-sm-0 p-sm-0 px-4 ms-0" renderMenu={(results, menuProps) => (
+                                        <Typeahead renderMenu={(results, menuProps) => (
                                             <Menu {...menuProps}>
                                                 <Scrollbars autoHeight>
                                                     {results.map((result, index) => (
@@ -275,23 +275,21 @@ function MatchesView() {
                             </div>
                         </div>
 
-                        <div className="col-xl-9 px-0" style={{zIndex: -1}}>
+                        <div className="col-xl-9 px-0" style={{ zIndex: -1 }}>
                             <Scrollbars autoHeight autoHeightMin={"100vh - 56px"} autoHeightMax={"100vh - 56px"}>
                                 <div >
-                                    <div className="row">
-                                        {
+                                    {
 
 
 
-                                            (matches.length !== 0) ?
-                                                (currentMatchFiltered !== undefined ? (
-                                                    <MatchCard cards={cards} matchName={currentMatchFiltered} currentTeam={currentTeam} blueAlliance={allMatches[currentMatchFiltered]["blue-alliance"]} redAlliance={allMatches[currentMatchFiltered]["red-alliance"]} />
+                                        (matches.length !== 0) ?
+                                            (currentMatchFiltered !== undefined ? (
+                                                <MatchCard cards={cards} matchName={currentMatchFiltered} currentTeam={currentTeam} blueAlliance={allMatches[currentMatchFiltered]["blue-alliance"]} redAlliance={allMatches[currentMatchFiltered]["red-alliance"]} />
 
-                                                ) : undefined) :
-                                                <>
-                                                    <LoadingAnimation error={"NoTeamSelected"} />
-                                                </>}
-                                    </div>
+                                            ) : undefined) :
+                                            <>
+                                                <LoadingAnimation error={"NoTeamSelected"} />
+                                            </>}
                                 </div>
                             </Scrollbars>
                         </div>

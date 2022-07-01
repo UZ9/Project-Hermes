@@ -41,3 +41,11 @@
 .custom-dropdown .form-control {
     padding-right: 36px;
 }
+
+.rbt-input-main {
+    padding-left: 1.5em;
+}
+
+body {
+    background-color: #2f343d !important;
+}

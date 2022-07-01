@@ -142,37 +142,64 @@ function MatchStandingsSection(props) {
 function MatchCard(props) {
     const data = props.cards;
 
+    const blueScore = props.blueAlliance["score"];
+    const redScore = props.redAlliance["score"];
+
+    const victor = redScore === blueScore ? "N/A" : redScore > blueScore ? "Red" : "Blue";
+
     return (
         <>
 
-            <div className="col-xl-12 px-0 col-sm-5 match-card mb-3">
-                <div className="text-center logo text-white matches-title">
-                    {props.matchName.toUpperCase()}
+            <div className="row">
+                <div className="col-xl-12 px-0 col-sm-5 match-card">
+                    <div className="text-center logo text-white matches-title">
+                        {props.matchName.toUpperCase()}
+                    </div>
                 </div>
+            </div>
+
+            <div className="row">
+                <div className="mx-0 col-xl-12 matches-result">
+                    <div className="row justify-content-center">
+                        <h1 className="text-center col-3 pt-5">
+                            <table className="table mb-0 text-white subtext" style={{ width: "100%", border: "none" }}>
+                                <tbody>
+                                    <tr className="d-flex">
+                                        <td style={{ color: "#5973ff", border: "none" }} className={"subtext px-0 col-4 " + (victor === "Blue" ? "text-decoration-underline" : "")}><h1 className="subtext">{blueScore}</h1></td>
+                                        <td style={{ color: "#ededed", border: "none" }} className="subtext px-0 col-4 ">{<h1 className="subtext">{"-"}</h1>}</td>
+                                        <td style={{ color: "tomato", border: "none" }} className={"subtext px-0 col-4 me-1 " + (victor === "Red" ? "text-decoration-underline" : "")}><h1 className="subtext">{redScore}</h1></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <div className="col-xl-12">
+
+
+
                 <div className="d-flex justify-content-end">
-                    <BlueTriangleSvg style={{ marginTop: "40px", marginRight: "auto" }} />
+                    <BlueTriangleSvg style={{ marginTop: "-150px", marginRight: "auto" }} />
 
-                    <RedTriangleSvg style={{ marginTop: "0px" }} />
+                    <RedTriangleSvg style={{ marginTop: "-200px" }} />
                 </div>
 
-                <div style={{ outline: "0px solid #ff0000", transform: "translate(-50%, -65%)", position: "absolute", width: "1050px", height: "420px", left: "50%", top: "50%" }} >
+
+
+                <div style={{ outline: "0px solid #ff0000", transform: "translate(-50%, -110%)", position: "absolute", width: "1300px", height: "320px", left: "50%", marginTop: "-10em" }} >
                     <div className="container-fluid p-0" style={{ overflow: "hidden" }}>
-                        <div className="row">
-                            <div className="col-6 ">
-                                <div className="match-robot-image match-robot-image-blue" style={{ borderBottom: "none" }}>
+                        <div className="row mx-0">
+                            <div className="col-3 p-0">
+                                <div className="match-robot-image match-robot-image-blue" style={{ borderRight: "none" }}>
                                     <div className="text-start logo shadow px-2 text-white" style={{ position: "relative", display: "inline-block", backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
                                         {props.blueAlliance["teams"][0]}
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-6 ">
-                                <div className="match-robot-image match-robot-image-red" style={{ borderBottom: "none" }}>
-                                    <div className="text-start logo shadow px-2 text-white" style={{ position: "relative", display: "inline-block", backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
-                                        {props.redAlliance["teams"][0]}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-6 ">
+                            <div className="col-3 p-0">
                                 <div className="match-robot-image match-robot-image-blue" >
                                     <div className="text-start logo shadow px-2 text-white" style={{ position: "relative", display: "inline-block", backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
                                         {props.blueAlliance["teams"][1]}
@@ -180,7 +207,15 @@ function MatchCard(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-6 ">
+                            <div className="col-3 p-0">
+                                <div className="match-robot-image match-robot-image-red" style={{ borderRight: "none" }}>
+                                    <div className="text-start logo shadow px-2 text-white" style={{ position: "relative", display: "inline-block", backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+                                        {props.redAlliance["teams"][0]}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-3 p-0" >
                                 <div className="match-robot-image match-robot-image-red">
                                     <div className="text-start logo shadow px-2 text-white" style={{ position: "relative", display: "inline-block", backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
                                         {props.redAlliance["teams"][1]}
@@ -188,11 +223,19 @@ function MatchCard(props) {
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
 
+                <div className="row justify-content-center" style={{marginTop: "-12em"}}>
+                    <h4 className=" col-6 text-center subtext text-white p-3" style={{border: "2px solid #ededed"}}>Information about each team will end up here, including their rank, skills, index score, AP, etc., as well as a prediction of who has a higher probability of winning the fight</h4>
+
+                </div>
             </div>
+
+
+
+
 
 
 
