@@ -20,7 +20,7 @@
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "firebase": "^9.8.2",
+    "firebase": "^9.11.0",
     "firebaseui": "^6.0.0",
     "framer-motion": "^6.3.10",
     "js-yaml": "^4.1.0",
