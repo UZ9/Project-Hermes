@@ -32,7 +32,7 @@
     "fs": "0.0.1-security",
     "http": "0.0.1-security",
     "js-yaml": "^4.1.0",
-    "mongodb": "^4.3.1",
+    "mongodb": "^5.1.0",
     "node-fetch": "^3.2.4",
     "passport-auth-token": "^1.0.1",
     "path": "^0.12.7",
